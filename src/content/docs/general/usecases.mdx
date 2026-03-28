@@ -1,0 +1,242 @@
+---
+title: Practical Examples of Using Pepa
+description: Although Pepa is currently in development, these are some of its use cases.
+template: doc
+---
+import { Badge } from '@astrojs/starlight/components';
+
+<table>
+    <tr>
+        <td><Badge text="AI Generated" variant="caution"/></td>
+        <td><Badge text="Human Curated" variant="success"/></td>
+    </tr>
+</table>
+
+### 1. Memory Recall (The Core Function)
+
+#### Scenario: “Where did I put that?”
+
+You vaguely remember storing an important document but can’t recall where.
+
+You ask Pepa:
+
+> “Pepa, where is the warranty for the water heater?”
+>
+
+Pepa searches across:
+
+- scanned and indexed documents
+- stored emails
+- notes
+
+Then responds:
+
+> “The water heater warranty was scanned on March 3rd and stored in Paperless under Home Appliances.”
+>
+
+It can also:
+
+- open the document
+- show the location
+- summarize its key details.
+
+---
+
+### 2. Life Context Recall
+
+#### Scenario: “What did the doctor say last time?”
+
+You can’t remember the details from a previous appointment.
+
+You ask:
+
+> “Pepa, what did the doctor recommend about my blood pressure medication?”
+>
+
+Pepa searches:
+
+- appointment notes
+- documents
+- messages
+- health logs
+
+Then summarizes:
+
+> “At your January appointment Dr. Rivera recommended continuing Losartan and monitoring blood pressure twice daily.”
+>
+
+The goal is **contextual recall**, not just document search.
+
+---
+
+### 3. Daily Task Assistance
+
+#### Scenario: “What should I be doing today?”
+
+You ask:
+
+> “Pepa, what’s on my radar today?”
+>
+
+Pepa compiles information from:
+
+- calendar
+- reminders
+- home maintenance schedules
+- medication reminders
+- ongoing projects
+
+Response example:
+
+> “Today you planned to replace the UPS battery in the rack, review the NAS backup logs, and call the pharmacy.”
+>
+
+This is **life context aggregation**.
+
+---
+
+### 4. Technical Homelab Assistance
+
+#### Scenario: troubleshooting your own infrastructure.
+
+You ask:
+
+> “Pepa, why did the NAS reboot yesterday?”
+>
+
+Pepa checks:
+
+- system logs
+- UPS status
+- monitoring alerts
+- network events
+
+Then summarizes:
+
+> “The TerraMaster NAS shut down after a brief power outage at 2:13 AM. The UPS battery reached low capacity.”
+>
+
+This turns Pepa into a **system memory for the lab itself**.
+
+---
+
+### 5. Knowledge Management
+
+#### Scenario: remembering useful information you read months ago.
+
+You ask:
+
+> “Pepa, what was that article about AI memory systems I saved?”
+>
+
+Pepa searches:
+
+- your article queue
+- summaries
+- stored links
+
+Then replies:
+
+> “You saved an article on memory architectures for GenAI systems. It discussed separating episodic memory from semantic memory using vector databases.”
+>
+
+It can also produce:
+
+- a short summary
+- key insights
+- related articles you saved.
+
+---
+
+### 6. Personal Knowledge Assistant
+
+#### Scenario: remembering how you solved a technical problem.
+
+You ask:
+
+> “Pepa, how did I fix the UPS monitoring issue last time?”
+>
+
+Pepa finds:
+
+- troubleshooting notes
+- system changes
+- configuration files
+
+Then summarizes:
+
+> “You solved the UPS monitoring issue by proxying SNMP through the Raspberry Pi NUT server.”
+>
+
+This prevents **re-solving the same problem repeatedly**.
+
+---
+
+### 7. Pattern Detection Over Time
+
+#### Scenario: noticing something you might miss.
+
+Pepa periodically analyzes stored data and alerts you:
+
+> “Your UPS battery capacity has dropped 15% over the last three months.”
+>
+
+Or:
+
+> “Your sleep log shows increasing irregularity over the past two weeks.”
+>
+
+This moves Pepa from **passive memory → active assistant**.
+
+---
+
+### 8. Long-Term Memory Preservation
+
+#### Scenario: life knowledge preservation.
+
+Over time Pepa accumulates:
+
+- documents
+- notes
+- experiences
+- troubleshooting knowledge
+- personal insights
+
+Years later you can ask:
+
+> “Pepa, what were the key lessons from building the homelab?”
+>
+
+And Pepa can reconstruct:
+
+- timeline
+- decisions
+- mistakes
+- solutions.
+
+This becomes a **personal knowledge archive**.
+
+---
+
+# The Big Picture
+
+Most AI assistants today focus on **conversation**.
+
+Pepa focuses on **memory and context**.
+
+The real value is:
+
+**Pepa remembers your life’s digital traces and helps you retrieve meaning from them.**
+
+---
+
+# One Last Thought
+
+The most powerful use of Pepa may not be **questions you ask**, but **things Pepa reminds you about** that you forgot existed.
+
+Example:
+
+> “You saved this article 9 months ago about deterministic AI orchestration. It might be relevant to your Pepa architecture work today.”
+>
+
+That’s when Pepa becomes **a cognitive partner rather than just a tool**.

@@ -1,0 +1,76 @@
+---
+title: MemoriesDB
+description: PostgreSQL-based vector and graph memory schema for Pepa's memory arm.
+template: doc
+topic: reference
+---
+import { Badge } from '@astrojs/starlight/components';
+
+<table>
+    <tr>
+        <td><Badge text="AI Generated" variant="caution"/></td>
+        <td><Badge text="Human Curated" variant="success"/></td>
+    </tr>
+</table>
+
+## Overview
+
+MemoriesDB is a compact, production-grade memory architecture built on PostgreSQL 18, designed to support a local, privacy-first AI assistant.
+
+It provides structured long-term memory, semantic search, event logging, graph relationships, and a processing queue for background tasks such as embedding generation.
+
+The schema is intentionally minimal, explicit, and stable — suitable for long-term operation in a homelab environment.
+
+## Key Features
+
+- UUIDv7 for time-ordered primary keys
+- 1536-dimensional embeddings using the PostgreSQL `vector` type
+- IVFFLAT indexing for fast semantic search
+- JSONB metadata for flexible, schemaless enrichment
+- Event log for temporal reasoning
+- Graph edges for relational memory
+- Processing queue for asynchronous tasks
+- Fully validated with a complete SQL test suite
+
+## Architecture
+
+### `memories`
+Stores all memory items (messages, observations, summaries, etc.). Includes optional 1536-dimensional embeddings for semantic retrieval.
+
+### `memory_edges`
+Directed relationships between memories (e.g., `related_to`, `causes`, `contradicts`). Supports weighted edges with confidence scores.
+
+### `events`
+Chronological log of actions, observations, or system events. Can optionally reference a memory.
+
+### `processing_queue`
+Tracks background tasks such as embedding generation, summarization, or cleanup.
+
+## Requirements
+
+- PostgreSQL 18
+- `vector` extension (`CREATE EXTENSION vector;`)
+- No external extensions required for UUIDv7 or JSONB
+
+## Design Principles
+
+- **Local-first** — All data stays in your homelab.
+- **Explicit** — No hidden behavior; every field is intentional.
+- **Stable** — Schema is frozen to avoid churn.
+- **Composable** — JSONB metadata allows flexible enrichment.
+- **Efficient** — Vector search and UUIDv7 keep performance predictable.
+
+## Future Extensions
+
+Not part of the frozen schema, but planned:
+
+- Embedding ingestion functions
+- Retrieval-augmented queries
+- Memory summarization pipelines
+- Decay/aging mechanisms
+- Graph-based retrieval heuristics
+
+## References:
+- <a href="https://www.emergentmind.com/topics/memoriesdb" target="_blank">MemoriesDB on EmergentMind</a>
+- <a href="https://gitlab.com/circleclicklabs/ai-lab/memoriesdb" target="_blank">val314159's repo on GitLab</a>
+

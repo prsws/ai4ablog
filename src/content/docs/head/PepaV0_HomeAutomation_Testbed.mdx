@@ -1,0 +1,58 @@
+---
+title: PepaV0
+description: Experimental Home Assistant testbed for developing Pepa features.
+template: doc
+---
+import { Badge } from '@astrojs/starlight/components';
+
+<table>
+    <tr>
+        <td><Badge text="AI Assisted" variant="caution"/></td>
+    </tr>
+</table>
+As of Mar-2026 this is the home automation testbed for Pepa, called PepaV0.
+
+## Hardware Topology
+### Wired
+- **Mac Studio (M1 Ultra)** → *Big brain*. Serves Ollama alongside mlx_lm.server to the network. For experimentation at the model/behavior level. No HA, no voice, no ops glue.
+
+- **PepaV0 (NUC7i5)** → *Experimental HA*. Runs **Home Assistant + Home Agent** specifically for Pepa feature development: tool calling, orchestration experiments, web access, memory, etc. This is where we break things on purpose.
+
+- **Casa Delta (separate NUC7i5)** → *Production HA*. Real house automation, IoT, cams, autonomous today. Eventually subservient to Pepa, but until then: hands off unless it's actually broken.
+
+- **Cubi (MSI Cubi 1MG, PVE 9.1)** → *Support layer*. Datastores and coordinators:
+  - PostgreSQL + pgvector
+  - ChromaDB
+  - future LangGraph / "messiah coordinator"
+  - other back-end functions Pepa may call into. No HA, no voice.
+
+- **NAS (TerraMaster F4 SSD, TOS7)** → *Storage*. :
+  - SMB, iSCSI
+  - runs Proxmox Backup Server
+
+- **Protectli (Vault V1610)** → *Network Master*. OPNsense, VLANs, routing, firewall, traffic discipline.
+
+- **Workstations**
+  - Mac mini M4 (daily driver)
+  - Dell G7 7700 (temporarily benched, proven, available as ringer)
+
+### Wireless
+- **WiFi Access Points**
+  - Engenius EAP300 + Cisco WAP4410 for 2.4GHz multi ssid-to-lan mapping
+  - TP-Link Archer BE6500 for 5GHz bands
+- **Zigbee**
+  - SONOFF Zigbee 3.0 USB Dongle Plus-E Gateway
+  - Aeotec Range Extender Zi
+- **Matter/Thread**
+  - IKEA Dirigera
+  - Espressif ESP Thread Border Router/Zigbee Gateway Board (just show for now but it's detected)
+
+
+
+
+
+## Voice Satellites
+
+- FutureProofHomes Satellite1 → **PepaV0 voice**
+- HA Voice Preview Edition → **Casa Delta control group (do not touch)**
+- M5Stack Atom Echo → roaming test probe

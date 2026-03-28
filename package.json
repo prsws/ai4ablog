@@ -10,8 +10,18 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/compiler-rs": "^0.1.5",
     "@astrojs/starlight": "^0.38.1",
-    "astro": "^6.0.1",
-    "sharp": "^0.34.2"
+    "astro": "^6.0.5",
+    "sharp": "^0.34.2",
+    "starlight-page-actions": "^0.5.0",
+    "starlight-plugin-icons": "^1.1.6",
+    "starlight-scroll-to-top": "^0.4.0",
+    "starlight-sidebar-topics": "^0.7.1",
+    "starlight-ui-tweaks": "^0.2.2"
+  },
+  "devDependencies": {
+    "@iconify-json/material-symbols": "^1.2.62",
+    "@iconify-json/mdi": "^1.2.3"
   }
 }

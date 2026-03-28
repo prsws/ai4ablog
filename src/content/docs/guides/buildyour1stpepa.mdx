@@ -1,0 +1,168 @@
+---
+title: "TL;DR - Build your first Pepa"
+description: Quickstart guide to build your first Pepa
+template: doc
+topic: guides
+---
+import { Badge } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import pepaFoto1 from '../../../assets/Pepa_Foto_1.jpg';
+import pepaFoto2 from '../../../assets/Pepa_Foto_2.jpg';
+
+<table>
+    <tr>
+        <td><Badge text="AI Assisted" variant="caution"/></td>
+    </tr>
+</table>
+Here's the path we've taken and currently traveling (Mar-2026) as nothing is permanently settled yet. Detailed docs are in progress which will expand on these topics. Read it slowly, there's a lot to unpack here because this is not written for newbies. Meantime please document your own work to compare notes with us.
+
+<Badge text="N.B." variant="tip"/> _All the specific brands/models mentioned below are our current operational choices but you make your own. They're listed for your shopping convenience and were purchased out of our own pocket. Painful $ mistakes were made so think carefully when sourcing stuff to make substitutions. We shopped at Amazon, eBay, FB Marketplace, Best Buy and locally. There are no affiliate links so Google them up and find the deals._
+
+_This is real and working. See pictures at the bottom._
+
+### **0. Foundation (Network)** <Badge text="Mandatory" />
+
+You need a stable home network.
+
+- Internet + WiFi is the minimum
+- A wired network _is strongly recommended_:
+  - min 1Gb/s or better
+  - with VLANs, you'll need them to channel and prioritize traffic. Make sure you have a true L3 hardware router or OPNsense, which we run on a Protectli Vault V1610 (skip coreboot use AMI BIOS) (overkill but got at good price, many 2-NIC i3 mini PC's will do). An L2/quasi-L3 switch alone isn't enough, don't believe the hype. Don't waste time on routers-on-a-stick unless you can't afford better; if so, Raspberry Pi's are good for that.
+  - if possible, get hotel/office/enterprise SSID-to-VLAN mapping WiFi access points because you will need multiple SSID's. We got used, cheap, replaceable Engenius EAP300 and Cisco WAP4410 AP's to tag and trunk IoT/Cam/Vox 2.4GHz wireless traffic onto a gigabit wire to the backbone switch.
+  - if you use consumer gear (e.g. for WiFi 5/6/7 like our TP-Link Archer BE6500 in access point mode) then you'll need a small L2 managed switch (e.g. Sodola SL902-SWTGW215AS) to tag it to a VLAN.
+
+
+> _Pepa is infrastructure. If the network is flaky, everything else is noise._
+>
+
+---
+
+### **1. Sensory Base (Home Assistant)** <Badge text="Mandatory" />
+
+Install Home Assistant on a dedicated machine
+
+(e.g., Intel NUC7i5-class box or better; don't waste time/money on Raspberry Pi unless you're going to use GPIO).
+
+- Bare metal HAOS is faster, more resilient and easier to manage than Docker
+- Start integrating inexpensive sensors (motion, door, power, switches, etc.)
+- Use widely available devices (IKEA, Zigbee, WiFi)
+- **Important** Configure/wire the devices so that the house keeps working even if the network is down. _**Must always have manual control of the house.**_
+
+> _Without sensory input, Pepa is blind and Home Assistant is an excellent platform for that._
+>
+
+---
+
+### **2. Sensory Intelligence Layer (Home Agent app)** <Badge text="Mandatory" />
+
+To make the sensory arm semi autonomous, install the Home Agent app (formerly called add-on) through HACS on Home Assistant
+
+- Connect to an online LLM (to start)
+- Begin experimenting with automations + interpretation
+- Optionally install an MCP server app so it can be controlled by Pepa's higher functions or other apps like Claude (non-deterministic, dangerous!)
+
+> _This completes the sensory arm where raw signals start becoming meaning._
+_You can stop here and enjoy an excellent, smart home automation system without further development work, just maintenance, but without Pepa._
+>
+
+---
+
+### **3. Voice Interface (Optional but Important)** <Badge text="Interface Expansion" />
+
+Add a voice satellite (picture at the bottom)
+
+- M5Stack Atom Echo (cheap starter, barely audible but very portable so it _can cosplay as a Federation combadge or any other senior friendly wearable_)
+- Home Assistant Voice Preview Edition (official Nabu Casa gear, better h/w 2-mic/louder speaker)
+- FutureProofHomes Satellite1 ("high end" circuit - 4-mic, 20W amp, presence+ambient sensors). Requires ESPHome & coding knowhow and additional 3D printed enclosure + audiophile quality speaker + assembly. _This is the type needed for **unintrusive** monitoring of the senior._
+- Create a custom voice wake word: Pepa's is "Oye Pepa!" (phonetically "oieh_pepaah")
+- Run bilingual Whisper STT and Piper TTS models inside Home Assistant or Pepa-wide remotely as bare metal i7/RTX2070/Python/CUDA Windows 11 services
+
+> _Voice is not typing. It will break things. That’s the point._
+>
+
+---
+
+### **4. Storage Node (Persistence)** <Badge text="Capability Expansion" />
+
+Set up a NAS (e.g. TerraMaster F4 SSD) or some other network storage solution.
+
+- SMB, S3, Ceph (when you do #5) storage for all your data
+- Run auxiliary processes (we run Proxmox Backup Server from ours)
+- Don't overload the NAS with non-Pepa data and apps, get a 2nd one for that
+
+> _Persistent, reliable storage is the key to Pepa's longevity and usefulness._
+>
+
+---
+### **5. Cognitive Backend (Local Compute)** <Badge text="Capability Expansion" />
+
+Set up a small server (e.g., MSI Cubi 1MG mini PC) with Proxmox VE. _Do not go crazy setting up clusters that you don't know if you'll need; minimize complexity._
+
+- Run databases (MemoriesDB postgres+pgvector, MySQL/MongoDB for other apps)
+- Add vector storage (Home Agent ChromaDB)
+- Begin experimenting with orchestration (LangGraph, your own Python code, etc.)(You can also try your luck at prompt engineering)
+- Other supporting services (e.g. NUT, Mosquitto, Pi-Hole, etc.)
+
+> _This is the Beak that sustains Pepa and where memory starts to exist outside HA for all arms to access._
+>
+
+---
+
+### **6. Heavy Compute (LLMs)** <Badge text="Capability Expansion" />
+
+Choose your path:
+
+- Local:
+  - Apple Silicon (our choice 2022 Mac Studio M1 Ultra 64GB Unified Memory) or,
+  - nVIDIA GPU (we also got a 2021 Dell G7 7700 i7-10750 32GB RAM RTX2070 Super 8GB VRAM gaming laptop for Win11 experimentation but its power consumption is too much)
+- Cloud: API-based LLMs (cheap start, no privacy)
+- Experiment with Ollama, LM Studio, llama.cpp, MLX, CUDA, pure Python, etc.
+
+> _This is the Head and determines how smart, independent — and private — your Pepa becomes._
+>
+
+---
+
+### **7. Separation of Concerns (Highly Recommended)** <Badge text="Operational Maturity" variant="success" />
+
+Keep your system stable:
+
+- One HA instance for the house (production stable, add disaster recovery measures for hurricanes and winter storms)
+- Another HA instance for easy but limited orchestration scaffolding via .yamls; or better yet, a custom orchestrator for experimentation (Pepa dev/test) in their own NUC7i5 (current) or Mac mini (future)
+- Other hardware/software deployments as needed.
+
+> _If you break Pepa, your house should still work._
+>
+
+---
+
+### **What You Get at the End**
+
+If you followed this blueprint, you will have:
+
+- A **resilient infrastructure** (easy to maintain and upgrade)
+- A **sensory system** (Home Assistant + devices)
+- A **perception layer** (Home Agent + LLMs)
+- A **voice interface** (portable and fixed)
+- A **memory backend** (databases + vectors + graphs)
+- A **compute layer** (local or remote AI)
+- A **safe playground** (separate test environment)
+
+That’s a minimal, working Pepa scaffold. We have the very first one running here in our house today but it needs lots more work.
+
+_The rest is up to you, so go for it and let us know._
+
+---
+[Email your comments to the editor](mailto:editor@ai4aging.org)
+
+---
+### Pictures
+
+_Here's what our Pepa looks like as of Mar-2026:_
+<Image src={pepaFoto1} alt="Pepa\'s minirack" width={800} height={1200} />
+_Cable management is important for stability and will be fixed when Pepa is more mature._
+
+---
+_Here are the voice satellites and an Amazon Echo Show 5 with Alexa+ as benchmark and goal - when we dump (maybe reflash?) it that means Pepa is ready for its mission._
+<Image src={pepaFoto2} alt="Pepa\'s voice satellites" width={1200} height={1200} />
+
