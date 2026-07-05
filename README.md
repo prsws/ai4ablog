@@ -16,7 +16,7 @@ This site is structured as a documentation hub for curated content and notes, wi
 It uses Astro + Starlight for content-driven publishing with a clean documentation layout.
 
 ## Project Structure
-
+```
 ├── public/
 ├── src/
 │   ├── assets/
@@ -30,7 +30,7 @@ It uses Astro + Starlight for content-driven publishing with a clean documentati
 ├── package-lock.json 
 ├── tsconfig.json 
 └── README.md
-
+```
 ## Content Organization
 
 Content lives primarily in `src/content/docs/` and is grouped by topic. Current structure includes areas such as:
@@ -77,5 +77,4 @@ Do not commit generated or local-only files such as:
 
 ## License
 
-Add a license here if and when the project needs one.
-```
+Refer to the [LICENSE](LICENSE.md).
