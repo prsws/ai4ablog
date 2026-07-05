@@ -7,7 +7,8 @@ import starlightPageActions from "starlight-page-actions";
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://ai4aging.org',
+    // site: 'https://ai4aging.org',
+	site: 'https://astronaut.github.io',
     fonts: [
       {
         name: 'Roboto',
