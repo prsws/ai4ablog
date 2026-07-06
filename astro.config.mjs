@@ -9,7 +9,7 @@ import starlightPageActions from "starlight-page-actions";
 export default defineConfig({
     // site: 'https://ai4aging.org',
 	site: 'https://prsws.github.io',
-	base: '/ai4ablog',
+	base: '/',
     fonts: [
       {
         name: 'Roboto',
