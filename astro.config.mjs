@@ -8,7 +8,8 @@ import starlightPageActions from "starlight-page-actions";
 // https://astro.build/config
 export default defineConfig({
     // site: 'https://ai4aging.org',
-	site: 'https://astronaut.github.io',
+	site: 'https://prsws.github.io',
+	base: '/ai4ablog',
     fonts: [
       {
         name: 'Roboto',
@@ -65,7 +66,7 @@ export default defineConfig({
             favicon: "./src/assets/Pepa_Logo_V0_NoBG.png",
 			social: [
 			  { icon: 'email', label: 'Email', href: 'mailto:editor@ai4aging.org' },
-			  { icon: 'github', label: 'GitHub', href: 'https://github.com/prsws' },
+			  { icon: 'github', label: 'GitHub', href: 'https://github.com/prsws/ai4ablog' },
 			],
 			sidebar: [
 				{
