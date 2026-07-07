@@ -32,9 +32,9 @@ _This is real and working. See pictures at the bottom._
 You need a stable home network.
 
 - Internet + WiFi is the minimum
-- A wired network _is strongly recommended_
-- min 1Gb/s or better speed
-- with VLANs, you'll need them to channel and prioritize traffic. Make sure you have a true L3 hardware router or OPNsense, which we run on a Protectli Vault V1610 (skip coreboot use AMI BIOS) (overkill but got at good price, many 2-NIC i3 mini PC's will do). An L2/quasi-L3 switch alone isn't enough, don't believe the hype. Don't waste time on routers-on-a-stick unless you can't afford better; if so, Raspberry Pi's are good for that.
+- A wired network _is strongly recommended_:
+  - min 1Gb/s, 2.5Gb/s preferred - no need for 10G
+  - with VLANs, you'll need them to channel and prioritize traffic. Make sure you have a true L3 hardware router or OPNsense, which we run on a Protectli Vault V1610 (skip coreboot use AMI BIOS) (overkill but got at good price, many 2-NIC i3 mini PC's will do). An L2/quasi-L3 switch alone isn't enough, don't believe the hype. Don't waste time on routers-on-a-stick unless you can't afford better; if so, Raspberry Pi's are good for that.
 - get multi-SSID, SSID-to-VLAN mapping WiFi access points because you will need multiple SSID's (main, guest, IoT, cameras). We run two used Grandstream units (GWN7664 in the hallway, GWN7662 in the laundry), each powered over its ethernet run by a PoE injector and trunked to the backbone switch, broadcasting five SSID's mapped to their VLANs. Before that we made do with used, cheap enterprise gear (Engenius EAP300, Cisco WAP4410N) — still a valid path if the budget is tight, just older security and no PoE conveniences.
 - if you use consumer gear (e.g. WiFi 5/6/7 all-in-ones like a TP-Link Archer in access point mode) then you'll need a small L2 managed switch (e.g. Sodola SL902-SWTGW215AS) to tag it to a VLAN. That's how we started; the dedicated multi-SSID APs replaced it.
 - For IoT devices, rely on WiFi (2.4GHz, on its own VLAN) and Zigbee. Matter/Thread are not mature as of 2026 — don't build your foundation on them yet.
@@ -133,7 +133,7 @@ Choose your path:
 - Local:
   - Apple Silicon with as much unified memory as you can afford, or
   - an nVIDIA GPU box (mind the power draw — see the gaming laptop lesson in step 3)
-  - Experiment with Ollama, LM Studio, llama.cpp, MLX, CUDA, pure Python, etc.
+- Experiment with Ollama, LM Studio, llama.cpp, MLX, CUDA, pure Python, etc.
 
 _**What we run now:**_ A used 2022 Mac Studio M1 Ultra with 64GB of unified memory, serving larger models via Ollama and MLX. The choice was mostly about electricity: it idles near zero, spikes for inference, and goes back to sleep — an always-on brain a Puerto Rico power bill can live with. This box is not "the boss"; it's hired muscle. When the small model in step 2 hits something too heavy, the harder question gets routed here.
 
