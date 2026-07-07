@@ -85,25 +85,19 @@ export default defineConfig({
                     { label: 'TL;DR Build your 1st Pepa', slug: 'guides/buildyour1stpepa' },
                 ],
             },
+            { label: 'News', link: '/blog/' },
             {
-                label: 'Head',
-                collapsed: true,
-                items: [{ autogenerate: { directory: 'head' } }],
-            },
-            {
-                label: 'Arms',
+                label: 'Architecture',
                 collapsed: true,
                 items: [
-                    { label: 'Automation', items: [{ autogenerate: { directory: 'arms/automation' }}] },
-                    { label: 'Knowledge', items: [{ autogenerate: { directory: 'arms/knowledge' }}] },
-                    { label: 'Memory', items: [{ autogenerate: { directory: 'arms/memory' }}] },
-                    { label: 'Reasoning', items: [{ autogenerate: { directory: 'arms/reasoning' }}] },
+                    { autogenerate: { directory: 'head' } },
+                    // Arms return here as they earn published pages:
+                    // { label: 'Automation', items: [{ autogenerate: { directory: 'arms/automation' }}] },
+                    // { label: 'Knowledge', items: [{ autogenerate: { directory: 'arms/knowledge' }}] },
+                    // { label: 'Memory', items: [{ autogenerate: { directory: 'arms/memory' }}] },
+                    // { label: 'Reasoning', items: [{ autogenerate: { directory: 'arms/reasoning' }}] },
+                    // { label: 'Beak', items: [{ autogenerate: { directory: 'beak' }}] },
                 ],
-            },
-            {
-                label: 'Beak',
-                collapsed: true,
-                items: [{ autogenerate: { directory: 'beak' } }],
             },
             {
                 label: 'Reference',
