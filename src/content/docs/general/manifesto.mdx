@@ -2,7 +2,7 @@
 title: Pepa's Manifesto
 description: What Pepa is and why it exists.
 template: doc
-lastUpdated: 2026-03-20
+lastUpdated: 2026-07-07
 ---
 import { Badge } from '@astrojs/starlight/components';
 
@@ -48,9 +48,12 @@ The long-term vision is a **personal cognitive infrastructure** that:
 1. **Deterministic Core** — Orchestration remains predictable; AI assists but does not control.
 2. **Human-Centered AI** — Pepa supplements cognition, not replace it.
 3. **Data Ownership** — All personal data remains under the user’s control.
-4. **Longevity & Maintainability** — Designed to survive hardware and software failures, evolution and lifecycle.
-5. **Calm Technology** — Everything must work together without causing a "system overload" for the elderly.
+4. **Longevity & Maintainability** — Designed to survive hardware and software failures, evolution and lifecycle over a ~20 year horizon.
+5. **Calm Technology** — Everything must work together without causing a "system overload" for the elderly user.
 6. **Open Knowledge** — Architecture and lessons are documented openly for reproducibility and improvement.
+7. **Discipline over Horsepower** — A modest AI, well-governed, outperforms a giant one running loose. Pepa bets on guardrails, verification, and restraint — not on ever-bigger models. ([The research agrees.](https://arxiv.org/abs/2605.12129))
+8. **Memory Is Not Authority** — Remembering something is not the same as being right. Every memory Pepa holds carries its origin, and nothing that touches a person's safety is acted on from memory alone.
+9. **Bilingual by Default** — Pepa speaks English y español como se habla en Puerto Rico. Aging with dignity includes aging in your own language.
 
 ---
 
@@ -58,18 +61,19 @@ The long-term vision is a **personal cognitive infrastructure** that:
 
 Pepa mimics nature, specifically the **Octopus Model** where:
 
-- the **Head** (central core) performs deterministic orchestration coordinating subsystems, managing memory, and routing requests;
-- the **Arms** (*we don't call them tentacles*) are specialized subsystems that perform specific functions independently but are supervised by the head;
+- the **Head** (central core) performs deterministic orchestration: coordinates subsystems, managing memory, and routing requests;
+- the **Arms** (*we don't call them tentacles*) are specialized agentic subsystems that perform specific functions independently but are supervised by the head;
 - the **Beak** is the hardware/software infrastructure that runs (feeds) the entire system: sensors, interfaces, compute, storage, networking, UPS, monitoring; it connects the parts like a nervous system.
 
 | Arm          | Function                                                                                           |
 |--------------|----------------------------------------------------------------------------------------------------|
-| Automation   | Home Assistant, Node-RED, n8n; “sensory arm” that interacts with the real world                    |
-| Memory       | ChromaDB, PostgreSQL, MemoriesDB, vector + graph memory stores                                     |
-| Knowledge    | Document storage, tech article queues, structured information                                      |
-| AI Reasoning | Ollama, local LLMs, embeddings, vector + graph search                                              |
-| Coding Agent | Could be a bliss or a loose loaded gun; will probably require a subscription and very close supervision |
-| Others       | To be determined as needed                                                                         |
+| Sensory      | Pepa's eyes, ears, voice and muscle — hears requests, senses the home, and acts in and upon it                     |
+| Memory       | What Pepa *believes* — experiences and facts about your life, each one tagged with where it came from and how much trust it has earned |
+| Knowledge    | What Pepa can *cite* — your documents, records, and references. Kept deliberately separate from beliefs, so memory can never contaminate the record |
+| Doctor       | Watches health signals and daily rhythms for changes worth noticing                                |
+| Reasoning    | The heavier thinking, done at home, on hardware you own                                            |
+| Self-Monitor | Pepa watching Pepa — a system meant to outlast its builder must check its own health               |
+| Others       | Added when real needs appear, not before                                                          |
 
 **Benefits of the Octopus Model:**
 
@@ -78,7 +82,7 @@ Pepa mimics nature, specifically the **Octopus Model** where:
 - **Maintainability** — Easier to debug and understand
 - **Scalability** — New capabilities can be added as new arms, head or beak improvements
 
-**Core Principle:** AI assists reasoning; deterministic orchestration maintains reliability and predictability. _The exact opposite of the latest AI lobster claw craze. And octopii eat lobsters._
+**Core Principle:** AI assists reasoning; deterministic orchestration maintains reliability and predictability. _The exact opposite of the latest AI lobster claw craze. And octopuses eat lobsters._
 
 ---
 
@@ -100,7 +104,7 @@ These constraints ensure Pepa is **practical, reproducible, and maintainable**.
 
 - **Not an AGI project** — Focuses on practical cognitive assistance, not Artificial General Intelligence.
 - **Not a chatbot** — Conversation is only an interface; memory and task management are primary.
-- **Not a robot or mechanical assistant** — Pepa is software and systems-based, not a physical companion or humanoid device.
+- **Not a robot or mechanical assistant** — Pepa is software and systems-based, not a physical companion or humanoid device. In the future one could be another interface.
 - **Not cloud-dependent** — Designed to function primarily with self-hosted infrastructure.
 - **Not a monolithic AI agent** — Uses octopus-inspired modular subsystems; deterministic orchestration remains centralized.
 - **Not a commercial product** — Open exploration of personal cognitive infrastructure, not a startup.
