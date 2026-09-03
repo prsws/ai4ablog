@@ -35,9 +35,14 @@ are new commits (living) or a new dated file (frozen) — never a silent edit.
 title: ...
 description: ...
 template: doc
-version: 0.21        # optional; versioned living docs only.
+version: "0.21"      # optional; versioned living docs only.
                      # Source of truth for the version — git carries the history.
 ```
+
+`version` is a **quoted string**, always. Unquoted, YAML reads `0.21` as a
+float and truncates it: a later `0.30` becomes `0.3` and `1.10` becomes `1.1`,
+silently changing the version's meaning and sort order. Versions are identifiers,
+not quantities — quote them.
 
 No `topic:` — the sidebar-topics plugin is inert; don't feed it. No new taxonomy
 fields. Resist the 347-type drift: a field earns its place when a real note needs
