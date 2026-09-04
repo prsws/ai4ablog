@@ -9,8 +9,6 @@ draft: true
   <span class="a4a-badge human-curated">Human Curated</span>
 </p>
 
-**Working Note**
-
 > Companion to *Pepa Memory Architecture* (pending). _Recon-grade_ evaluation of external memory schemes and adjacent mechanisms. **No architectural commitment implied by any entry yet.** 
 
 **Compilation started:** 2026-07-28 · **Items:** 18 numbered candidates (13 memory models, 5 mechanism/non-memory) + an unattributed-harvest section · **Last added:** 2026-08-26

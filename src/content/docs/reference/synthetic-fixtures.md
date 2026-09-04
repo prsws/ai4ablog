@@ -10,8 +10,6 @@ draft: true
   <span class="a4a-badge human-curated">Human Curated</span>
 </p>
 
-**Working Note**
-
 **v0.2 — 2026-09-02**
 > **Changelog**
 > 
