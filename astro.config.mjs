@@ -94,7 +94,7 @@ export default defineConfig({
                     // Arms return here as they earn published pages:
                     // { label: 'Automation', items: [{ autogenerate: { directory: 'arms/automation' }}] },
                     // { label: 'Knowledge', items: [{ autogenerate: { directory: 'arms/knowledge' }}] },
-                    // { label: 'Memory', items: [{ autogenerate: { directory: 'arms/memory' }}] },
+                    { label: 'Memory', items: [{ autogenerate: { directory: 'arms/memory' }}] },
                     // { label: 'Reasoning', items: [{ autogenerate: { directory: 'arms/reasoning' }}] },
                     // { label: 'Beak', items: [{ autogenerate: { directory: 'beak' }}] },
                 ],

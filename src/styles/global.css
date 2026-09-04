@@ -27,3 +27,54 @@
     --color-gray-900: oklch(21% 0.006 285.885);
     --color-gray-950: oklch(14.1% 0.005 285.823);
 }
+
+/* ---------------------------------------------------------------------------
+   Provenance badges (a4a-badge)
+   Reproduces the four-value provenance vocabulary from the Terms of Use
+   (AI Generated / AI Assisted / Human Curated / No Badge) as raw HTML that
+   works in .md files, where the Starlight <Badge> component does not run.
+
+   Own-namespace prefix (a4a-) so a Starlight version bump can't restyle these,
+   and so the forthcoming Pepa design system has a clean hook to take over.
+   Colors are Starlight theme tokens — dark/light-aware, no hardcoded hex.
+   Provisional: expected to be superseded by the Pepa design system.
+--------------------------------------------------------------------------- */
+
+.a4a-badge {
+    display: inline-block;
+    padding: 0.15em 0.6em;
+    border-radius: 0.35rem;
+    font-size: 0.75em;
+    font-weight: 600;
+    line-height: 1.4;
+    white-space: nowrap;
+    border: 1px solid transparent;
+}
+
+/* AI Generated — content was AI generated */
+.a4a-badge.ai-generated {
+    background: var(--sl-color-orange-low);
+    color: var(--sl-color-orange-high);
+    border-color: var(--sl-color-orange);
+}
+
+/* AI Assisted — human content enhanced with AI */
+.a4a-badge.ai-assisted {
+    background: var(--sl-color-blue-low);
+    color: var(--sl-color-blue-high);
+    border-color: var(--sl-color-blue);
+}
+
+/* Human Curated — AI-generated content reviewed and curated by the editor */
+.a4a-badge.human-curated {
+    background: var(--sl-color-green-low);
+    color: var(--sl-color-green-high);
+    border-color: var(--sl-color-green);
+}
+
+/* Neutral — provenance note where a colored state doesn't fit */
+.a4a-badge.neutral {
+    background: var(--sl-color-gray-6);
+    color: var(--sl-color-gray-2);
+    border-color: var(--sl-color-gray-5);
+}

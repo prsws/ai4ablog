@@ -4,16 +4,37 @@ description: Recon-grade evaluation of external memory schemes and adjacent mech
 template: doc
 draft: true
 ---
+<p>
+  <span class="a4a-badge ai-generated">AI Generated</span> &nbsp;
+  <span class="a4a-badge human-curated">Human Curated</span>
+</p>
 
 **Working Note**
 
-> Companion to *Pepa Memory Architecture*. Recon-grade evaluation of external memory schemes and adjacent mechanisms. **No architectural commitment implied by any entry.** Candidate # = order of discovery. Rank = applicability to Pepa, 0 (nothing to take) to 10 (adopt substantially as-is).
+> Companion to *Pepa Memory Architecture* (pending). _Recon-grade_ evaluation of external memory schemes and adjacent mechanisms. **No architectural commitment implied by any entry yet.** 
 
-**Compiled:** 2026-07-28 · **Items:** 18 numbered candidates (13 memory models, 5 mechanism/non-memory) + an unattributed-harvest section · **Last added:** 2026-08-26
+**Compilation started:** 2026-07-28 · **Items:** 18 numbered candidates (13 memory models, 5 mechanism/non-memory) + an unattributed-harvest section · **Last added:** 2026-08-26
+
+## Purpose
+
+Pepa's memory system is intended to work on a 20 year horizon. This register holds our initial quick evaluation of existing agentic memory models as we find them.
+
+**Rank** = applicability to Pepa, 0 (nothing to take) to 10 (adopt substantially as-is).
+
+**Feature** - describes what attracted us to it
+
+**Entry holds** - what the memory entry entails 
+
+**Take** - a summary of applicability to Pepa
+
+**Source** - where it's at
+
+**NOTE**: Don't worry if initially you don't understand our findings. They're a very concise summary 
+of our research which is not yet published. Shall you have questions about any specific item please write us.
 
 ## Roster
 
-### 1 — Home Agent (Radlein) · starting point
+### 1. Home Agent (Home Assistant add-on)(Radlein) · starting point
 
 **Rank 2/10 · Memory model · discovery #1**
 
@@ -23,9 +44,9 @@ draft: true
 
 **Take.** Type labels as secondary metadata only. Reject TTL-as-lifecycle — the 68°F anti-pattern; a wrong `fact` never expires. Still the ETL source of truth.
 
-**Source.** fork: [github.com/prsws/pepa-sensory-arm](http://github.com/prsws/pepa-sensory-arm); upstream URL not captured
+**Source.** OUR fork: [github.com/prsws/pepa-sensory-arm](http://github.com/prsws/pepa-sensory-arm); upstream URL [github.com/aradlein/hass-agent-llm](http://github.com/aradlein/hass-agent-llm);
 
-### 2 — MemoriesDB
+### 2. MemoriesDB
 
 **Rank 5/10 · Memory model · discovery #2**
 
@@ -37,7 +58,7 @@ draft: true
 
 **Source.** paper [arxiv.org/abs/2511.06179](https://arxiv.org/abs/2511.06179) · example repo [gitlab.com/circleclicklabs/ai-lab/memoriesdb](https://gitlab.com/circleclicklabs/ai-lab/memoriesdb)
 
-### 3 — Memora (MSR, ICML 2026)
+### 3. Memora (MSR, ICML 2026)
 
 **Rank 7/10 · Memory model · discovery #3**
 
@@ -49,7 +70,7 @@ draft: true
 
 **Source.** [github.com/microsoft/Memora](http://github.com/microsoft/Memora)
 
-### 4 — Honcho
+### 4. Honcho
 
 **Rank 3/10 · Memory model · discovery #4**
 
@@ -63,7 +84,7 @@ draft: true
 
 **Remarks.** ⚠️ License: listed AGPL-3.0 in one index, historically Apache-2.0-style in another — confirm before treating as a donor (AGPL matters).
 
-### 5 — Holographic (Hermes Agent option)
+### 5. Holographic (Hermes Agent option)
 
 **Rank 8/10 · Memory model · discovery #5**
 
@@ -73,11 +94,11 @@ draft: true
 
 **Take.** Closest cousin; dynamic-trust pattern already absorbed. Caveat: silently degrades to keyword search when math dep missing.
 
-**Source.** [github.com/bysc1000/holographic-memory](https://github.com/bysc1000/holographic-memory)
+**Source.** [github.com/bysc1000/holographic-memory](https://github.com/bysc1000/holographic-memory) (in Chinese)
 
 **Remarks.** URL corrected 2026-07-28: was jramapuram (neural HRR demo — wrong system); now bysc1000 (Hermes SQLite fact store, matches).
 
-### 6 — GBrain
+### 6. GBrain
 
 **Rank 6/10 · Memory model · discovery #6**
 
@@ -89,7 +110,7 @@ draft: true
 
 **Source.** [github.com/garrytan/gbrain](https://github.com/garrytan/gbrain)
 
-### 7 — kongbrain
+### 7. kongbrain
 
 **Rank 5/10 · Memory model · discovery #7**
 
@@ -101,7 +122,7 @@ draft: true
 
 **Source.** [github.com/42U/kongcode](https://github.com/42U/kongcode)
 
-### 8 — PAM (Portable Agent Memory)
+### 8. PAM (Portable Agent Memory)
 
 **Rank 7/10 · Memory model · discovery #8**
 
@@ -115,7 +136,7 @@ draft: true
 
 **Remarks.** Verified 2026-07-28: real paper — PAM by S.K. Ravindran (Microsoft); roster description matches. "PERMEAR" was a phantom label, no system by that name. EverOS is an adjacent project, not this paper's implementation.
 
-### 9 — MNEMOS
+### 9. MNEMOS
 
 **Rank 6/10 · Memory model · discovery #9**
 
@@ -127,7 +148,7 @@ draft: true
 
 **Source.** [github.com/ncz-os/mnemos](http://github.com/ncz-os/mnemos)
 
-### 10 — Celiums Memory
+### 10. Celiums Memory
 
 **Rank 6/10 · Memory model · discovery #10**
 
@@ -139,7 +160,7 @@ draft: true
 
 **Source.** [github.com/terrizoaguimor/celiums-memory](http://github.com/terrizoaguimor/celiums-memory)
 
-### 11 — Memory Decay Engine
+### 11. Memory Decay Engine
 
 **Rank 7/10 · Memory model · discovery #11**
 
@@ -151,7 +172,7 @@ draft: true
 
 **Source.** [github.com/Emmimal/memory-decay-engine](http://github.com/Emmimal/memory-decay-engine)
 
-### 12 — Safe prompt pruning layer
+### 12. Safe prompt pruning layer
 
 **Rank 8/10 · Mechanism · discovery #12**
 
@@ -163,7 +184,7 @@ draft: true
 
 **Source.** example repo [github.com/Emmimal/prompt-pruning-layer](https://github.com/Emmimal/prompt-pruning-layer)
 
-### 13 — Self-Harness
+### 13. Self-Harness
 
 **Rank 6/10 · Mechanism · discovery #13**
 
@@ -175,7 +196,7 @@ draft: true
 
 **Source.** [arxiv.org/abs/2606.09498](http://arxiv.org/abs/2606.09498)
 
-### 14 — MS Agent Framework 1.0
+### 14. MS Agent Framework 1.0
 
 **Rank 1/10 · Mechanism · discovery #14**
 
@@ -187,7 +208,7 @@ draft: true
 
 **Source.** [devblogs.microsoft.com/agent-framework](http://devblogs.microsoft.com/agent-framework)
 
-### 15 — DBOS / Transact
+### 15. DBOS / Transact
 
 **Rank 6/10 · Mechanism · discovery #15**
 
@@ -199,7 +220,7 @@ draft: true
 
 **Source.** InfoQ talk (Edberg & Li) · [github.com/dbos-inc](http://github.com/dbos-inc); MIT (Python/TS/Go/Java)
 
-### 16 — Engraphis
+### 16. Engraphis
 
 **Rank 6/10 · Memory model · discovery #16**
 
@@ -213,7 +234,7 @@ draft: true
 
 **Remarks.** The interactive graph-display UI is the main draw here. ⚠️ Direct repo fetch 404'd 2026-08-06 (transient/gated); characterized from search-indexed README + product pages; star count/adoption unconfirmed.
 
-### 17 — NOOA (NVIDIA Labs)
+### 17. NOOA (NVIDIA Labs)
 
 **Rank 7/10 · Memory model · discovery #17**
 
@@ -227,7 +248,7 @@ draft: true
 
 **Remarks.** ⚠️ Caution: agent-curated writes with no independent verifier = model self-validation; Pepa's write path still needs a verifier independent of the proposing model. ⚠️ Benchmarks are frontier cloud models (GPT-5.5/5.6, Opus 4.6) — token-efficiency numbers do not transfer to local gemma-on-mmm4 unexamined.
 
-### 18 — reasoning_library (open-notebook fork)
+### 18. reasoning_library (open-notebook fork)
 
 **Rank 5/10 · Mechanism · discovery #18**
 
@@ -258,8 +279,27 @@ A standing caution travels with everything in this bucket, because these sources
 | Outbound-only home relay | A remote-access topology where a cloud node handles telephony/provisioning only and never sees memory; the home node dials out, so there is no inbound port into the home network | Screenless, landline-reachable remote access with no inbound exposure — a senior-accessible modality and a clean answer to the remote-access attack surface |
 
 ## Ranked, top down
+| Name       | Rank |
+|------------|---|
+|Holographic|8|
+|prompt pruning|8|
+|Memora|7|
+|PAM| 7|
+|Ebbinghaus| 7|
+|NOOA| 7|
+|GBrain| 6|
+|MNEMOS| 6|
+|Celiums| 6|
+|Self-Harness| 6|
+|DBOS/Transact| 6|
+|Engraphis| 6|
+|MemoriesDB| 5|
+|kongbrain| 5|
+|reasoning_library| 5|
+|Honcho| 3|
+|Home Agent| 2|
+|MAF| 1|
 
-Holographic 8 · prompt pruning 8 · Memora 7 · PAM 7 · Ebbinghaus 7 · NOOA 7 · GBrain 6 · MNEMOS 6 · Celiums 6 · Self-Harness 6 · DBOS/Transact 6 · Engraphis 6 · MemoriesDB 5 · kongbrain 5 · reasoning_library 5 · Honcho 3 · Home Agent 2 · MAF 1
 
 ## Open items on this roster
 
