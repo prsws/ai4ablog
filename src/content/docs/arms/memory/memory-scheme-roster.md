@@ -2,7 +2,7 @@
 title: Memory Scheme Evaluation Roster
 description: Recon-grade evaluation of external memory schemes and adjacent mechanisms against Pepa's Memory Arm — what to harvest, what to reject, and why. No architectural commitment implied.
 template: doc
-draft: true
+draft: false
 ---
 <p>
   <span class="a4a-badge ai-generated">AI Generated</span> &nbsp;
