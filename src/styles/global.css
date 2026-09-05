@@ -1,43 +1,226 @@
+/* ---------------------------------------------------------------------------
+   ai4aging.org — global stylesheet
+   Pepa design system ("Ocean")
+
+   WHY THIS FILE LOOKS DIFFERENT FROM THE DESIGN DOCS
+   The design system documents specify a Tailwind `@theme { --color-accent-* }`
+   block. That block was in this file and produced NOTHING: verified on the live
+   site 2026-09-05, where --color-accent-500, --color-gray-700, --font-sans and
+   --spacing all computed EMPTY and Starlight was rendering its factory indigo
+   (#3d50f5) — never the #84bb27 green the docs assume is showing. `@theme` is
+   Tailwind v4 syntax and this project has no Tailwind: no tailwindcss, no
+   @tailwindcss/vite, no @astrojs/starlight-tailwind. The browser sees an
+   unknown at-rule and skips it.
+
+   So the ladders below are written onto Starlight's OWN custom properties,
+   which is what actually themes the site. Same Ocean and Slate hex values as
+   the design system; only the property names changed.
+
+   ORDER MATTERS: every @import must come before any style rule. CSS silently
+   discards an @import that appears after a rule block — no error, no warning,
+   the fonts just never load while the page still looks plausible.
+
+   Colors verified at WCAG AA (4.5:1 text, 3:1 non-text). The audience is older
+   readers; contrast is functional here, not decorative. Do not substitute a hex
+   without re-checking the pairing.
+--------------------------------------------------------------------------- */
+
 @import "starlight-ui-tweaks/styles";
 
-@theme {
-    /* Accent color palettes. */
-    --color-accent-50: #f6fce9;
-    --color-accent-100: #ebf7d0;
-    --color-accent-200: #dff3b5;
-    --color-accent-300: #bde571;
-    --color-accent-400: #a3d645;
-    --color-accent-500: #84bb27;
-    --color-accent-600: #66951b;
-    --color-accent-700: #4e7219;
-    --color-accent-800: #405b19;
-    --color-accent-900: #374d1a;
-    --color-accent-950: #1b2a09;
+/* Fonts, self-hosted via Fontsource — the files build into dist/ and ship from
+   this origin like any other static asset. Deliberately NOT the Google Fonts
+   CDN: that sends every visitor's IP to a third party on every page load, from
+   a site whose manifesto is about local-first and no cloud dependencies. If a
+   variable build fails to resolve, fall back to the static package with
+   explicit weights rather than reaching for the CDN. */
+@import '@fontsource-variable/figtree';
+@import '@fontsource-variable/lora';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
 
-    /* Gray color palettes. */
-    --color-gray-50: oklch(98.5% 0 0);
-    --color-gray-100: oklch(96.7% 0.001 286.375);
-    --color-gray-200: oklch(92% 0.004 286.32);
-    --color-gray-300: oklch(87.1% 0.006 286.286);
-    --color-gray-400: oklch(70.5% 0.015 286.067);
-    --color-gray-500: oklch(55.2% 0.016 285.938);
-    --color-gray-600: oklch(44.2% 0.017 285.786);
-    --color-gray-700: oklch(37% 0.013 285.805);
-    --color-gray-800: oklch(27.4% 0.006 286.033);
-    --color-gray-900: oklch(21% 0.006 285.885);
-    --color-gray-950: oklch(14.1% 0.005 285.823);
+
+/* ---------------------------------------------------------------------------
+   DARK THEME — Starlight's default state
+
+   Starlight's grays run 1 (closest to the text color) through 6/7 (closest to
+   the background), so on a dark page gray-1 is the lightest. accent-high is the
+   link/text accent and must be light enough to read on a dark background.
+--------------------------------------------------------------------------- */
+
+:root,
+:root[data-theme='dark'] {
+    --sl-color-accent-low: #0b3247;   /* Ocean 900 — aside tints, subtle fills */
+    --sl-color-accent: #238bad;       /* Ocean 500 — "what teal is Pepa?"      */
+    --sl-color-accent-high: #b3e0ea;  /* Ocean 200 — link text on dark         */
+
+    --sl-color-white: #ffffff;
+    --sl-color-gray-1: #eef2f4;       /* Slate 100 */
+    --sl-color-gray-2: #bdcad1;       /* Slate 300 */
+    --sl-color-gray-3: #93a5b0;       /* Slate 400 */
+    --sl-color-gray-4: #4a6270;       /* Slate 600 */
+    --sl-color-gray-5: #304754;       /* Slate 700 */
+    --sl-color-gray-6: #203542;       /* Slate 800 */
+    --sl-color-black: #142530;        /* Slate 900 — page background */
 }
+
+
+/* ---------------------------------------------------------------------------
+   LIGHT THEME — the ladder inverted
+
+   Starlight flips the scale here: gray-1 is now the darkest, and white/black
+   swap so components asking for "white" get dark text. Body copy lands on
+   gray-2 (Slate 700) and secondary text on gray-3 (Slate 600), exactly as the
+   style guide specifies — not lighter, or it stops being readable.
+--------------------------------------------------------------------------- */
+
+:root[data-theme='light'] {
+    --sl-color-accent-low: #dcf1f5;   /* Ocean 100 — aside tints              */
+    --sl-color-accent: #1a7191;       /* Ocean 600 — links & buttons          */
+    --sl-color-accent-high: #0f425c;  /* Ocean 800 — link text on light       */
+
+    --sl-color-white: #142530;        /* Slate 900 (inverted) */
+    --sl-color-gray-1: #203542;       /* Slate 800 */
+    --sl-color-gray-2: #304754;       /* Slate 700 — body copy */
+    --sl-color-gray-3: #4a6270;       /* Slate 600 — secondary text */
+    --sl-color-gray-4: #93a5b0;       /* Slate 400 */
+    --sl-color-gray-5: #bdcad1;       /* Slate 300 */
+    --sl-color-gray-6: #dde5e9;       /* Slate 200 — hairline dividers */
+    --sl-color-gray-7: #f7fafb;       /* Slate 50 */
+    --sl-color-black: #ffffff;        /* page background */
+}
+
+
+/* ---------------------------------------------------------------------------
+   TYPE AND THE VALUES STARLIGHT DOESN'T OWN
+--------------------------------------------------------------------------- */
+
+:root {
+    /* Figtree carries body and UI, IBM Plex Mono carries configs and code.
+       These are Starlight's real font slots — the chrome (header, sidebar,
+       nav) reads them, not Tailwind's --font-sans. */
+    --sl-font: 'Figtree', -apple-system, 'Segoe UI', sans-serif;
+    --sl-font-mono: 'IBM Plex Mono', 'SFMono-Regular', monospace;
+
+    /* Lora is the editorial serif. Starlight has no display-font slot, so it
+       is applied to headings further down. */
+    --pepa-display: 'Lora', Georgia, serif;
+
+    /* Amber — the octopus's brain, the CasaDelta bulb. Exactly one element per
+       screen; the moment there are two, neither is the important one. Text on
+       amber is ink, never white. */
+    --pepa-amber: #e59a2a;
+    --pepa-amber-hover: #c97e17;
+    --pepa-amber-ink: #0a222f;
+
+    /* Reserve stock — CasaDelta orange, suction-cup green. Present so they
+       exist when needed, not for daily use. */
+    --pepa-coral: #e07330;
+    --pepa-seagrass: #74a852;
+
+    /* Aside label colors. Dark on purpose — the prettier mid-tones failed AA at
+       2.9:1. Currently UNUSED: Starlight tints asides from the accent color.
+       These are light-mode values only; do not wire them up without adding
+       dark-mode counterparts. */
+    --pepa-note-fg: #135773;
+    --pepa-note-bg: #dcf1f5;
+    --pepa-tip-fg: #47702f;
+    --pepa-tip-bg: #e8f2df;
+    --pepa-caution-fg: #8a5309;
+    --pepa-caution-bg: #fdf0d6;
+    --pepa-danger-fg: #8f3325;
+    --pepa-danger-bg: #fbe4df;
+
+    /* Structure */
+    --pepa-border: #6b8290;    /* form fields, anything whose edge must be seen */
+    --pepa-hairline: #dde5e9;  /* quiet dividers */
+
+    /* Corners — soft, tide-worn. Never a sharp 4px default. */
+    --pepa-radius: 10px;
+    --pepa-radius-card: 16px;
+    --pepa-radius-pill: 999px;
+
+    /* Shadows — tinted with ocean ink, never pure black, barely visible. */
+    --pepa-shadow: 0 1px 2px rgba(11, 50, 71, 0.08);
+    --pepa-shadow-up: 0 4px 12px rgba(11, 50, 71, 0.10);
+
+    /* Motion — Calm Technology taken literally. Short, standard easing, no
+       bounce, no spring. Nothing here should startle a 78-year-old. */
+    --pepa-ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --pepa-fast: 120ms;
+    --pepa-slow: 240ms;
+}
+
+
+/* ---------------------------------------------------------------------------
+   THE FOUR RULES
+
+   Everything above is definitions. These are the only places this theme
+   changes how Starlight draws the page.
+--------------------------------------------------------------------------- */
+
+/* Headings in Lora — the manifesto voice. Body stays Figtree.
+
+   h1#_top is Starlight's page title. It renders OUTSIDE .sl-markdown-content,
+   so without it the title falls back to the body font and no serif appears on
+   the page at all — verified 2026-09-05, when every heading computed to
+   Figtree and the Lora font file was never fetched.
+
+   Target the id, not the astro-* scoped class. That hash (astro-2sm4b3ln at
+   time of writing) is regenerated whenever the component changes, so a rule
+   built on it would break silently on a future build. #_top is part of
+   Starlight's anchor contract — it is what the "Overview" table-of-contents
+   entry links to. */
+h1#_top,
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3,
+.site-title {
+    font-family: var(--pepa-display);
+    letter-spacing: -0.01em;
+}
+
+/* Body copy one notch above web default: 17px, not 16. Measured on the live
+   site at 16px before this change. Of every decision in this file, this is the
+   one that does the most work for the actual audience. */
+.sl-markdown-content {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+}
+
+/* Keyboard focus must be unmissable — this matters more for older users than
+   polish does. */
+:where(a, button, input, select, summary):focus-visible {
+    outline: 3px solid var(--sl-color-accent);
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+/* Respect the reader's system setting. */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
 
 /* ---------------------------------------------------------------------------
    Provenance badges (a4a-badge)
-   Reproduces the four-value provenance vocabulary from the Terms of Use
-   (AI Generated / AI Assisted / Human Curated / No Badge) as raw HTML that
-   works in .md files, where the Starlight <Badge> component does not run.
 
-   Own-namespace prefix (a4a-) so a Starlight version bump can't restyle these,
-   and so the forthcoming Pepa design system has a clean hook to take over.
-   Colors are Starlight theme tokens — dark/light-aware, no hardcoded hex.
-   Provisional: expected to be superseded by the Pepa design system.
+   The four-value provenance vocabulary from the Terms of Use — AI Generated /
+   AI Assisted / Human Curated / No Badge — as raw HTML that works in .md files,
+   where the Starlight <Badge> component does not run.
+
+   Style-guide rule 8: label AI involvement on every page that has it. An
+   editorial trust signal, not decoration.
+
+   Rule 3 — never color alone — is satisfied because each badge carries its own
+   text label. That is deliberate: amber and green are exactly the pair that
+   red-green color deficiency compresses, so the meaning must never depend on
+   telling them apart.
+
+   Still on Starlight's semantic color tokens rather than the Ocean ramp. That
+   re-tint is a deliberate follow-up, not part of this change.
 --------------------------------------------------------------------------- */
 
 .a4a-badge {
