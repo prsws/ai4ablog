@@ -89,10 +89,10 @@ export default defineConfig({
                 label: 'Architecture',
                 collapsed: true,
                 items: [
-                    { label: 'Head', items: [{ autogenerate: { directory: 'head' }}] },
-                    // { label: 'Sensory', items: [{ autogenerate: { directory: 'arms/sensory' }}] },
+                    // { label: 'Head', items: [{ autogenerate: { directory: 'head' }}] },
+                    { label: 'Sensory Arm', items: [{ autogenerate: { directory: 'arms/sensory' }}] },
                     // { label: 'Knowledge', items: [{ autogenerate: { directory: 'arms/knowledge' }}] },
-                    { label: 'Memory', items: [{ autogenerate: { directory: 'arms/memory' }}] },
+                    { label: 'Memory Arm', items: [{ autogenerate: { directory: 'arms/memory' }}] },
                     // { label: 'Reasoning', items: [{ autogenerate: { directory: 'arms/reasoning' }}] },
                     // { label: 'Beak', items: [{ autogenerate: { directory: 'beak' }}] },
                 ],
@@ -101,6 +101,11 @@ export default defineConfig({
                 label: 'Reference',
                 collapsed: true,
                 items: [{ autogenerate: { directory: 'reference' } }],
+            },
+            {
+                label: 'Media',
+                collapsed: true,
+                items: [{ autogenerate: { directory: 'media' } }],
             },
             {
                 label: 'Misc',
