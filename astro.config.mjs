@@ -85,14 +85,12 @@ export default defineConfig({
                     { label: 'TL;DR Build your 1st Pepa', slug: 'guides/buildyour1stpepa' },
                 ],
             },
-            { label: 'News', link: '/blog/' },
             {
                 label: 'Architecture',
                 collapsed: true,
                 items: [
-                    { autogenerate: { directory: 'head' } },
-                    // Arms return here as they earn published pages:
-                    // { label: 'Automation', items: [{ autogenerate: { directory: 'arms/automation' }}] },
+                    { label: 'Head', items: [{ autogenerate: { directory: 'head' }}] },
+                    // { label: 'Sensory', items: [{ autogenerate: { directory: 'arms/sensory' }}] },
                     // { label: 'Knowledge', items: [{ autogenerate: { directory: 'arms/knowledge' }}] },
                     { label: 'Memory', items: [{ autogenerate: { directory: 'arms/memory' }}] },
                     // { label: 'Reasoning', items: [{ autogenerate: { directory: 'arms/reasoning' }}] },

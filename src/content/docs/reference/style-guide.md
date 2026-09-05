@@ -4,6 +4,7 @@ description: Every visual decision ai4aging.org makes on one page — colors, ty
 template: doc
 sidebar:
   label: Style Guide
+  order: 98
   badge:
     text: New
     variant: tip
