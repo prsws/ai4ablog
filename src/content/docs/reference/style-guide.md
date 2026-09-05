@@ -2,6 +2,11 @@
 title: Style Guide
 description: Every visual decision ai4aging.org makes on one page — colors, type, spacing, and eight rules. The live swatches read the site's own variables.
 template: doc
+sidebar:
+  label: Style Guide
+  badge:
+    text: New
+    variant: tip
 draft: false
 ---
 

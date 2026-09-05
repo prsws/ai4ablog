@@ -2,6 +2,11 @@
 title: Design System
 description: Why ai4aging.org looks the way it does — the Ocean palette, the type, and the rules. The reasoning behind the style guide.
 template: doc
+sidebar:
+  label: Design System
+  badge:
+    text: New
+    variant: tip
 draft: false
 ---
 

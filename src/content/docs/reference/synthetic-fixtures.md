@@ -3,6 +3,12 @@ title: Synthetic Fixtures
 description: A fixed cast of fabricated people used in every Pepa example, spec, and test — fictional by construction, so no real patient data is ever pasted into a hosted surface.
 template: doc
 version: "0.21"
+sidebar:
+  label: Synthetic Fixtures
+  order: 1
+  badge:
+    text: New
+    variant: tip
 draft: false
 ---
 <p>
