@@ -1,26 +1,37 @@
 /* ---------------------------------------------------------------------------
    ai4aging.org — global stylesheet
+   Pepa design system ("Ocean")
 
-   Pepa design system ("Ocean"). Every visual decision the site makes lives in
-   this file. Change a value here, it changes everywhere.
+   WHY THIS FILE LOOKS DIFFERENT FROM THE DESIGN DOCS
+   The design system documents specify a Tailwind `@theme { --color-accent-* }`
+   block. That block was in this file and produced NOTHING: verified on the live
+   site 2026-09-05, where --color-accent-500, --color-gray-700, --font-sans and
+   --spacing all computed EMPTY and Starlight was rendering its factory indigo
+   (#3d50f5) — never the #84bb27 green the docs assume is showing. `@theme` is
+   Tailwind v4 syntax and this project has no Tailwind: no tailwindcss, no
+   @tailwindcss/vite, no @astrojs/starlight-tailwind. The browser sees an
+   unknown at-rule and skips it.
 
-   ORDER MATTERS: every @import must appear before any style rule. CSS discards
-   an @import that comes after a rule block — silently, with no build error and
-   no console warning. The fonts would simply never load and the page would fall
-   back to system faces while looking almost correct. Keep imports at the top.
+   So the ladders below are written onto Starlight's OWN custom properties,
+   which is what actually themes the site. Same Ocean and Slate hex values as
+   the design system; only the property names changed.
+
+   ORDER MATTERS: every @import must come before any style rule. CSS silently
+   discards an @import that appears after a rule block — no error, no warning,
+   the fonts just never load while the page still looks plausible.
 
    Colors verified at WCAG AA (4.5:1 text, 3:1 non-text). The audience is older
-   readers; contrast is a functional requirement, not a preference. Do not
-   substitute a hex value without re-checking the pairing.
+   readers; contrast is functional here, not decorative. Do not substitute a hex
+   without re-checking the pairing.
 --------------------------------------------------------------------------- */
 
 @import "starlight-ui-tweaks/styles";
 
 /* Fonts, self-hosted via Fontsource — the files build into dist/ and ship from
    this origin like any other static asset. Deliberately NOT the Google Fonts
-   CDN: that would send every visitor's IP to a third party on every page load,
-   from a site whose manifesto is about local-first and no cloud dependencies.
-   If a variable build fails to resolve, fall back to the static package with
+   CDN: that sends every visitor's IP to a third party on every page load, from
+   a site whose manifesto is about local-first and no cloud dependencies. If a
+   variable build fails to resolve, fall back to the static package with
    explicit weights rather than reaching for the CDN. */
 @import '@fontsource-variable/figtree';
 @import '@fontsource-variable/lora';
@@ -29,63 +40,69 @@
 
 
 /* ---------------------------------------------------------------------------
-   THE TWO LADDERS
+   DARK THEME — Starlight's default state
 
-   Starlight asks for an accent and a gray, each as eleven steps from 50 to 950.
-   The reason is dark mode: it picks a dark rung for text on a light page and a
-   light rung for text on a dark page, from the same ladder. Define both ladders
-   completely and dark mode needs no hand-written theme.
+   Starlight's grays run 1 (closest to the text color) through 6/7 (closest to
+   the background), so on a dark page gray-1 is the lightest. accent-high is the
+   link/text accent and must be light enough to read on a dark background.
 --------------------------------------------------------------------------- */
 
-@theme {
-    /* ACCENT — "Ocean". The octopus body. Links, active nav, focus rings,
-       aside tints. This is the brand color. */
-    --color-accent-50: #f0f9fb;
-    --color-accent-100: #dcf1f5;
-    --color-accent-200: #b3e0ea;
-    --color-accent-300: #7fc7dc;
-    --color-accent-400: #4aabc7;
-    --color-accent-500: #238bad;   /* the one you'd name if asked "what teal?" */
-    --color-accent-600: #1a7191;   /* links & buttons in light mode */
-    --color-accent-700: #135773;
-    --color-accent-800: #0f425c;
-    --color-accent-900: #0b3247;
-    --color-accent-950: #082433;
+:root,
+:root[data-theme='dark'] {
+    --sl-color-accent-low: #0b3247;   /* Ocean 900 — aside tints, subtle fills */
+    --sl-color-accent: #238bad;       /* Ocean 500 — "what teal is Pepa?"      */
+    --sl-color-accent-high: #b3e0ea;  /* Ocean 200 — link text on dark         */
 
-    /* GRAY — "Slate". Backgrounds, surfaces, borders, body copy. Blue-cast on
-       purpose so nothing falls outside the ocean family. Do not swap for a
-       neutral gray. */
-    --color-gray-50: #f7fafb;
-    --color-gray-100: #eef2f4;
-    --color-gray-200: #dde5e9;
-    --color-gray-300: #bdcad1;
-    --color-gray-400: #93a5b0;
-    --color-gray-500: #6b8290;
-    --color-gray-600: #4a6270;
-    --color-gray-700: #304754;
-    --color-gray-800: #203542;
-    --color-gray-900: #142530;
-    --color-gray-950: #0b161d;
-
-    /* Figtree carries body and UI, IBM Plex Mono carries configs and code.
-       Lora is the editorial serif — Starlight has no display-font slot, so it
-       is applied to headings further down. */
-    --font-sans: 'Figtree', -apple-system, 'Segoe UI', sans-serif;
-    --font-mono: 'IBM Plex Mono', 'SFMono-Regular', monospace;
+    --sl-color-white: #ffffff;
+    --sl-color-gray-1: #eef2f4;       /* Slate 100 */
+    --sl-color-gray-2: #bdcad1;       /* Slate 300 */
+    --sl-color-gray-3: #93a5b0;       /* Slate 400 */
+    --sl-color-gray-4: #4a6270;       /* Slate 600 */
+    --sl-color-gray-5: #304754;       /* Slate 700 */
+    --sl-color-gray-6: #203542;       /* Slate 800 */
+    --sl-color-black: #142530;        /* Slate 900 — page background */
 }
 
 
 /* ---------------------------------------------------------------------------
-   THE VALUES STARLIGHT DOESN'T OWN
+   LIGHT THEME — the ladder inverted
+
+   Starlight flips the scale here: gray-1 is now the darkest, and white/black
+   swap so components asking for "white" get dark text. Body copy lands on
+   gray-2 (Slate 700) and secondary text on gray-3 (Slate 600), exactly as the
+   style guide specifies — not lighter, or it stops being readable.
+--------------------------------------------------------------------------- */
+
+:root[data-theme='light'] {
+    --sl-color-accent-low: #dcf1f5;   /* Ocean 100 — aside tints              */
+    --sl-color-accent: #1a7191;       /* Ocean 600 — links & buttons          */
+    --sl-color-accent-high: #0f425c;  /* Ocean 800 — link text on light       */
+
+    --sl-color-white: #142530;        /* Slate 900 (inverted) */
+    --sl-color-gray-1: #203542;       /* Slate 800 */
+    --sl-color-gray-2: #304754;       /* Slate 700 — body copy */
+    --sl-color-gray-3: #4a6270;       /* Slate 600 — secondary text */
+    --sl-color-gray-4: #93a5b0;       /* Slate 400 */
+    --sl-color-gray-5: #bdcad1;       /* Slate 300 */
+    --sl-color-gray-6: #dde5e9;       /* Slate 200 — hairline dividers */
+    --sl-color-gray-7: #f7fafb;       /* Slate 50 */
+    --sl-color-black: #ffffff;        /* page background */
+}
+
+
+/* ---------------------------------------------------------------------------
+   TYPE AND THE VALUES STARLIGHT DOESN'T OWN
 --------------------------------------------------------------------------- */
 
 :root {
-    /* Starlight's own font slots. --font-sans / --font-mono above are Tailwind
-       tokens; Starlight's chrome (header, sidebar, nav) reads these. Set both
-       so the typefaces apply site-wide and not only inside markdown. */
+    /* Figtree carries body and UI, IBM Plex Mono carries configs and code.
+       These are Starlight's real font slots — the chrome (header, sidebar,
+       nav) reads them, not Tailwind's --font-sans. */
     --sl-font: 'Figtree', -apple-system, 'Segoe UI', sans-serif;
     --sl-font-mono: 'IBM Plex Mono', 'SFMono-Regular', monospace;
 
+    /* Lora is the editorial serif. Starlight has no display-font slot, so it
+       is applied to headings further down. */
     --pepa-display: 'Lora', Georgia, serif;
 
     /* Amber — the octopus's brain, the CasaDelta bulb. Exactly one element per
@@ -101,8 +118,9 @@
     --pepa-seagrass: #74a852;
 
     /* Aside label colors. Dark on purpose — the prettier mid-tones failed AA at
-       2.9:1. Currently unused: Starlight tints asides from the accent ramp.
-       Do not wire these up without adding dark-mode counterparts. */
+       2.9:1. Currently UNUSED: Starlight tints asides from the accent color.
+       These are light-mode values only; do not wire them up without adding
+       dark-mode counterparts. */
     --pepa-note-fg: #135773;
     --pepa-note-bg: #dcf1f5;
     --pepa-tip-fg: #47702f;
@@ -149,8 +167,9 @@
     letter-spacing: -0.01em;
 }
 
-/* Body copy one notch above web default: 17px, not 16. Of every decision in
-   this file, this one does the most work for the actual audience. */
+/* Body copy one notch above web default: 17px, not 16. Measured on the live
+   site at 16px before this change. Of every decision in this file, this is the
+   one that does the most work for the actual audience. */
 .sl-markdown-content {
     font-size: 1.0625rem;
     line-height: 1.6;
@@ -159,7 +178,7 @@
 /* Keyboard focus must be unmissable — this matters more for older users than
    polish does. */
 :where(a, button, input, select, summary):focus-visible {
-    outline: 3px solid var(--color-accent-500);
+    outline: 3px solid var(--sl-color-accent);
     outline-offset: 2px;
     border-radius: 3px;
 }
@@ -180,11 +199,15 @@
    AI Assisted / Human Curated / No Badge — as raw HTML that works in .md files,
    where the Starlight <Badge> component does not run.
 
-   Style-guide rule 8: label AI involvement on every page that has it. This is
-   an editorial trust signal, not decoration.
+   Style-guide rule 8: label AI involvement on every page that has it. An
+   editorial trust signal, not decoration.
 
-   Own-namespace prefix (a4a-) so a Starlight version bump can't restyle these.
-   Still on Starlight's semantic color tokens rather than the Ocean ramp — that
+   Rule 3 — never color alone — is satisfied because each badge carries its own
+   text label. That is deliberate: amber and green are exactly the pair that
+   red-green color deficiency compresses, so the meaning must never depend on
+   telling them apart.
+
+   Still on Starlight's semantic color tokens rather than the Ocean ramp. That
    re-tint is a deliberate follow-up, not part of this change.
 --------------------------------------------------------------------------- */
 
