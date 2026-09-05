@@ -93,7 +93,7 @@ export default defineConfig({
                     { label: 'Sensory Arm', items: [{ autogenerate: { directory: 'arms/sensory' }}] },
                     // { label: 'Knowledge', items: [{ autogenerate: { directory: 'arms/knowledge' }}] },
                     { label: 'Memory Arm', items: [{ autogenerate: { directory: 'arms/memory' }}] },
-                    // { label: 'Reasoning', items: [{ autogenerate: { directory: 'arms/reasoning' }}] },
+                    { label: 'Reasoning', items: [{ autogenerate: { directory: 'arms/reasoning' }}] },
                     // { label: 'Beak', items: [{ autogenerate: { directory: 'beak' }}] },
                 ],
             },
