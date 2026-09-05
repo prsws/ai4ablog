@@ -261,3 +261,32 @@ h1#_top,
     color: var(--sl-color-gray-2);
     border-color: var(--sl-color-gray-5);
 }
+
+/* MANUAL OVERRIDES */
+
+/* Lock grid columns and align image to top baseline */
+.hero {
+    align-items: start; /* Prevents vertical floating */
+}
+
+/* Constrain graphic footprint */
+.hero img {
+    max-width: 150px;
+    height: auto;
+    margin-top: 0.25rem; /* Aligns top edge of graphic with title text */
+    justify-self: center;
+}
+
+.hero .title {
+    font-size: clamp(2rem, 4vw, 3rem); /* Scales down from massive display size */
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+}
+
+@media (max-width: 50rem) {
+    .hero img {
+        max-width: 120px;
+        margin: 0 auto 1rem auto;
+    }
+}
