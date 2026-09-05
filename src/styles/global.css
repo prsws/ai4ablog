@@ -158,7 +158,19 @@
    changes how Starlight draws the page.
 --------------------------------------------------------------------------- */
 
-/* Headings in Lora — the manifesto voice. Body stays Figtree. */
+/* Headings in Lora — the manifesto voice. Body stays Figtree.
+
+   h1#_top is Starlight's page title. It renders OUTSIDE .sl-markdown-content,
+   so without it the title falls back to the body font and no serif appears on
+   the page at all — verified 2026-09-05, when every heading computed to
+   Figtree and the Lora font file was never fetched.
+
+   Target the id, not the astro-* scoped class. That hash (astro-2sm4b3ln at
+   time of writing) is regenerated whenever the component changes, so a rule
+   built on it would break silently on a future build. #_top is part of
+   Starlight's anchor contract — it is what the "Overview" table-of-contents
+   entry links to. */
+h1#_top,
 .sl-markdown-content h1,
 .sl-markdown-content h2,
 .sl-markdown-content h3,
