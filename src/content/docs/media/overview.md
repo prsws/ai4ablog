@@ -2,7 +2,13 @@
 title: Pepa in Action
 description: A short recorded walkthrough of Pepa — what it is and how it works.
 template: doc
-draft: false
+sidebar:
+  label: Pepa in Action
+  order: 1
+  badge:
+    text: New
+    variant: tip
+draft: true
 ---
 <p>
     <span class="a4a-badge ai-assisted">AI Assisted</span>

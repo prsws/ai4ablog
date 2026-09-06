@@ -1,7 +1,14 @@
 ---
-title: The Reasoning Arm
+title: The Reasoning Arm?
 description: Reasoning as a bounded, replaceable capability — the argument for why control never moves here, and an honest account of how little is actually built.
 template: doc
+sidebar:
+  label: The Reasoning Arm?
+  order: 1
+  badge:
+    text: New
+    variant: tip
+
 draft: false
 ---
 
