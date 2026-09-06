@@ -1,5 +1,5 @@
 ---
-title: Recon — UC1/UC7 Convergence and the Minimum End-to-End Path — 21-Aug-2026
+title: Recon — UC1/UC7 Convergence and the Minimum End-to-End Path
 description: Written when the question shifted from "who do we talk to" back to "what do we finish."
 template: doc
 sidebar:
@@ -12,6 +12,8 @@ draft: false
 <p>
   <span class="a4a-badge collaborative-mess">Collaborative Mess</span>
 </p>
+
+21-Aug-2026
 
 > Working session capture, not a decision. Written after a five-channel academic outreach push, when the question shifted from "who do we talk to" back to "what do we finish."
 >
