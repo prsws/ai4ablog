@@ -95,7 +95,7 @@ export default defineConfig({
                     // { label: 'Knowledge', items: [{ autogenerate: { directory: 'arms/knowledge' }}] },
                     { label: 'Memory Arm', items: [{ autogenerate: { directory: 'arms/memory' }}] },
                     { label: 'Reasoning Arm', items: [{ autogenerate: { directory: 'arms/reasoning' }}] },
-                    // { label: 'Beak', items: [{ autogenerate: { directory: 'beak' }}] },
+                    { label: 'Beak', items: [{ autogenerate: { directory: 'beak' }}] },
                 ],
             },
             {
