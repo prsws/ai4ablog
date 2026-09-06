@@ -105,6 +105,11 @@ export default defineConfig({
                 items: [{ autogenerate: { directory: 'reference' } }],
             },
             {
+                label: 'Field Notes',
+                collapsed: true,
+                items: [{ autogenerate: { directory: 'fieldnotes' } }],
+            },
+            {
                 label: 'Media',
                 collapsed: true,
                 items: [{ autogenerate: { directory: 'media' } }],
