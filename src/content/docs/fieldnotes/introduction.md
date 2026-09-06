@@ -44,3 +44,14 @@ trail. A principle that cannot be checked is just an assertion, and "it worked
 in testing" is not a source of truth. These pages are what make the claims
 elsewhere on the site auditable — including the ones that turned out to be
 wrong.
+
+>**NOTE** - You may find the acronym **OBOSBS** in these docs frequently. It means One-By-One-Step-By-Step. It's a planning technique I use
+with the cloud AI assistants that works for me and saves me token$. It's prompted as follows:
+>
+>"Remember this: when specifically asked for a One-By-One-Step-By-Step (OBOSBS) plan do the following:
+>
+>1) Show a list of 1-line summaries for each intended step and its expected outcome
+>2) Expanded but not complete description of Step 1
+>3) Wait for my prompt"
+>
+>This allows me to get the big picture of what the thing is thinking and prepare for, preempt or even skip steps. Sometimes I find it was the wrong plan, early. That's it; it works for me but YMMV.
