@@ -12,9 +12,7 @@ draft: false
 ---
 
 <p>
-  <span class="a4a-badge ai-generated">AI Generated</span> &nbsp;
-  <span class="a4a-badge human-curated">Human Curated</span> &nbsp;
-  <span class="a4a-badge ai-assisted">AI Assisted</span>
+  <span class="a4a-badge collaborative-mess">Collaborative Mess</span>
 </p>
 
 The rest of this site explains what Pepa is and argues for why it is built that

@@ -255,6 +255,14 @@ h1#_top,
     border-color: var(--sl-color-blue);
 }
 
+/* Collaborative Mess — human and AI both wrote substantive parts, seams
+   unmarked. Deliberately Slate rather than a signal color: this is the normal
+   state for most of the site, not a warning. */
+.a4a-badge.collaborative-mess {
+    background: var(--sl-color-gray-6);
+    color: var(--sl-color-gray-2);
+    border-color: var(--sl-color-gray-4);
+}
 
 /* Neutral — provenance note where a colored state doesn't fit */
 .a4a-badge.neutral {
