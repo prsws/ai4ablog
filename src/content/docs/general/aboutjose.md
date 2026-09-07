@@ -7,6 +7,6 @@ Mr. José F. Reyes-Santana graduated with a Bachelor of Electrical Engineering d
 
 After returning to Puerto Rico he founded a software startup, managed IT for a manufacturing plant and provided consulting and software development services to clients in diverse industries for years. Currently he works as a Sr. System Analyst in big pharma.
 
-For more information visit <a href="http://prswservices.com" target="_blank">prswservices.com</a>.
+For more information visit <a href="https://prswservices.com" target="_blank">prswservices.com</a>.
 
 José's  <a href="https://linkedin.com/in/jose-f-reyes-santana" target="_blank">LinkedIn profile</a>.

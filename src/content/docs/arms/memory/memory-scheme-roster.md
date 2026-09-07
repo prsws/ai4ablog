@@ -48,7 +48,7 @@ of our research which is not yet published. Shall you have questions about any s
 
 **Take.** Type labels as secondary metadata only. Reject TTL-as-lifecycle — the 68°F anti-pattern; a wrong `fact` never expires. Still the ETL source of truth.
 
-**Source.** OUR fork: [github.com/prsws/pepa-sensory-arm](http://github.com/prsws/pepa-sensory-arm); upstream URL [github.com/aradlein/hass-agent-llm](http://github.com/aradlein/hass-agent-llm);
+**Source.** OUR fork: [github.com/prsws/pepa-sensory-arm](https://github.com/prsws/pepa-sensory-arm); upstream URL [github.com/aradlein/hass-agent-llm](https://github.com/aradlein/hass-agent-llm);
 
 ### 2. MemoriesDB
 
@@ -72,7 +72,7 @@ of our research which is not yet published. Shall you have questions about any s
 
 **Take.** Index the abstraction, not the value. Reject naive value-merging — must preserve per-contribution provenance inside merged entries.
 
-**Source.** [github.com/microsoft/Memora](http://github.com/microsoft/Memora)
+**Source.** [github.com/microsoft/Memora](https://github.com/microsoft/Memora)
 
 ### 4. Honcho
 
@@ -136,7 +136,7 @@ of our research which is not yet published. Shall you have questions about any s
 
 **Take.** Provenance-as-structure; derivation is a first-class verifiable operation. Memory re-injected in typed frames so it can't read as instructions.
 
-**Source.** paper [arxiv.org/abs/2605.11032](http://arxiv.org/abs/2605.11032) · adjacent project (not PAM's impl) [github.com/EverMind-AI/EverOS](https://github.com/EverMind-AI/EverOS)
+**Source.** paper [arxiv.org/abs/2605.11032](https://arxiv.org/abs/2605.11032) · adjacent project (not PAM's impl) [github.com/EverMind-AI/EverOS](https://github.com/EverMind-AI/EverOS)
 
 **Remarks.** Verified 2026-07-28: real paper — PAM by S.K. Ravindran (Microsoft); roster description matches. "PERMEAR" was a phantom label, no system by that name. EverOS is an adjacent project, not this paper's implementation.
 
@@ -150,7 +150,7 @@ of our research which is not yet published. Shall you have questions about any s
 
 **Take.** Rollbackable consolidation runs (run-ID tagged); transformation receipts; audit outlives artifact; writer-model provenance. Reject as platform. Zero epistemics.
 
-**Source.** [github.com/ncz-os/mnemos](http://github.com/ncz-os/mnemos)
+**Source.** [github.com/ncz-os/mnemos](https://github.com/ncz-os/mnemos)
 
 ### 10. Celiums Memory
 
@@ -162,7 +162,7 @@ of our research which is not yet published. Shall you have questions about any s
 
 **Take.** Clean abstention on missing capability; triple orthogonal gate before irreversible ops; hash-chained journal as third category; circadian **as query-time input only**. Reject affect-weighted recall.
 
-**Source.** [github.com/terrizoaguimor/celiums-memory](http://github.com/terrizoaguimor/celiums-memory)
+**Source.** [github.com/terrizoaguimor/celiums-memory](https://github.com/terrizoaguimor/celiums-memory)
 
 ### 11. Memory Decay Engine
 
@@ -174,7 +174,7 @@ of our research which is not yet published. Shall you have questions about any s
 
 **Take.** Reimplement the math (~40 lines, no dep). **Stability = salience, never feeds trust.** Safety-critical entries exempt from decay entirely.
 
-**Source.** [github.com/Emmimal/memory-decay-engine](http://github.com/Emmimal/memory-decay-engine)
+**Source.** [github.com/Emmimal/memory-decay-engine](https://github.com/Emmimal/memory-decay-engine)
 
 ### 12. Safe prompt pruning layer
 
@@ -198,7 +198,7 @@ of our research which is not yet published. Shall you have questions about any s
 
 **Take.** Weakness Mining for the PSA confabulation diagnostic (HA device-state log as verifier). Promotion rule = independent-corroboration principle. Hermes only; never on the actuation path.
 
-**Source.** [arxiv.org/abs/2606.09498](http://arxiv.org/abs/2606.09498)
+**Source.** [arxiv.org/abs/2606.09498](https://arxiv.org/abs/2606.09498)
 
 ### 14. MS Agent Framework 1.0
 
@@ -210,7 +210,7 @@ of our research which is not yet published. Shall you have questions about any s
 
 **Take.** Nothing operational. Magentic's shape (plan / delegate / ledger / replan / capped resets) as conceptual reference for the Head, cribbed into LangGraph.
 
-**Source.** [devblogs.microsoft.com/agent-framework](http://devblogs.microsoft.com/agent-framework)
+**Source.** [devblogs.microsoft.com/agent-framework](https://devblogs.microsoft.com/agent-framework)
 
 ### 15. DBOS / Transact
 
@@ -222,7 +222,7 @@ of our research which is not yet published. Shall you have questions about any s
 
 **Take.** Corroborates the RabbitMQ-out / DB-as-orchestrator decision. Port the *pattern* (checkpoint-and-resume) into SurrealDB for the Head and especially the nightly consolidation pass — survives a LUMA outage mid-run. Composes with MNEMOS (run-ID rollback for *bad* runs; fork for bug-mid-pass). LLM step becomes deterministic on replay → zero re-inference cost. Reject Transact itself: Postgres-native, a new moving part. Requires idempotent/deterministic consolidation steps.
 
-**Source.** InfoQ talk (Edberg & Li) · [github.com/dbos-inc](http://github.com/dbos-inc); MIT (Python/TS/Go/Java)
+**Source.** InfoQ talk (Edberg & Li) · [github.com/dbos-inc](https://github.com/dbos-inc); MIT (Python/TS/Go/Java)
 
 ### 16. Engraphis
 
