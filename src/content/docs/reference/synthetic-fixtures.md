@@ -16,14 +16,13 @@ draft: false
   <span class="a4a-badge human-curated">Human Curated</span>
 </p>
 
-**v0.2 — 2026-09-02**
 > **Changelog**
 > 
-> **v0.21** — *Manually* r*emoved confusing content*. Edited title, removed masks icon, replaced Villa Alondra for Villa Quimbal, etc.
+> **v0.21** — 2026/09/02 —  *Manually* r*emoved confusing content*. Edited title, removed masks icon, replaced Villa Alondra for Villa Quimbal, etc.
 > 
-> **v0.2** — Added *Cross-fixture invariants*. Replaced the verification-by-search posture with fictionality by construction: the `Quimbal` namespace, and SENDER-01 moved from shortcode `78455` to the reserved `787-555-01xx` block. *Superseded 2026-09-02: **`Urb. Villa Quimbal`**, **`Farmacia Bonilla Nazario`**, shortcode **`78455`**.*
+> **v0.2** — 2026/09/01 — Added *Cross-fixture invariants*. Replaced the verification-by-search posture with fictionality by construction: the `Quimbal` namespace, and SENDER-01 moved from shortcode `78455` to the reserved `787-555-01xx` block. *Superseded 2026-09-02: **`Urb. Villa Quimbal`**, **`Farmacia Bonilla Nazario`**, shortcode **`78455`**.*
 >
-> **v0.1** — Initial cast: SUBJ-01/02/03, CARE-01/02, SENDER-01.
+> **v0.1** — undated — Initial cast: SUBJ-01/02/03, CARE-01/02, SENDER-01.
 
 ## Purpose
 
@@ -257,15 +256,3 @@ Each entry is named by what it probes, not by content.
 
 Puerto Rican two-surname structure is load-bearing here. Ivelisse's surnames are **Colón Marrero**, not "Marrero." Carmen Iris and Efraín share both surnames because they are siblings. Anything that treats the last token as *the* surname gets these people wrong — a real parser defect, and one worth catching on fixtures rather than on a person.
 
----
-
-### Porting note
-
-This page was ported from the Notion source (v0.21). The body text is reproduced as authored; the following are transcoding artifacts of the Notion→Markdown export, not authorial content, and are flagged here rather than silently altered:
-
-- **Tables.** All eight tables were converted from Notion's HTML export (`<table header-row="true">…`) to GitHub-Flavored Markdown pipe tables. Cell contents are verbatim; only the surrounding markup changed. This was necessary because the raw HTML export renders as broken markup on the site.
-- **Emphasis artifacts.** Notion's export split some emphasis mid-word (e.g. the changelog's `*Manually* r*emoved`, and the hygiene section's `**The ****Quimbal****`). Preserved as-exported; pending cleanup in a later commit.
-- **Heading levels.** Section headings are `#` (H1) as exported. Multiple H1s build without error but are excluded from the right-hand "On this page" table of contents, which lists `##` and deeper. Demoting sections to `##`/`###` is a recommended follow-up.
-- **Escape artifacts.** Notion escaped some characters on export (e.g. `\~` for the approximate sign); normalized to their intended glyph where it changes nothing visually.
-
-Corrections land as their own commits, keeping git the authoritative changelog.
