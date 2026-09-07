@@ -207,9 +207,9 @@ h1#_top,
 /* ---------------------------------------------------------------------------
    Provenance badges (a4a-badge)
 
-   The four-value provenance vocabulary from the Terms of Use — AI Generated /
-   AI Assisted / Human Curated / No Badge — as raw HTML that works in .md files,
-   where the Starlight <Badge> component does not run.
+   The five-value provenance vocabulary from the Terms of Use — AI Generated /
+   AI Assisted / Human Curated / Collaborative Mess / No Badge — as raw HTML
+   that works in .md files, where the Starlight <Badge> component does not run.
 
    Style-guide rule 8: label AI involvement on every page that has it. An
    editorial trust signal, not decoration.
@@ -219,8 +219,14 @@ h1#_top,
    red-green color deficiency compresses, so the meaning must never depend on
    telling them apart.
 
-   Still on Starlight's semantic color tokens rather than the Ocean ramp. That
-   re-tint is a deliberate follow-up, not part of this change.
+   Anything built from --sl-color-* or --pepa-* theme variables inverts by
+   itself between light and dark. Anything hardcoded does not, and a badge that
+   cannot invert renders dark ink on a near-black page. Measured 2026-09-06:
+   ai-generated came back 9.18:1 light / 9.46:1 dark because it is built from
+   the Ocean ramp; human-curated returned byte-identical values in both modes
+   because its ink was a literal hex, which is the bug the dark-mode rule below
+   fixes. Prefer variables; where a literal is unavoidable, pair it with an
+   explicit dark-mode counterpart.
 --------------------------------------------------------------------------- */
 
 .a4a-badge {
@@ -234,25 +240,35 @@ h1#_top,
     border: 1px solid transparent;
 }
 
-/* AI Generated — Ocean, deep end (matches accent-high, dark enough for text) */
+/* AI Generated — Ocean. Built entirely from the accent ramp, so it inverts
+   with the theme: pale wash + deep ink on light, deep wash + pale ink on dark. */
 .a4a-badge.ai-generated {
     background: var(--sl-color-accent-low);
     color: var(--sl-color-accent-high);
     border-color: var(--sl-color-accent);
 }
 
-/* Human Curated — Seagrass, the one warm green already in the palette */
+/* AI Assisted — Ocean, one step lighter than ai-generated so the two read as
+   related-but-distinct rather than as two unrelated colors. Same ramp, so it
+   inverts the same way. */
+.a4a-badge.ai-assisted {
+    background: color-mix(in srgb, var(--sl-color-accent) 14%, transparent);
+    color: var(--sl-color-accent-high);
+    border-color: color-mix(in srgb, var(--sl-color-accent) 55%, transparent);
+}
+
+/* Human Curated — Seagrass, the one warm green in the palette. Seagrass has no
+   light/dark pair of its own, so the ink is set per mode by hand. */
 .a4a-badge.human-curated {
     background: color-mix(in srgb, var(--pepa-seagrass) 18%, transparent);
     color: #2f5c1f;
     border-color: var(--pepa-seagrass);
 }
 
-/* AI Assisted — human content enhanced with AI */
-.a4a-badge.ai-assisted {
-    background: var(--sl-color-blue-low);
-    color: var(--sl-color-blue-high);
-    border-color: var(--sl-color-blue);
+:root[data-theme='dark'] .a4a-badge.human-curated {
+    background: color-mix(in srgb, var(--pepa-seagrass) 22%, transparent);
+    color: #cfe6bd;
+    border-color: var(--pepa-seagrass);
 }
 
 /* Collaborative Mess — human and AI both wrote substantive parts, seams
@@ -264,7 +280,9 @@ h1#_top,
     border-color: var(--sl-color-gray-4);
 }
 
-/* Neutral — provenance note where a colored state doesn't fit */
+/* Neutral — provenance note where a colored state doesn't fit. Currently
+   unused; kept because it costs nothing and collaborative-mess may not be the
+   right label for every future non-signal case. */
 .a4a-badge.neutral {
     background: var(--sl-color-gray-6);
     color: var(--sl-color-gray-2);
