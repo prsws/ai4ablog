@@ -10,7 +10,7 @@ on:
     branches: ["main"]
   pull_request:
     branches: [main]
-  
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -64,6 +64,11 @@ jobs:
           node-version: "24"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
           cache-dependency-path: ${{ env.BUILD_PATH }}/${{ steps.detect-package-manager.outputs.lockfile }}
+      # Required to enable Pages and provision the deployment environment.
+      # Its `origin` and `base_path` outputs are deliberately NOT used: they are
+      # derived from the Pages API, which reports http:// whenever "Enforce HTTPS"
+      # is off, and passing them to `astro build` silently overrode the correct
+      # `site` value in astro.config.mjs. The config file is authoritative.
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v6
@@ -71,10 +76,16 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
         working-directory: ${{ env.BUILD_PATH }}
       - name: Build with Astro
+        run: ${{ steps.detect-package-manager.outputs.runner }} astro build
+        working-directory: ${{ env.BUILD_PATH }}
+      - name: Verify canonical scheme
         run: |
-          ${{ steps.detect-package-manager.outputs.runner }} astro build \
-            --site "${{ steps.pages.outputs.origin }}" \
-            --base "${{ steps.pages.outputs.base_path }}"
+          if grep -rq 'http://ai4aging\.org' dist/; then
+            echo "::error::Build emitted http:// URLs. Check astro.config.mjs `site` and any --site override."
+            grep -rl 'http://ai4aging\.org' dist/ | head -20
+            exit 1
+          fi
+          echo "OK: no http://ai4aging.org in dist/"
         working-directory: ${{ env.BUILD_PATH }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
@@ -89,7 +100,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-#    needs: build
+    #    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
