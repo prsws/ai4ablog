@@ -13,6 +13,7 @@ draft: false
 
 <p>
   <span class="a4a-badge ai-generated">AI Generated</span>
+  <span class="a4a-badge human-curated">Human Curated</span>
 </p>
 
 **Version 0.1 — 2026-09-08.** This page is append-only. Corrections arrive as new,
