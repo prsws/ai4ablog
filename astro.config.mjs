@@ -5,6 +5,7 @@ import starlightUiTweaks from 'starlight-ui-tweaks';
 import starlightScrollToTop from 'starlight-scroll-to-top';
 import starlightPageActions from "starlight-page-actions";
 import starlightBlog from 'starlight-blog';
+import rehypeExternalLinks from 'rehype-external-links';
 
 import mdx from '@astrojs/mdx';
 
@@ -126,4 +127,27 @@ export default defineConfig({
         ],
         customCss: ["./src/styles/global.css"],
 		}), mdx()],
+    markdown: {
+        rehypePlugins: [
+            [
+                rehypeExternalLinks,
+                {
+                    target: '_blank',
+                    rel: ['nofollow', 'noopener', 'noreferrer'],
+                    // Ensures any absolute link starting with your domain stays in the same tab
+                    protocols: ['http', 'https'],
+                    test: (node) => {
+                        const href = node.properties?.href;
+                        if (!href) return false;
+
+                        // Skip relative links, anchor links, and your own domain
+                        if (href.startsWith('/') || href.startsWith('#') || href.includes('yourdomain.com')) {
+                            return false;
+                        }
+                        return true;
+                    }
+                }
+            ]
+        ]
+    }
 });
