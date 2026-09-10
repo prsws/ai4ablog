@@ -1,6 +1,6 @@
 ---
 title: Logical Network Diagram
-description: Visualization of logical connections
+description: How Casa Delta is wired logically — its components and which services talk to which across Pepa's infrastructure layer.
 template: doc
 sidebar:
   label: Logical Network Diagram

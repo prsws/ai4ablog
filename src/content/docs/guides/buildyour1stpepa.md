@@ -1,34 +1,24 @@
 ---
 title: "TL;DR - Build your First Pepa"
-description: Quickstart guide to build your 1st Pepa
+description: Build a minimal working Pepa — the hardware, the software, and the shortest path to something that answers you.
 template: doc
 topic: guides
-lastUpdated: 2026-07-07
+lastUpdated: 2026-09-10
+sidebar:
+  label: Privacy Policy
+draft: false
 ---
-import { Badge } from '@astrojs/starlight/components';
-import { Image } from 'astro:assets';
-import pepaFoto1 from '../../../assets/Pepa_Foto_1.jpg';
-import pepaFoto2 from '../../../assets/Pepa_Foto_2.jpg';
-import rackV1 from '../../../assets/Minirack_20250609.jpg';
-import rackV2 from '../../../assets/Minirack_20251211.jpg';
-import rackV3 from '../../../assets/Minirack_20260320.jpg';
-import rackV4 from '../../../assets/Minirack_20260703.jpg';
+<span class="a4a-badge ai-assisted">AI Assisted</span>&nbsp;
 
-
-<table>
-    <tr>
-        <td><Badge text="AI Assisted" variant="caution"/></td>
-    </tr>
-</table>
 Here's the path we've taken — and are still traveling (updated Jul-2026), because we're maybe a third of the way up a very long ladder and nothing is permanently settled. Each step below shows two things: the affordable rung we started on, which remains a valid starting point for you, and the gear we've evolved to after a year of blood, sweat and painful $ mistakes.
 
 Don't let our current hardware scare you; we didn't start there and neither should you. Climb at your own pace and budget — you can stop at any rung and still have something useful. Detailed docs are in progress which will expand on these topics. Read it slowly, there's a lot to unpack here because this is not written for newbies. Meantime please document your own work to compare notes with us.
 
-<Badge text="N.B." variant="tip"/> _All the specific brands/models mentioned below are our current operational choices but you make your own. They're listed for your shopping convenience and were purchased out of our own pocket. Painful $ mistakes were made so think carefully when sourcing stuff to make substitutions. We shopped at Amazon, eBay, FB Marketplace, Best Buy and locally. There are no affiliate links so Google them up and find the deals._
+**N.B. _All the specific brands/models mentioned below are our current operational choices but you make your own. They're listed for your shopping convenience and were purchased out of our own pocket. Painful $ mistakes were made so think carefully when sourcing stuff to make substitutions. We shopped at Amazon, eBay, FB Marketplace, Best Buy and locally. There are no affiliate links so Google them up and find the deals._**
 
 _This is real and working. See pictures at the bottom._
 
-### **0. Foundation (Network)** <Badge text="Mandatory" />
+### **0. Foundation (Network)** "Mandatory"
 
 You need a stable home network.
 
@@ -45,7 +35,7 @@ You need a stable home network.
 
 ---
 
-### **1. Sensory Base (Home Assistant)** <Badge text="Mandatory" />
+### **1. Sensory Base (Home Assistant)** "Mandatory"
 
 Install Home Assistant on a dedicated machine.
 
@@ -62,7 +52,7 @@ _**What we run now:**_ HAOS as a UTM virtual machine on a Mac mini M4, sharing t
 
 ---
 
-### **2. Sensory Intelligence Layer (Home Agent app)** <Badge text="Mandatory" />
+### **2. Sensory Intelligence Layer (Home Agent app)** "Mandatory"
 
 To make the sensory arm semi autonomous, install the Home Agent app (formerly called add-on) through HACS on Home Assistant:
 
@@ -78,7 +68,7 @@ _You can stop here and enjoy an excellent, smart home automation system without 
 
 ---
 
-### **3. Voice Interface (Optional but Important)** <Badge text="Interface Expansion" />
+### **3. Voice Interface (Optional but Important)** "Interface Expansion"
 
 Add a voice satellite (picture at the bottom)
 
@@ -95,7 +85,7 @@ _**What we run now:**_ Whisper (large-v3-turbo) and Piper run as always-on backg
 
 ---
 
-### **4. Storage Node (Persistence)** <Badge text="Capability Expansion" />
+### **4. Storage Node (Persistence)** "Capability Expansion"
 
 Set up a NAS or some other network storage solution.
 
@@ -110,7 +100,7 @@ _**What we run now:**_ A TerraMaster F4 SSD — all solid state, so it sips powe
 
 ---
 
-### **5. Cognitive Backend (Local Compute)** <Badge text="Capability Expansion" />
+### **5. Cognitive Backend (Local Compute)** "Capability Expansion"
 
 Set up a small server with Proxmox VE — any used mini PC with 16GB+ RAM will do. _Do not go crazy setting up clusters that you don't know if you'll need; minimize complexity._
 
@@ -126,7 +116,7 @@ _**What we run now:**_ Proxmox on a used Intel-era Mac mini — cheap, silent, l
 
 ---
 
-### **6. Heavy Compute (LLMs)** <Badge text="Capability Expansion" />
+### **6. Heavy Compute (LLMs)** "Capability Expansion"
 
 Choose your path:
 
@@ -143,7 +133,7 @@ _**What we run now:**_ A used 2022 Mac Studio M1 Ultra with 64GB of unified memo
 
 ---
 
-### **7. Separation of Concerns (Highly Recommended)** <Badge text="Operational Maturity" variant="success" />
+### **7. Separation of Concerns (Highly Recommended)** "Operational Maturity"
 
 Keep your system stable:
 
@@ -184,17 +174,18 @@ _The rest is up to you, so go for it and let us know._
 _Pepa's rack, rung by rung. Same mission, evolving hardware — proof you can start small._
 
 _Jul-2026 — Current state._
-<Image src={rackV4} alt="Pepa's minirack, July 2026" width={800} height={1200} />
+![Pepa's minirack, July 2026](../../../assets/Minirack_20260630.jpg)
 
 _Mar-2026 — Minirack v3: first fully working Pepa scaffold._
-<Image src={rackV3} alt="Pepa's minirack, March 2026" width={800} height={1200} />
+![Pepa's minirack, March 2026](../../../assets/Minirack_20260320.jpg)
 
 _Dec-2025 — Minirack v2: NAS & Mac Studio added but HA running on NUC7i5, no OPNsense and no Proxmox._
-<Image src={rackV2} alt="Minirack v2" width={800} height={1200} />
+![Minirack v2](../../../assets/Minirack_20251211.jpg)
 
 _Jun-2025 — Minirack v1: Raspberry Pi's, a Mac mini 2010 and hope._
-<Image src={rackV1} alt="Minirack v1, June 2025, Raspberry Pi based" width={800} height={1200} />
+![Minirack v1, June 2025, Raspberry Pi based](../../../assets/Minirack_20250609.jpg)
 
 ---
 _The voice satellites, plus an Amazon Echo Show 5 with Alexa+ as benchmark and goal — when we dump (maybe reflash?) it, that means Pepa is ready for its mission._
-<Image src={pepaFoto2} alt="Pepa's voice satellites" width={1200} height={1200} />
+<Image src={pepaFoto2} alt="" width={1200} height={1200} />
+![Pepa's voice satellites](../../../assets/Pepa_Foto_2.jpg)

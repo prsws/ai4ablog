@@ -1,6 +1,6 @@
 ---
 title: Sensory Arm Version History
-description: Sensory Arm Version History
+description: How Pepa's Sensory Arm evolved — the voice and Home Assistant interface, version by version, with what changed and why.
 template: doc
 sidebar:
   label: Version History

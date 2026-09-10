@@ -1,14 +1,14 @@
 ---
 title: MemoriesDB
-description: PostgreSQL-based vector and graph memory schema for Pepa's memory arm.
+description: Foundation of the memory schema — how Pepa stores what it believes, with provenance, trust scores, and supersession rather than overwrites.
 template: doc
 topic: memory
+sidebar:
+  label: MemoriesDB
 draft: false
 ---
-<p>
-    <span class="a4a-badge ai-generated">AI Generated</span> &nbsp;
-    <span class="a4a-badge human-curated">Human Curated</span>
-</p>
+<span class="a4a-badge ai-generated">AI Generated</span> &nbsp;
+<span class="a4a-badge human-curated">Human Curated</span>
 
 ## Overview
 

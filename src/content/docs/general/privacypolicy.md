@@ -1,15 +1,14 @@
 ---
 title: Privacy Policy
-description: We take this seriously.
+description: What ai4aging.org collects, what it doesn't, and why — no analytics, no CDN fonts, no third-party tracking.
 template: doc
-lastUpdated: 2026-09-04
+lastUpdated: 2026-09-10
+sidebar:
+  label: Privacy Policy
+draft: false
 ---
-<p>
-  <span class="a4a-badge ai-generated">AI Generated</span> &nbsp;
-  <span class="a4a-badge human-curated">Human Curated</span>
-</p>
-
-*Last updated: September 2026*
+<span class="a4a-badge ai-generated">AI Generated</span> &nbsp;
+<span class="a4a-badge human-curated">Human Curated</span>
 
 ### What We Collect
 

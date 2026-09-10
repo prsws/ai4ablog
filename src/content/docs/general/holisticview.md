@@ -1,13 +1,15 @@
 ---
 title: A Holistic View
-description: As told by Google Gemini.
+description: An outside read of Pepa's architecture and purpose — what the design gets right and where it is still unproven.
 template: doc
+sidebar:
+  label: A Holistic View
+draft: false
 ---
-import { Badge } from '@astrojs/starlight/components';
+<span class="a4a-badge ai-generated">AI Generated</span>
 
-<Badge text="AI Generated" variant="caution"/>
+**N.B. The following is Google Gemini’s take on the Manifesto and Use Cases only, without prior context nor identifying our authorship on 16-Mar-2026. YMMV**
 
-<Badge text="N.B." variant="tip"/>**The following is Google Gemini’s take on the Manifesto and Use Cases only, without prior context nor identifying our authorship on 16-Mar-2026. YMMV**
 
 ---------------------------------------------------------------------
 These two pages outline a visionary and ethically-grounded framework for how technology should interact with an aging population. Based on the content of the **Manifesto** and the **Use Cases**, here is an analysis of their approach:
@@ -46,4 +48,6 @@ The use cases bridge the gap between high-level ethics and real-world utility. T
 The **ai4aging.org** initiative is a sophisticated attempt to ensure that the next generation of AI is **inclusive.** It moves away from "tracking" the elderly like assets and toward "empowering" them as citizens. It is a necessary roadmap for developers who want to build tech that actually respects the human experience of aging.
 
 ------------------------------------------
-<Badge text="N.B." variant="tip"/>**This response is a hallucination because the articles don't say most of what it claims. Nevertheless, we decided to post it because regardless of wherever it got these ideas, they highlight important issues - bigger than any personal needs - that should be addressed by Society at large. <u>_Just not this project at this time._</u>**
+
+**N.B. This response is a hallucination because the articles don't say  on 16-Mar-2026 most of what it claims. Nevertheless, we decided to post it because regardless of wherever it got these ideas, they highlight important issues - bigger than any personal needs - that should be addressed by Society at large. <u>_Just not this project at this time._</u>**</span>
+

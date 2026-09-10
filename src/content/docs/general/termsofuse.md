@@ -1,15 +1,14 @@
 ---
 title: Terms of Use
-description: So you know...
+description: Terms of use for ai4aging.org.
 template: doc
-lastUpdated: 2026-09-06
+lastUpdated: 2026-09-10
+sidebar:
+  label: Terms of Use
+draft: false
 ---
-<p>
-    <span class="a4a-badge ai-generated">AI Generated</span> &nbsp;
-    <span class="a4a-badge human-curated">Human Curated</span>
-</p>
-
-*Last updated: September 2026*
+<span class="a4a-badge ai-generated">AI Generated</span> &nbsp;
+<span class="a4a-badge human-curated">Human Curated</span>
 
 ### Nature of This Site
 

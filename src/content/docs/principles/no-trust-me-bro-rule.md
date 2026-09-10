@@ -1,6 +1,6 @@
 ---
 title: No "Trust-Me-Bro" Rule
-description: Everything Pepa does must be auditable and accountable
+description: Every component must be explainable, reproducible, and traceable. Uncertainty is allowed; unacknowledged uncertainty is not.
 template: doc
 sidebar:
   label: No "Trust-Me-Bro" Rule
@@ -10,11 +10,8 @@ sidebar:
     variant: tip
 draft: false
 ---
-
-<p>
-  <span class="a4a-badge ai-generated">AI Generated</span> &nbsp;
-  <span class="a4a-badge human-curated">Human Curated</span>
-</p>
+<span class="a4a-badge ai-generated">AI Generated</span> &nbsp;
+<span class="a4a-badge human-curated">Human Curated</span>
 
 **Definition**
 

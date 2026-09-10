@@ -11,11 +11,8 @@ sidebar:
 
 draft: false
 ---
-
-<p>
-  <span class="a4a-badge ai-generated">AI Generated</span>
-  <span class="a4a-badge human-curated">Human Curated</span>
-</p>
+<span class="a4a-badge ai-generated">AI Generated</span>
+<span class="a4a-badge human-curated">Human Curated</span>
 
 In Pepa's architecture, the Reasoning Arm is not the system's ruler — it is its
 cognitive engine. Its role is simple: interpret, suggest, and assist. It does not
