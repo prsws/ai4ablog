@@ -28,10 +28,10 @@ that it think through something with a specific model as needed.
 Here is the honest version, because the section above describes a boundary rather
 than a mechanism, and the two are at very different stages.
 
-**We do not yet know how a Reasoning Arm is supposed to work.** So it starts as the
+We did not know how a Reasoning Arm was supposed to work. So it started as the
 smallest thing that serves: a Mac Studio running an OpenAI-compatible inference
-endpoint. Nothing more. No agent loop, no planner, no state, no orchestration.
-A request goes in, a completion comes out.
+endpoint. Nothing more. No agent loop, no planner, no state, no orchestration. A
+request goes in, a completion comes out.
 
 That is less than the name suggests, and it is deliberate rather than
 embarrassing. A box that answers inference requests and decides nothing **is** the
@@ -46,110 +46,120 @@ path — a punt from the local model when it judges a query beyond itself — ra
 than by an orchestrator asking for cognition. The service half is real. The
 architectural half is waiting on the cognition plane.
 
-What that means in practice: the boundary is decided, the mechanism is not. Nothing
-below this line should be read as a settled design.
-
-## Why this hardware
-
-With the boundary in place, the hardware question becomes straightforward. The
-Reasoning Arm needs reliable, low-latency local inference. Not a cluster. Not the
-cloud. Just enough consistent compute to run modern language models well. Just as
-important, it is not only a runtime — it is a testbed, because the field is
-evolving rapidly.
-
-We chose the Apple ecosystem (currently a single Mac Studio M1 Ultra with 64 GB
-RAM) to keep things simple compared to discrete GPU setups. Its unified memory
-design avoids the constant shuttling of data between CPU and GPU over PCIe, which
-simplifies local inference workloads and many hardware choices.
-
-The trade-off is lack of upgradeability, so initial RAM sizing matters. By
-contrast, GPU-based systems offer more headroom and flexibility. Emerging options
-like AMD's Strix Halo bridge the gap by combining unified memory with the openness
-of the x86 ecosystem, which we are watching closely.
-
-Frameworks like MLX (on Apple Silicon) and CUDA-based stacks (on NVIDIA) enable
-rapid iteration on models, quantization strategies, and inference pipelines. This
-keeps the Reasoning Arm adaptable without destabilizing the rest of the system.
-Models can evolve, improve, or be replaced entirely, while the Head continues to
-enforce the same constraints and orchestration logic.
+That is still the whole of what runs. Everything below this line is direction, not
+description — the boundary is decided, the mechanism is being worked out.
 
 In Pepa, intelligence is modular. Control is not.
 
-## Version history
+## Where it goes next: a planner that cannot act
 
-Far shorter than the [Sensory Arm's](/arms/sensory/version-history/), and that is
-itself informative: this arm has changed rarely. It sat out the Apple-STT
-migration, the ChromaDB relocation, and most of the model churn that reshaped
-Sensory across six versions.
+The open question — what does a Reasoning Arm do beyond serving completions — now
+has an answer, and it is narrower than "become an agent."
 
-A caveat on sourcing. Because changes here were recorded as they affected the
-Sensory Arm's escalation tier, most of what is known about this box currently
-lives in *that* history. The entries below are reconstructed from it. Where an
-entry is thin, it is thin because the record is, not because nothing happened.
+**It plans. It never executes.**
 
-### RV2 (current)
+This is plan mode, the shape a coding agent takes when it is asked to think a
+change through before touching anything: read, consider, propose a sequence, hand
+it over. The plan is the deliverable. Someone else decides whether it happens.
 
-*Extended tier serving `qwen3.6-27b-8bit` under rapid-mlx.*
+So far, that is the only capability we could name that is genuinely more than a completion
+and still structurally incapable of acting. It makes "suggests, doesn't decide"
+into something buildable and testable rather than a slogan.
 
-**Host:** Mac Studio M1 Ultra, 64 GB
+**"Never executes" has to be structural, not instructed.** A system prompt telling
+a model not to act is exactly the kind of unexamined trust this project refuses.
+The enforceable version is that the planning process holds no credentials, no write
+tools, and no route to the operations plane. The Beak enforces the boundary; the
+model is not asked to be disciplined about it.
 
-**Serving:** rapid-mlx, OpenAI-compatible endpoint
+A planner does need to know what is possible — the house catalog and the ontology
+it plans against — and it plans under guardrails. **Knowing what can be done,
+without holding the means to do it, is the line.**
 
-**Model:** `qwen3.6-27b-mlx-8bit`, qwen3_coder_xml parser
+## How a planning job works
 
-**What changed:** Escalation/extended-tier model swapped from `gemma-4-26b` to
-`qwen3.6-27b-mlx-8bit` on a recommendation — under evaluation. A
-`wyoming-apple-speech` install is parked on this host but **not in the path**;
-it belongs to the Sensory Arm's STT experiments, not to reasoning.
-Version alignment: as of 2026-08-10 both hosts run rapid-mlx 0.12.7; the earlier
-skew against mmm4 is closed.
+**The Head owns the decision to plan.** Another arm raises a need; the Head judges
+whether it is worth thinking about and submits the job. The Reasoning Arm never
+takes a planning request from a peer directly. That keeps arms consuming each
+other's ledgers rather than each other's internals, and it keeps the judgment where
+the authority already is.
 
-### RV1
+**Planning is asynchronous.** It is not on the voice path and never will be. No
+latency budget means no cheap-triage compromises, and the Sensory hot path is
+untouched by construction.
 
-*Inference backend switched from Ollama to rapid-mlx.*
+**The arm is idle or busy.** Two states — availability, not memory. One job at a
+time, so the Head is the queue, and priority, cancellation and supersession all
+live where authority lives.
 
-**Host:** Mac Studio M1 Ultra, 64 GB
+**A submission carries** the task, the context the caller chose to supply, the
+constraints, a budget, and an authority marker that is always none. The budget is
+the done condition, written before the job starts rather than discovered by a
+planner grinding with nobody waiting on it.
 
-**Serving:** rapid-mlx (replacing Ollama)
+**A result is a plan, or a reasoned refusal.**
 
-**What changed:** Moved to rapid-mlx for backend consistency with mmm4 — the same
-switch applied across both hosts at once, so this arm and the Sensory Arm have
-shared an inference stack since.
+There is no fast "can you do this?" handshake, and this is deliberate. Knowing
+whether a task can be planned usually requires most of the planning — the same way
+an estimate for real work is only honest once you have done enough of the work to
+give one. Splitting it into a cheap pre-check would either lie or charge twice. One
+submission, one run, and the verdict comes back grounded in an actual attempt.
 
-### RV0
+A refusal says which kind it is, because the caller does something different with
+each:
 
-*Ollama on the Mac Studio, serving the escalation tier.*
+- **Not a planning task.** Wrong door.
+- **Missing information** — and it names what to supply. This is the one that pays
+  for the whole arrangement: a failed call comes back as a specification of what
+  the next call should carry.
+- **Nothing available can achieve it.** The request is coherent; the means do not
+  exist. A human has to.
+- **Doctrine forbids it.** Do not ask again, and log it.
+- **Budget exhausted**, with partial work attached. Exceeding the budget is an
+  announced refusal, never a silent hang.
 
-**Host:** Mac Studio M1 Ultra, 64 GB
+**On confidence.** If a plan came back, a feasibility score is redundant — the
+artifact is the evidence. What is worth reporting is confidence *about the plan*:
+what it assumed, where it is unsure, what would invalidate it. A self-reported
+number is self-attestation, not observation. It is a useful routing hint and a
+Goodhart instrument the moment anything downstream treats it as trust. The real
+grounding is a scoreboard kept from the first job onward: of the plans it produced,
+how many a human accepted.
 
-**Serving:** Ollama
+## Crawl, walk, run
 
-**Model:** `gemma-4-26b`
+**Crawl — running today.** Plain completions, served to the Sensory Arm's
+escalation punt. Nothing above changes this; the planner is additive, and the
+inference endpoint keeps its own job.
 
-**What changed:** The original standing-up of the arm as a network-reachable
-inference endpoint for queries the local Sensory model punted on.
+**Walk.** The smallest thing that is a planner: one job in, one plan or one refusal
+out. No house vocabulary, no actuation catalog, a human reads the result. The work
+it plans is the project's own — maintenance, sequencing, recon — where a bad plan
+costs an afternoon rather than a wrong actuation, and where the contract can be
+learned cheaply.
 
-<!--
-  TODO — José to fill in:
-  - Acquisition date of the Mac Studio; whether it ran anything before Pepa.
-  - Whether RV0 is really the beginning, or whether there was an earlier
-    pre-Ollama state worth an RV-minus-one.
-  - The versioning scheme itself (RV0/RV1/RV2) is a placeholder invented here to
-    avoid colliding with PepaV0-V6, which numbers the whole system by way of the
-    Sensory Arm. If a different scheme is wanted, rename before this page goes
-    live — per CONVENTIONS.md the URL is permanent once published, but heading
-    anchors are cheap to change while draft.
-  - Any Reasoning-side changes not visible in the Sensory history.
--->
+**Run.** The house. Catalog, ontology, guardrails, and a plan an executor could
+act on.
 
 ## Open questions
 
-- **What does a Reasoning Arm actually do beyond serving completions?** Unanswered
-  by design rather than by neglect. The current shape is a floor, not a target.
-- **Who calls it?** Today, only the Sensory Arm's escalation path. The intended
-  caller — the Head — does not exist yet.
-- **Does it need state?** Serving completions is stateless. Whether reasoning
-  worth the name requires memory of its own, or should stay stateless and read
-  from the Memory Arm, is undecided.
-- **Strix Halo and the x86 unified-memory path** — watched, not evaluated. No
-  recon has been run.
+- **What is a plan, structurally?** The artifact has to be something a human can
+  follow, a future executor could act on, and a validator can check. This is the
+  question that decides whether any of this is useful or merely tidy.
+- **Read-only tools, or fully context-fed?** Coding agents plan well because they
+  read. Reading is also how content reaches a model — a planner that fetches its
+  own context reopens the injection surface that a pure function closes. Current
+  leaning is read-only tools plus the catalog and ontology. Either way, the
+  requested task and its constraints must travel separately from the content
+  payload, so that nothing inside the content can change the verb.
+- **Who calls it?** The Head owns the decision, and the Head does not exist. Today
+  the only live caller is the Sensory Arm's punt. The contract has to serve both
+  without changing shape.
+- **Does it need state?** Mostly answered: idle/busy is availability, working state
+  lives only for the duration of a job, and memory belongs to the Memory Arm. Still
+  open — whether the arm holds a finished plan until it is collected, or hands it
+  back and forgets. Holding it is retention with a policy attached; handing it back
+  leaves the artifact with the Head, which is cleaner.
+- **What does the Head do when the arm is busy?** Hold, refuse, or preempt. And
+  "no answer" must be its own outcome, distinguishable from busy — silence is not a
+  status.
