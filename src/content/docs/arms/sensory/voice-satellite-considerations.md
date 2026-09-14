@@ -7,7 +7,7 @@ sidebar:
   badge:
     text: New
     variant: tip
-draft: true
+draft: false
 ---
 <p>
   <span class="a4a-badge ai-generated">AI Generated</span> &nbsp;
