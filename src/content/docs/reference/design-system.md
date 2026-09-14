@@ -5,9 +5,6 @@ template: doc
 sidebar:
   label: Design System
   order: 99
-  badge:
-    text: New
-    variant: tip
 draft: false
 ---
 

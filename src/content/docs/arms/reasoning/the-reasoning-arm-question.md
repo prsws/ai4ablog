@@ -4,11 +4,7 @@ description: Reasoning as a bounded, replaceable capability — the argument for
 template: doc
 sidebar:
   label: The Reasoning Arm?
-  order: 1
-  badge:
-    text: New
-    variant: tip
-
+  order: 0
 draft: false
 ---
 <span class="a4a-badge ai-generated">AI Generated</span>

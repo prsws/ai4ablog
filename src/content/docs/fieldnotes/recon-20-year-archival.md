@@ -3,9 +3,6 @@ title: Recon — Digital Preservation for the 20-Year Horizon (LoC + NDSA)
 description: Recon pass on the question of ground truth that outlives its own technology.
 sidebar:
   label: Recon- 20 Year Archival
-  badge:
-    text: New
-    variant: tip
 draft: false
 ---
 

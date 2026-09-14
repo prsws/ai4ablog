@@ -5,9 +5,6 @@ template: doc
 sidebar:
   label: Governance
   order: 0
-  badge:
-    text: New
-    variant: tip
 draft: false
 ---
 

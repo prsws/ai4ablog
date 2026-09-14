@@ -5,9 +5,6 @@ template: doc
 sidebar:
   label: Introduction
   order: 0
-  badge:
-    text: New
-    variant: tip
 draft: false
 ---
 

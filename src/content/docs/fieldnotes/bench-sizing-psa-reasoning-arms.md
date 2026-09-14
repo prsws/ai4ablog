@@ -3,9 +3,6 @@ title: Pepa Bench Notes - Sizing the Sensory and Reasoning Arms
 description: A working session comparing model architecture, hardware tier, and the small-model roadmap for Pepa.
 sidebar:
   label: Bench- Pepa Arm LLM Sizing
-  badge:
-    text: New
-    variant: tip
 draft: false
 ---
 

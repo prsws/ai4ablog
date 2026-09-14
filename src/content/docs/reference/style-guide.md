@@ -5,9 +5,6 @@ template: doc
 sidebar:
   label: Style Guide
   order: 98
-  badge:
-    text: New
-    variant: tip
 draft: false
 ---
 

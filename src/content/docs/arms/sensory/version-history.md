@@ -4,10 +4,6 @@ description: How Pepa's Sensory Arm evolved — the voice and Home Assistant int
 template: doc
 sidebar:
   label: Version History
-  order: 1
-  badge:
-    text: New
-    variant: tip
 draft: false
 ---
 <p>

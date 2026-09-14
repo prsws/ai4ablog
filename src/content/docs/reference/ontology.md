@@ -5,9 +5,6 @@ date: 2026-09-05
 tags: ["architecture", "memory", "ontology", "neurosymbolic"]
 sidebar:
   label: Ontology
-  badge:
-    text: New
-    variant: tip
 draft: false
 ---
 

@@ -5,9 +5,6 @@ template: doc
 sidebar:
   label: Memory Scheme Roster
   order: 1
-  badge:
-    text: New
-    variant: tip
 draft: false
 ---
 <p>

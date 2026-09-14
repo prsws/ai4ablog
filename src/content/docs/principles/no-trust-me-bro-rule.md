@@ -4,10 +4,6 @@ description: Every component must be explainable, reproducible, and traceable. U
 template: doc
 sidebar:
   label: No "Trust-Me-Bro" Rule
-  order: 1
-  badge:
-    text: New
-    variant: tip
 draft: false
 ---
 <span class="a4a-badge ai-generated">AI Generated</span> &nbsp;

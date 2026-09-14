@@ -5,10 +5,6 @@ template: doc
 version: "0.21"
 sidebar:
   label: Synthetic Fixtures
-  order: 1
-  badge:
-    text: New
-    variant: tip
 draft: false
 ---
 <p>

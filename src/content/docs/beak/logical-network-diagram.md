@@ -5,9 +5,6 @@ template: doc
 sidebar:
   label: Logical Network Diagram
   order: 1
-  badge:
-    text: New
-    variant: tip
 draft: false
 ---
 

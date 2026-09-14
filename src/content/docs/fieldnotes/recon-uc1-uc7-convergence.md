@@ -4,9 +4,6 @@ description: Written when the question shifted from "who do we talk to" back to 
 template: doc
 sidebar:
   label: Recon- UC1/UC7 Convergence
-  badge:
-    text: New
-    variant: tip
 draft: false
 ---
 <p>
