@@ -1,9 +1,9 @@
 ---
-title: The Reasoning Arm?
+title: The Reasoning Arm
 description: Reasoning as a bounded, replaceable capability — the argument for why control never moves here, and an honest account of how little is actually built.
 template: doc
 sidebar:
-  label: The Reasoning Arm?
+  label: The Reasoning Arm
   order: 0
 draft: false
 ---
@@ -42,7 +42,7 @@ were doing more, that would be the failure this design exists to avoid.
 The real gap is not in the arm. It is that **the caller doesn't exist yet.**
 "Reasoning as a Service" presumes a Head that requests reasoning, and the LangGraph
 Head is unbuilt. Today the Mac Studio is reached by the Sensory Arm's escalation
-path — a punt from the local model when it judges a query beyond itself — rather
+path — a punt from the local model when it <u>judges</u> a query beyond its Home Assistant domain mandate — rather
 than by an orchestrator asking for cognition. The service half is real. The
 architectural half is waiting on the cognition plane.
 
