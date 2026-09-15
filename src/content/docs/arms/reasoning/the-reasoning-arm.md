@@ -42,7 +42,7 @@ were doing more, that would be the failure this design exists to avoid.
 The real gap is not in the arm. It is that **the caller doesn't exist yet.**
 "Reasoning as a Service" presumes a Head that requests reasoning, and the LangGraph
 Head is unbuilt. Today the Mac Studio is reached by the Sensory Arm's escalation
-path — a punt from the local model when it <u>judges</u> a query beyond its Home Assistant domain mandate — rather
+path — a punt from the local model when it _judges_ a query beyond its Home Assistant domain mandate — rather
 than by an orchestrator asking for cognition. The service half is real. The
 architectural half is waiting on the cognition plane.
 
@@ -76,7 +76,7 @@ A planner does need to know what is possible — the house catalog and the ontol
 it plans against — and it plans under guardrails. **Knowing what can be done,
 without holding the means to do it, is the line.**
 
-### 2. Research
+### 2. Research. It reports, never asserts.
 
 The second mode. Investigate a supplied question against available sources and produce a report.
 Structurally this is the same machine: read, consider, emit an artifact, and let
@@ -227,3 +227,6 @@ act on.
 - **What does the Head do when the arm is busy?** Hold, refuse, or preempt. And
   "no answer" must be its own outcome, distinguishable from busy — silence is not a
   status.
+- **Research against what sources?** Memory and Knowledge is one posture; the internet
+  is an entirely different one, and closer to a Plan-Z (escape hatch) decision than a capability decision.
+  The read-only-tools question covers the planner's context, not research's reach.
