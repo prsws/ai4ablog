@@ -51,20 +51,20 @@ description — the boundary is decided, the mechanism is being worked out.
 
 In Pepa, intelligence is modular. Control is not.
 
-## Where it goes next: a planner that cannot act
+## Where it goes next: a thinker that cannot act
 
 The open question — what does a Reasoning Arm do beyond serving completions — now
-has an answer, and it is narrower than "become an agent."
+has answers, and they're narrower than "become an agent."
 
-**It plans. It never executes.**
+### 1. It plans. It never executes.
 
 This is plan mode, the shape a coding agent takes when it is asked to think a
 change through before touching anything: read, consider, propose a sequence, hand
 it over. The plan is the deliverable. Someone else decides whether it happens.
 
-So far, that is the only capability we could name that is genuinely more than a completion
-and still structurally incapable of acting. It makes "suggests, doesn't decide"
-into something buildable and testable rather than a slogan.
+This capability is one we could name that is genuinely more than a
+completion and still structurally incapable of acting. It makes "suggests, doesn't
+decide" into something buildable and testable rather than a slogan.
 
 **"Never executes" has to be structural, not instructed.** A system prompt telling
 a model not to act is exactly the kind of unexamined trust this project refuses.
@@ -75,6 +75,32 @@ model is not asked to be disciplined about it.
 A planner does need to know what is possible — the house catalog and the ontology
 it plans against — and it plans under guardrails. **Knowing what can be done,
 without holding the means to do it, is the line.**
+
+### 2. Research
+
+The second mode. Investigate a supplied question against available sources and produce a report.
+Structurally this is the same machine: read, consider, emit an artifact, and let
+someone else decide what it is worth. There is no write path in it either.
+
+It may not need to be a second machine at all. The job envelope is identical — same
+submission, same budget, same idle/busy, same refusal kinds, and the
+missing-information refusal fits research even better than it fits planning. What
+differs is the deliverable, not the loop. A plan is a proposed sequence of future
+actions and needs an executor; a report is a claim about how things are and needs a
+reader. If that holds, the arm's real capability is **bounded investigation with a
+typed deliverable**, and plan and report are two output types rather than two
+subsystems.
+
+Research carries one hazard planning does not. A plan is inert and announces itself
+as a proposal. A report reads as fact, and left alone it drifts toward the Knowledge
+Arm — which exists to hold what Pepa can *cite*, meaning material somebody else
+authored. A report written by a model is not externally authored. It is
+interpretation wearing a citation's clothes, and letting it settle into the citable
+store is how the one deliberately clean substrate gets contaminated.
+
+So: **a report is an artifact about sources, never a source.** Provenance on every
+claim, and if it enters any store it enters as interpretation, marked inferred.
+
 
 ## How a planning job works
 
@@ -126,11 +152,44 @@ Goodhart instrument the moment anything downstream treats it as trust. The real
 grounding is a scoreboard kept from the first job onward: of the plans it produced,
 how many a human accepted.
 
+## The elephant in the room: why conversation is a different arm
+
+A third capability suggests itself and is deliberately not taken here: conversation.
+
+It fails every property the sections above just settled. Conversation is
+synchronous, stateful across turns, user-facing and latency-bound. Planning/research is
+asynchronous, scratch-state-only, Head-facing and unhurried. Nothing in the
+Reasoning Arm's contract survives the addition.
+
+It does not belong to the Sensory Arm either. PSA is bound to its Home Assistant
+domain mandate, and the ReAct loop it inherits has exactly three tools: `ha_query`,
+`ha_control`, and `call_external_llm`, which points to the OpenAI compatible endpoint in the same Mac Studio.
+Two of those act on the house. The third is the escape hatch for everything that is not the house.
+
+Which means conversation is already happening, and it is happening unowned. The
+punt *is* the conversation capability today — open-ended talk leaking out of an arm
+correctly refusing to handle it, landing on the nearest box with a model on it.
+Much of the traffic arriving at the Reasoning Arm's endpoint is therefore not a
+reasoning request at all.
+
+Naming it as its own arm cleans up two things at once. Conversation gets the
+guardrails its position demands: it is the only arm a human addresses in open-ended
+language, which makes it simultaneously the widest prompt-injection surface and the
+easiest place for content to impersonate authority. It gets no actuation tools — an
+arm that can touch the house is PSA with a worse mandate. It reads memory and never
+writes it directly, because a chat that writes beliefs is the 68 °F incident with a
+friendlier interface. And the pre-speech check bites hardest here, since this is the
+arm most likely to be overheard, transcribed or forwarded.
+
+And when it exists, the punt retargets to it, and the Reasoning Arm's caller
+question resolves to a single answer: the Head.
+
 ## Crawl, walk, run
 
 **Crawl — running today.** Plain completions, served to the Sensory Arm's
 escalation punt. Nothing above changes this; the planner is additive, and the
-inference endpoint keeps its own job.
+inference endpoint keeps its own job. Worth stating plainly: _that endpoint is currently doing two unrelated jobs (general inference and conversation), and one
+of them belongs to an arm that does not exist yet._
 
 **Walk.** The smallest thing that is a planner: one job in, one plan or one refusal
 out. No house vocabulary, no actuation catalog, a human reads the result. The work
@@ -153,8 +212,13 @@ act on.
   requested task and its constraints must travel separately from the content
   payload, so that nothing inside the content can change the verb.
 - **Who calls it?** The Head owns the decision, and the Head does not exist. Today
-  the only live caller is the Sensory Arm's punt. The contract has to serve both
-  without changing shape.
+  the only live caller is the Sensory Arm's punt — and much of what arrives that way
+  is conversation rather than reasoning. The contract has to serve both until a
+  Conversation Arm takes the second half.
+- **Is research the same machine as planning?** One job envelope with two output
+  types, or two capabilities with separate prompts and separate frozen prefixes. On
+  one box, the second costs real throughput. Undecided, and worth testing before
+  committing.
 - **Does it need state?** Mostly answered: idle/busy is availability, working state
   lives only for the duration of a job, and memory belongs to the Memory Arm. Still
   open — whether the arm holds a finished plan until it is collected, or hands it
