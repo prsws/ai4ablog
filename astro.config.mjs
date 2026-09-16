@@ -83,6 +83,7 @@ export default defineConfig({
                     { label: 'Manifesto', slug: 'general/manifesto' },
                     { label: 'Use Cases', slug: 'general/usecases' },
                     { label: 'A Holistic View', slug: 'general/holisticview' },
+                    { label: 'AI in Medicine and Pepa', slug: 'general/ai-in-medicine-and-pepa' },
                     { label: '5min PowerPoint', slug: 'general/5minpowerpoint' },
                     { label: 'TL;DR Build your 1st Pepa', slug: 'guides/buildyour1stpepa' },
                 ],
