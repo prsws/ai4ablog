@@ -2,6 +2,7 @@
 title: A Holistic View
 description: An outside read of Pepa's architecture and purpose — what the design gets right and where it is still unproven.
 template: doc
+tableOfContents: false
 sidebar:
   label: A Holistic View
 draft: false
