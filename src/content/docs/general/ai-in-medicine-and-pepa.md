@@ -77,7 +77,7 @@ I am 66. I am building a system called Pepa in my own house, and I am its only
 test subject.
 
 Pepa does not diagnose. It does not prescribe. It does not detect falls or call
-for help. The language model inside it is never permitted to control anything that
+for help recklessly. The language model inside it is never permitted to control anything that
 touches a person's safety â€” that separation is deliberate, enforced, and
 documented, and it is the single most important design decision in the project.
 
@@ -88,20 +88,20 @@ and sends nothing to anyone's servers. It is free and open source under the MIT
 license, and anyone can read it, copy it, or tell me what I have wrong.
 
 That is a less exciting story than an AI that practices medicine. It is also the
-part that has to exist first, and the part nobody will fund, because a record
+part that has to exist first, and the part nobody will fund, because a data record
 compounds slowly and demos badly.
 
 ## The distinction worth defending
 
-There is an enormous difference between AI-assisted and AI-controlled, and the
+We think there's a big difference between AI-assisted and AI-controlled, and the
 current conversation keeps collapsing it.
 
-Assisted means a person, or their physician, or their family, holds the authority
+For us, Assisted means a person, or their physician, or their family, holds the authority
 and the record, and uses a model to see further into it than they could unaided.
 That is what happened to Morgan Gleason. A human being brought sixteen years of
 evidence and asked a question.
 
-Controlled means the model holds the authority. Different thing. Different failure
+Controlled, however, means to us the model holds the authority. Different thing. Different failure
 modes. Different consequences when it is wrong, and it will sometimes be wrong.
 
 I have a personal reason for caring about which one we build. My father was given
@@ -109,7 +109,7 @@ an antipsychotic in a nursing home, off-label, for a dementia-related behavior â
 a use that carries an FDA boxed warning about increased mortality in exactly his
 population. Nobody consulted me. I found out months after he died, from a pharmacy
 bill. The failure there was not a lack of intelligence in the system. It was a
-record his family did not hold and an authority his family did not have.
+health record his family did not hold and an authority his family did not have.
 
 An AI that prescribes would not have prevented that. An AI that prescribes faster
 would have made it worse. What would have helped is the thing nobody is building:
@@ -117,7 +117,7 @@ a record the family keeps, that shows a new drug appearing the day it appears.
 
 ## Start the record
 
-If you take one thing from this: the useful moment to begin is now, while the
+If you take one thing from this: the useful moment to begin is **now**, while the
 person whose record it is can still narrate it. Not after the fall. Not after the
 diagnosis. Now, when it seems unnecessary.
 

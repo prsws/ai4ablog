@@ -4,7 +4,6 @@ description: Why ai4aging.org looks the way it does — the Ocean palette, the t
 template: doc
 sidebar:
   label: Design System
-  order: 99
 draft: false
 ---
 
