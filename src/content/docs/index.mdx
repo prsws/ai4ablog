@@ -22,6 +22,31 @@ hero:
       link: ./blog/
       icon: seti:info
       variant: minimal
+head:
+  - tag: script
+    attrs:
+      type: application/ld+json
+    content: |
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://ai4aging.org/#website",
+            "url": "https://ai4aging.org/",
+            "name": "AI4Aging.org",
+            "description": "Pepa is a self-hosted, no-cloud system that helps an older adult stay in their own home. Architecture, field notes, and working code. Free and open source.",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://ai4aging.org/general/aboutjose/#jose" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://ai4aging.org/general/aboutjose/#jose",
+            "name": "José F. Reyes-Santana",
+            "url": "https://ai4aging.org/general/aboutjose/"
+          }
+       ]
+      }
 ---
 
 import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';

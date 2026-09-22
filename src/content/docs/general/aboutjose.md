@@ -5,6 +5,29 @@ template: doc
 sidebar:
   label: About José
 draft: false
+head:
+  - tag: script
+    attrs:
+      type: application/ld+json
+    content: |
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://ai4aging.org/general/aboutjose/#jose",
+        "name": "José F. Reyes-Santana",
+        "url": "https://ai4aging.org/general/aboutjose/",
+        "jobTitle": "Senior Systems Analyst",
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Georgia Institute of Technology"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/jose-f-reyes-santana",
+          "https://github.com/prsws",
+          "https://www.youtube.com/@AI4Aging",
+          "https://prswservices.com"
+        ]
+      }
 ---
 Mr. José F. Reyes-Santana graduated with a Bachelor of Electrical Engineering degree (with Honors and a minor in Computer Engineering) from Georgia Tech in 1982. He started his career in Silicon Valley working in military R&D with voice controlled autonomous armored combat vehicles funded by DARPA. (Sound familiar?)
 
