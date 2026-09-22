@@ -2,6 +2,7 @@
 title: AI4Aging.org
 description: Pepa is a self-hosted, no-cloud system that helps an older adult stay in their own home. Architecture, field notes, and working code. Free and open source.
 #template: splash
+tableOfContents: false
 hero:
   title: AI4Aging.org
   tagline: Home of Pepa — a self-hosted, octopus-inspired, cognitive infrastructure *blueprint* to help the elderly preserve memory, organize knowledge, and maintain agency through deterministic AI-assisted systems. <br/> <br/>  <small><em>Field notes from building an aging-in-place system in my own house, before I need it. <a href="/general/ai-in-medicine-and-pepa/">You'll need one too.</a><em></small>
@@ -23,10 +24,20 @@ hero:
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 <CardGrid stagger>
-	<Card title="News" icon="comment-alt">
-		Issue 20260916
-	</Card>
+    <Card title="News" icon="comment-alt">
+        Issue 20260922
+    </Card>
+    <LinkCard
+        title="Lend your voice: &quot;Oye Pepa!&quot;"
+        href="/general/oyepepa-en/"
+        description="One minute, one phone recording. Help train the wake word of an open-source voice assistant for older adults."
+    />
+    <LinkCard
+        title="Presta tu voz: &quot;Oye Pepa!&quot;"
+        href="/general/oyepepa-es/"
+        description="Un minuto y el teléfono. Ayuda a entrenar el wake word de un asistente de voz open source para adultos mayores."
+    />
 </CardGrid>

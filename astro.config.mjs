@@ -6,6 +6,7 @@ import starlightScrollToTop from 'starlight-scroll-to-top';
 import starlightPageActions from "starlight-page-actions";
 import starlightBlog from 'starlight-blog';
 import rehypeExternalLinks from 'rehype-external-links';
+import archify from 'astro-archify';
 
 import mdx from '@astrojs/mdx';
 
@@ -20,7 +21,9 @@ export default defineConfig({
         provider: fontProviders.fontsource(),
       },
     ],
-    integrations: [starlight({
+    integrations: [
+        archify(),
+        starlight({
 		    plugins: [
                 starlightBlog({
                   title: 'News',
