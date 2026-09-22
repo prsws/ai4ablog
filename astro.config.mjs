@@ -74,6 +74,12 @@ export default defineConfig({
         },
         description: "Home of Pepa — a self-hosted, octopus-inspired, cognitive infrastructure blueprint to help the elderly preserve memory, organize knowledge, and maintain agency through deterministic AI-assisted systems.",
         favicon: "./src/assets/Pepa_Logo_V0_NoBG.png",
+        head: [
+            { tag: 'meta', attrs: { property: 'og:image', content: 'https://ai4aging.org/og.png' } },
+            { tag: 'meta', attrs: { property: 'og:image:width', content: '1200' } },
+            { tag: 'meta', attrs: { property: 'og:image:height', content: '630' } },
+            { tag: 'meta', attrs: { property: 'og:image:alt', content: 'The Pepa octopus mark beside the words AI4Aging.org — home of Pepa, a self-hosted blueprint for aging in place' } },
+        ],
         social: [
           { icon: 'email', label: 'Email', href: 'mailto:editor@ai4aging.org' },
           { icon: 'github', label: 'GitHub', href: 'https://github.com/prsws/ai4ablog' },
