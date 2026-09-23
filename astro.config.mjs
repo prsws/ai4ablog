@@ -82,7 +82,9 @@ export default defineConfig({
         ],
         social: [
           { icon: 'email', label: 'Email', href: 'mailto:editor@ai4aging.org' },
-          { icon: 'github', label: 'GitHub', href: 'https://github.com/prsws/ai4ablog' },
+          { icon: 'github', label: 'GitHub', href: 'https://github.com/prsws/pepa-sensory-arm' },
+          { icon: 'youtube', label: 'YouTube', href: 'https://www.youtube.com/@AI4Aging' },
+        ],
         ],
         sidebar: [
             {
