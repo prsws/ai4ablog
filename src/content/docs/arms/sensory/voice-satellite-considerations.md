@@ -1,6 +1,6 @@
 ---
 title: Voice Satellite Considerations
-description: How Pepa handles voice satellites
+description: What it takes to put a Pepa voice satellite in a room — wake word, microphone, hardware constraints, and the trade-offs found by building them.
 template: doc
 sidebar:
   label: Voice Satellite Considerations

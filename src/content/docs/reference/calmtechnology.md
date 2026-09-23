@@ -1,6 +1,6 @@
 ---
 title: Calm Technology
-description: Calm Technology Concepts
+description: Weiser, Brown, and Case's Calm Technology applied to eldercare — why ambient signals beat alarms, and why the house must still work when the system fails.
 template: doc
 topic: reference
 draft: false

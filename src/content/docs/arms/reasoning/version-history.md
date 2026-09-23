@@ -1,9 +1,9 @@
 ---
-title: Reasoning Arm Version History
+title: Pepa Reasoning Arm Version History
 description: How Pepa's Reasoning Arm is evolving
 template: doc
 sidebar:
-  label: Version History
+  label: PRA Version History
 draft: false
 ---
 <p>
