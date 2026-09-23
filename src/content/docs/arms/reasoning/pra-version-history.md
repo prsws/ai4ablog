@@ -13,7 +13,7 @@ draft: false
 
 This is a record of Pepa deployments. Currently under construction, more structure and details will follow.
 
-Far shorter than the [Sensory Arm's](/arms/sensory/pra-version-history/), and that is
+Far shorter than the [Sensory Arm's](/arms/sensory/psa-version-history/), and that is
 itself informative: this arm has changed rarely. It sat out the Apple-STT
 migration, the ChromaDB relocation, and most of the model churn that reshaped
 Sensory across six versions.
