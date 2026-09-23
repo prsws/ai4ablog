@@ -85,7 +85,6 @@ export default defineConfig({
           { icon: 'github', label: 'GitHub', href: 'https://github.com/prsws/pepa-sensory-arm' },
           { icon: 'youtube', label: 'YouTube', href: 'https://www.youtube.com/@AI4Aging' },
         ],
-        ],
         sidebar: [
             {
                 label: 'Start Here',
