@@ -7,6 +7,7 @@ import starlightPageActions from "starlight-page-actions";
 import starlightBlog from 'starlight-blog';
 import rehypeExternalLinks from 'rehype-external-links';
 import archify from 'astro-archify';
+import sitemap from '@astrojs/sitemap';
 
 import mdx from '@astrojs/mdx';
 
@@ -22,6 +23,7 @@ export default defineConfig({
       },
     ],
     integrations: [
+        sitemap({ filter: (page) => !page.endsWith('.md') }),
         archify(),
         starlight({
 		    plugins: [
