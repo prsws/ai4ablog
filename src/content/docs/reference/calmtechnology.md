@@ -1,12 +1,14 @@
 ---
 title: Calm Technology
-description: .
+description: Weiser, Brown, and Case's Calm Technology applied to eldercare — why ambient signals beat alarms, and why the house must still work when the system fails.
 template: doc
 topic: reference
+draft: false
 ---
-import { Badge } from '@astrojs/starlight/components';
 
-<Badge text="AI Generated" variant="caution"/>
+<p>
+    <span class="a4a-badge ai-generated">AI Generated</span>
+</p>
 
 Technology in this space shouldn't feel like a clinical surveillance system; it should feel like an extension of a person’s agency. If we just solve for "safety" without solving for **dignity**, we’ve basically built a high-tech nursery for adults—and that’s exactly what the Manifesto is trying to avoid.
 

@@ -1,30 +1,72 @@
 ---
 title: AI4Aging.org
-description: Home of Pepa
+description: Pepa is a self-hosted, no-cloud system that helps an older adult stay in their own home. Architecture, field notes, and working code. Free and open source.
 #template: splash
+tableOfContents: false
 hero:
-  tagline: Home of Pepa — a self-hosted, octopus-inspired, cognitive infrastructure *blueprint* to help the elderly preserve memory, organize knowledge, and maintain agency through deterministic AI-assisted systems.
+  title: AI4Aging.org
+  tagline: Home of Pepa — a self-hosted, octopus-inspired, cognitive infrastructure *blueprint* to help the elderly preserve memory, organize knowledge, and maintain agency through deterministic AI-assisted systems. <br/> <br/>  <small><em>Field notes from building an aging-in-place system in my own house, before I need it. <a href="/general/ai-in-medicine-and-pepa/">You'll need one too.</a><em></small>
   image:
-    file: ../../assets/Pepa_Logo_v0_NoBG.png
+    file: ../../assets/Pepa_Logo_V0_NoBG.png
     alt: Pepa Logo
   actions:
-    - text: Read the Manifesto
-      link: /general/manifesto
+    - text: Why? Read the Manifesto
+      link: ./general/manifesto/
       icon: document
       variant: minimal
-    - text: How will Pepa work?
-      link: /general/usecases
+    - text: What for? Use Cases
+      link: ./general/usecases/
       icon: information
       variant: minimal
-    - text: This site is under construction, stay tuned!
-      link: "#"
+    - text: What's up? Read the News
+      link: ./blog/
+      icon: seti:info
       variant: minimal
+head:
+  - tag: meta
+    attrs:
+      property: og:type
+      content: website
+  - tag: script
+    attrs:
+      type: application/ld+json
+    content: |
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://ai4aging.org/#website",
+            "url": "https://ai4aging.org/",
+            "name": "AI4Aging.org",
+            "description": "Pepa is a self-hosted, no-cloud system that helps an older adult stay in their own home. Architecture, field notes, and working code. Free and open source.",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://ai4aging.org/general/aboutjose/#jose" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://ai4aging.org/general/aboutjose/#jose",
+            "name": "José F. Reyes-Santana",
+            "url": "https://ai4aging.org/general/aboutjose/"
+          }
+       ]
+      }
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 <CardGrid stagger>
-	<Card title="News" icon="comment-alt">
-		Latest update 20-Mar-2026
-	</Card>
+    <Card title="News" icon="comment-alt">
+        Issue 20260922
+    </Card>
+    <LinkCard
+        title="Lend your voice: &quot;Oye Pepa!&quot;"
+        href="/general/oyepepa-en/"
+        description="One minute, one phone recording. Help train the wake word of an open-source voice assistant for older adults."
+    />
+    <LinkCard
+        title="Presta tu voz: &quot;Oye Pepa!&quot;"
+        href="/general/oyepepa-es/"
+        description="Un minuto y el teléfono. Ayuda a entrenar el wake word de un asistente de voz open source para adultos mayores."
+    />
 </CardGrid>

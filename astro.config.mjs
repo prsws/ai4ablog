@@ -1,0 +1,166 @@
+// @ts-check
+import { defineConfig, fontProviders } from 'astro/config';
+import starlight from '@astrojs/starlight';
+import starlightUiTweaks from 'starlight-ui-tweaks';
+import starlightScrollToTop from 'starlight-scroll-to-top';
+import starlightPageActions from "starlight-page-actions";
+import starlightBlog from 'starlight-blog';
+import rehypeExternalLinks from 'rehype-external-links';
+import archify from 'astro-archify';
+import sitemap from '@astrojs/sitemap';
+
+import mdx from '@astrojs/mdx';
+
+// https://astro.build/config
+export default defineConfig({
+    site: 'https://ai4aging.org',
+    base: '/',
+    fonts: [
+      {
+        name: 'Roboto',
+        cssVariable: '--font-roboto',
+        provider: fontProviders.fontsource(),
+      },
+    ],
+    integrations: [
+        sitemap({ filter: (page) => !page.endsWith('.md') }),
+        archify(),
+        starlight({
+		    plugins: [
+                starlightBlog({
+                  title: 'News',
+                  postCount: 5,              // posts per listing page
+                  recentPostCount: 5,        // sidebar recent list
+                }),
+		        starlightUiTweaks({
+		          footer: {
+		            showSocialIcons: true,
+		            copyright: "José F. Reyes-Santana. All rights reserved.",
+		            firstColumn: {
+		              title: "Legal",
+		              links: [
+		                { label: "Terms of Use", href: "/general/termsofuse" },
+		                { label: "Privacy Policy", href: "/general/privacypolicy"},
+		              ],
+		            },
+		            secondColumn: {
+		              title: "",
+		              links: [
+		                { label: "", href: "#" },
+		              ],
+		            },
+		            thirdColumn: {
+		              title: "",
+		              links: [
+		                { label: "", href: "#" },
+		              ],
+		            },
+		            fourthColumn: {
+		              title: "",
+		              links: [
+		                { label: "", href: "#" },
+		              ],
+		            },
+		          },
+		        }),
+		        starlightScrollToTop(),
+            starlightPageActions({
+              baseUrl: "https://starlight-page-actions.dlcastillop.com",
+              share: false,
+            }),
+		    ],
+        title: 'AI for Aging',
+        logo: {
+          src: "./src/assets/Pepa_Logo_V0_NoBG.png",
+          replacesTitle: false,
+        },
+        description: "Home of Pepa — a self-hosted, octopus-inspired, cognitive infrastructure blueprint to help the elderly preserve memory, organize knowledge, and maintain agency through deterministic AI-assisted systems.",
+        favicon: "./src/assets/Pepa_Logo_V0_NoBG.png",
+        head: [
+            { tag: 'meta', attrs: { property: 'og:image', content: 'https://ai4aging.org/og.png' } },
+            { tag: 'meta', attrs: { property: 'og:image:width', content: '1200' } },
+            { tag: 'meta', attrs: { property: 'og:image:height', content: '630' } },
+            { tag: 'meta', attrs: { property: 'og:image:alt', content: 'The Pepa octopus mark beside the words AI4Aging.org — home of Pepa, a self-hosted blueprint for aging in place' } },
+        ],
+        social: [
+          { icon: 'email', label: 'Email', href: 'mailto:editor@ai4aging.org' },
+          { icon: 'github', label: 'GitHub', href: 'https://github.com/prsws/pepa-sensory-arm' },
+          { icon: 'youtube', label: 'YouTube', href: 'https://www.youtube.com/@AI4Aging' },
+        ],
+        sidebar: [
+            {
+                label: 'Start Here',
+                collapsed: true,
+                items: [
+                    { label: 'Manifesto', slug: 'general/manifesto' },
+                    { label: 'Use Cases', slug: 'general/usecases' },
+                    { label: 'A Holistic View', slug: 'general/holisticview' },
+                    { label: 'AI in Medicine and Pepa', slug: 'general/ai-in-medicine-and-pepa' },
+                    { label: '5min PowerPoint', slug: 'general/5minpowerpoint' },
+                    { label: 'TL;DR Build your 1st Pepa', slug: 'guides/buildyour1stpepa' },
+                ],
+            },
+            {
+                label: 'Architecture',
+                collapsed: true,
+                items: [
+                    { label: 'Principles', items: [{ autogenerate: { directory: 'principles' }}] },
+                    // { label: 'Head', items: [{ autogenerate: { directory: 'head' }}] },
+                    { label: 'Sensory Arm', items: [{ autogenerate: { directory: 'arms/sensory' }}] },
+                    // { label: 'Knowledge', items: [{ autogenerate: { directory: 'arms/knowledge' }}] },
+                    { label: 'Memory Arm', items: [{ autogenerate: { directory: 'arms/memory' }}] },
+                    { label: 'Reasoning Arm', items: [{ autogenerate: { directory: 'arms/reasoning' }}] },
+                    { label: 'Beak', items: [{ autogenerate: { directory: 'beak' }}] },
+                ],
+            },
+            {
+                label: 'Reference',
+                collapsed: true,
+                items: [{ autogenerate: { directory: 'reference' } }],
+            },
+            {
+                label: 'Field Notes',
+                collapsed: true,
+                items: [{ autogenerate: { directory: 'fieldnotes' } }],
+            },
+            {
+                label: 'Media',
+                collapsed: true,
+                items: [{ autogenerate: { directory: 'media' } }],
+            },
+            {
+                label: 'Legal & Misc',
+                collapsed: true,
+                items: [
+                    { label: 'About José', slug: 'general/aboutjose' },
+                    { label: 'Terms of Use', slug: 'general/termsofuse' },
+                    { label: 'Privacy Policy', slug: 'general/privacypolicy' },
+                ],
+            },
+        ],
+        customCss: ["./src/styles/global.css"],
+		}), mdx()],
+    markdown: {
+        rehypePlugins: [
+            [
+                rehypeExternalLinks,
+                {
+                    target: '_blank',
+                    rel: ['nofollow', 'noopener', 'noreferrer'],
+                    // Ensures any absolute link starting with your domain stays in the same tab
+                    protocols: ['http', 'https'],
+                    test: (node) => {
+                        const href = node.properties?.href;
+                        if (!href) return false;
+
+                        // Skip relative links, anchor links, and your own domain
+                        if (href.startsWith('/') || href.startsWith('#') || href.includes('yourdomain.com')) {
+                            return false;
+                        }
+                        return true;
+                    }
+                }
+            ]
+        ]
+    }
+});

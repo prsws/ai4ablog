@@ -1,6 +1,9 @@
 # AI4Aging.org Documentation
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+[![Version](https://img.shields.io/badge/version-20260320-blue.svg)](https://github.com/prsws/ai4ablog/releases)
+[![Build Status](https://github.com/aradlein/hass-agent-llm/workflows/CI/badge.svg)](https://github.com/prsws/pepa-arm-ha/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A personal documentation site built with Astro and Starlight for organizing and publishing reference material, guides, and topic-based articles.
 
@@ -16,7 +19,7 @@ This site is structured as a documentation hub for curated content and notes, wi
 It uses Astro + Starlight for content-driven publishing with a clean documentation layout.
 
 ## Project Structure
-
+```
 ├── public/
 ├── src/
 │   ├── assets/
@@ -30,7 +33,7 @@ It uses Astro + Starlight for content-driven publishing with a clean documentati
 ├── package-lock.json 
 ├── tsconfig.json 
 └── README.md
-
+```
 ## Content Organization
 
 Content lives primarily in `src/content/docs/` and is grouped by topic. Current structure includes areas such as:
@@ -77,5 +80,4 @@ Do not commit generated or local-only files such as:
 
 ## License
 
-Add a license here if and when the project needs one.
-```
+Refer to the [LICENSE](LICENSE.md).

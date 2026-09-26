@@ -1,22 +1,20 @@
 ---
 title: Terms of Use
-description: So you know...
+description: Terms of use for ai4aging.org.
 template: doc
+lastUpdated: 2026-09-10
+sidebar:
+  label: Terms of Use
+draft: false
 ---
-import { Badge } from '@astrojs/starlight/components';
-
-<table>
-    <tr>
-        <td><Badge text="AI Generated" variant="caution"/></td>
-        <td><Badge text="Human Curated" variant="success"/></td>
-    </tr>
-</table>
-
-*Last updated: March 2026*
+<span class="a4a-badge ai-generated">AI Generated</span> &nbsp;
+<span class="a4a-badge human-curated">Human Curated</span>
 
 ### Nature of This Site
 
 AI4Aging.org is a personal documentation and research project. All content is provided for informational and educational purposes only. Nothing published here constitutes professional medical, legal, or technical advice.
+
+Pepa itself is experimental software. It is **not a medical device, not an alarm or emergency-response system, and not a substitute for professional care, caregivers, or emergency services**. Nothing described on this site — including health-related or wellness-related capabilities — should be relied upon for anyone's health or safety.
 
 ### Use of AI Generated Content
 
@@ -24,16 +22,24 @@ In 2026 it's foolish to expect **not** to use AI-generated content. It's extreme
 Therefore we will label all AI-generated content as such. The following labels are used:
 <table>
     <tr>
-        <td><Badge text="AI Generated" variant="caution"/></td>
+        <td class="a4a-badge ai-generated">AI Generated</td>
         <td>Content was AI generated.</td>
     </tr>
     <tr>
-        <td><Badge text="AI Assisted" variant="caution"/></td>
+        <td class="a4a-badge ai-assisted">AI Assisted</td>
         <td>Human generated content was enhanced with AI assistance.</td>
     </tr>
     <tr>
-        <td><Badge text="Human Curated" variant="caution"/></td>
+        <td class="a4a-badge human-curated">Human Curated</td>
         <td>AI generated content was reviewed and curated by the editor.</td>
+    </tr>
+    <tr>
+        <td class="a4a-badge collaborative-mess">Collaborative Mess</td>
+        <td>A Human and AI both wrote substantive parts. The seams aren't marked. Either or both can contain errors.</td>
+    </tr>
+    <tr>
+        <td>No Badge</td>
+        <td>Purely human generated content, or we missed it somehow.</td>
     </tr>
 </table>
 AI generated content may contain errors. Human curation can mitigate them but is not guaranteed.
@@ -43,6 +49,10 @@ AI generated content may contain errors. Human curation can mitigate them but is
 AI4Aging.org documents a personal project that builds extensively on open source software, publicly available research, and the work of many contributors across the communities it draws from. The author makes no broad intellectual property claims over the architecture, tools, or concepts described here.
 
 Original contributions — such as the overall system design, the Octopus architecture model, and the specific integration decisions documented here — are the work of José F. Reyes-Santana and may be referenced or quoted with attribution. Everything else belongs to its respective creators.
+
+### Code License
+
+Pepa code published by this project is released under the **MIT License** — free to use, copy, modify, and redistribute, for any purpose, with no strings attached beyond keeping the license notice. Each repository carries its own LICENSE file, which governs. Find the code on [GitHub](https://github.com/prsws).
 
 ### No Warranties
 
@@ -62,4 +72,4 @@ These terms may be updated at any time. Continued use of the site constitutes ac
 
 ### Contact
 
-Questions can be directed to the editor via [Email](mailto://editor@ai4aging.org).
+Questions can be directed to the editor via [Email](mailto:editor@ai4aging.org).

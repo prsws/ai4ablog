@@ -1,0 +1,37 @@
+---
+title: Privacy Policy
+description: What ai4aging.org collects, what it doesn't, and why — no analytics, no CDN fonts, no third-party tracking.
+template: doc
+lastUpdated: 2026-09-10
+sidebar:
+  label: Privacy Policy
+draft: false
+---
+<span class="a4a-badge ai-generated">AI Generated</span> &nbsp;
+<span class="a4a-badge human-curated">Human Curated</span>
+
+### What We Collect
+
+AI4Aging.org does not collect personal information from visitors. We do not use tracking pixels, advertising networks, or deep analytics platforms.
+
+To get this site found on the internet we submitted it to Google Search Console and it left a TXT record on our DNS. We don't know what kind of data collection that does and currently have neither the inclination nor the time to find out as we're busy. You are hereby notified that Google will do its thing when you visit this site.
+
+### Hosting
+
+This site is hosted on **GitHub Pages**. Like any web host, GitHub may log visitor information — such as your IP address — for security and operational purposes. Those logs belong to GitHub, are governed by the [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement), and we never see them. We ourselves receive, store, and analyze nothing about your visit.
+
+### Cookies
+
+This site does not use cookies for tracking or analytics. Your browser may cache static assets (images, scripts, fonts) as part of normal web operation. Fonts are bundled with the site itself — nothing is fetched from third-party font services when you visit.
+
+### Third-Party Services
+
+Except for GitHub Pages hosting and the Google Search Console submission described above, no third-party analytics, advertising, or data brokers are integrated.
+
+### Changes
+
+This policy may be updated at any time. Continued use of the site constitutes its acceptance.
+
+### Contact
+
+Questions can be directed to the editor via [Email](mailto:editor@ai4aging.org).
