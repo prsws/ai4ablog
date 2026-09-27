@@ -1,6 +1,6 @@
 ---
 title: Pepa Reasoning Arm Version History
-description: How Pepa's Reasoning Arm is evolving
+description: How Pepa's Reasoning Arm evolved — the escalation tier on the Mac Studio, version by version, with what changed and why.
 template: doc
 sidebar:
   label: PRA Version History
