@@ -88,6 +88,7 @@
     --sl-color-gray-7: #f7fafb;       /* Slate 50 */
     --sl-color-black: #ffffff;        /* page background */
     --sl-color-bg-sidebar: #eef2f4;   /* Slate 100 — left sidebar background */
+    --sl-content-width: 60rem;
 }
 
 
@@ -319,10 +320,3 @@ h1#_top,
     }
 }
 
-/* Right sidebar (table of contents): thinner than the left nav */
-@media (min-width: 72rem) {
-    .right-sidebar,
-    .main-pane {
-        --sl-sidebar-width: auto;   /* Starlight default is 18.75rem (300px) */
-    }
-}
