@@ -133,7 +133,7 @@ The trade is honest: Pepa Fabric wins on everything that matters over 20 years i
 
 **What Pepa gives up**
 
-- **No ontology manager.** There's no visual editor for types and links. José edits text files.
+- **No ontology manager.** There's no visual editor for types and links. José edits text files. (N.B. We'll see about that... - José)
 - **No pipelines or dashboards.** Pepa Fabric validates; it doesn't ingest, transform or chart.
 - **No fine-grained permissions.** It doesn't need them for one or two people, but it couldn't serve a facility as it stands.
 - **No consultants.** José is the forward-deployed engineer, and so is anyone who builds their own Pepa.

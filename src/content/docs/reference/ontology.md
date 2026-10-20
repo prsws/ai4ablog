@@ -133,3 +133,9 @@ If I say *the A/C*, or *el aire*, or *la unidad*, or *the cold thing in the bedr
 An ontology is what lets a machine hold five names for one thing without losing track of which thing it is.
 
 *Bendito*, it's just filing. But it's the filing the next decades rest on.
+
+## Pepa Fabric
+
+This new article describes the next step, check it out!
+
+[Pepa Fabric: Palantir Foundry and Microsoft Fabric, scaled down to one house](/reference/pepa-fabric/)
