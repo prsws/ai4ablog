@@ -38,3 +38,4 @@ pnpm-debug.log*
 *.swp
 *.new
 astro.config.mjs.new
+.opencode/
