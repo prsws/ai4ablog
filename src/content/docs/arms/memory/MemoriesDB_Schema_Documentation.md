@@ -1,14 +1,21 @@
 ---
 title: MemoriesDB
-description: Foundation of the memory schema — how Pepa stores what it believes, with provenance, trust scores, and supersession rather than overwrites.
+description: Deprecated. The MemoriesDB PostgreSQL memory schema, kept as a useful reference.
 template: doc
 topic: memory
 sidebar:
   label: MemoriesDB
+  badge:
+    text: Dep
+    variant: caution
 draft: false
 ---
 <span class="a4a-badge ai-generated">AI Generated</span> &nbsp;
 <span class="a4a-badge human-curated">Human Curated</span>
+
+:::caution[Deprecated]
+This page was deprecated on 24 October 2026. It is kept as a useful reference.
+:::
 
 ## Overview
 
@@ -70,4 +77,3 @@ Not part of the frozen schema, but planned:
 ## References:
 - <a href="https://www.emergentmind.com/topics/memoriesdb" target="_blank">MemoriesDB on EmergentMind</a>
 - <a href="https://gitlab.com/circleclicklabs/ai-lab/memoriesdb" target="_blank">val314159's repo on GitLab</a>
-
