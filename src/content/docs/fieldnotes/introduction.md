@@ -12,6 +12,9 @@ draft: false
   <span class="a4a-badge collaborative-mess">Collaborative Mess</span>
 </p>
 
+> “To acquire knowledge, one must study; but to acquire wisdom, one must observe.”
+> — Marilyn vos Savant
+
 The rest of this site explains what Pepa is and argues for why it is built that
 way. This section is the work underneath: measuring things, evaluating things,
 and writing down what was actually found.
@@ -25,7 +28,9 @@ actually did, not what it was expected to do.
 **Findings** are what gets developed from them: recon reports on external tools
 and frameworks, each carrying a verdict — skip, log, harvest, or adopt.
 
-They are dated and not rewritten. A recon is a snapshot of what was known
+Recon is study: what a tool is said to do. A bench run is observation: what it did here. They are dated and not rewritten.
+
+A recon is a snapshot of what was known
 on the day it was written, and correcting one means striking the error with a
 dated note and appending the correction, not quietly editing the original.
 Where a document contradicts itself across time, that is the record working as
