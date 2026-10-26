@@ -22,13 +22,26 @@ _This is real and working. See pictures at the bottom._
 
 You need a stable home network.
 
-- Internet + WiFi is the minimum
-- A wired network _is strongly recommended_:
-  - min 1Gb/s, 2.5Gb/s preferred - no need for 10G
-  - with VLANs, you'll need them to channel and prioritize traffic. Make sure you have a true L3 hardware router or OPNsense, which we run on a Protectli Vault V1610 (skip coreboot use AMI BIOS) (overkill but got at good price, many 2-NIC i3 mini PC's will do). An L2/quasi-L3 switch alone isn't enough, don't believe the hype. Don't waste time on routers-on-a-stick unless you can't afford better; if so, Raspberry Pi's are good for that.
-- get multi-SSID, SSID-to-VLAN mapping WiFi access points because you will need multiple SSID's (main, guest, IoT, cameras). We run two used Grandstream units (GWN7664 in the hallway, GWN7662 in the laundry), each powered over its ethernet run by a PoE injector and trunked to the backbone switch, broadcasting five SSID's mapped to their VLANs. Before that we made do with used, cheap enterprise gear (Engenius EAP300, Cisco WAP4410N) — still a valid path if the budget is tight, just older security and no PoE conveniences.
-- if you use consumer gear (e.g. WiFi 5/6/7 all-in-ones like a TP-Link Archer in access point mode) then you'll need a small L2 managed switch (e.g. Sodola SL902-SWTGW215AS) to tag it to a VLAN. That's how we started; the dedicated multi-SSID APs replaced it.
-- For IoT devices, rely on WiFi (2.4GHz, on its own VLAN) and Zigbee. Matter/Thread are not mature as of 2026 — don't build your foundation on them yet.
+**Minimum:** Internet + WiFi<br />
+**Recommended:** wired backbone with VLANs
+
+| Layer | Requirement | Our choice | Budget start                                                                            |
+|---|---|---|-----------------------------------------------------------------------------------------|
+| Wired backbone | ≥1 Gb/s; 2.5 Gb/s preferred; 10G not needed | 2.5 Gb/s | 1 Gb/s                                                                                  |
+| Router / firewall | True L3 hardware router, or OPNsense | OPNsense on Protectli Vault V1610 (AMI BIOS, not coreboot) | a) Consumer router, e.g. TP-Link Archer BE6500, or b) any 2-NIC i3 mini PC              |
+| VLANs | Required, for traffic separation and prioritization | Trunked from router to backbone switch | Flat LAN                                                                                |
+| WiFi access points | Multi-SSID with SSID-to-VLAN mapping | 2× Grandstream: GWN7664 (hallway), GWN7662 (laundry), PoE-injected, trunked, 5 SSIDs | a) Consumer router as above, or b) Engenius EAP300, Cisco WAP4410N, etc. for multi-SSID |
+| IoT radios | WiFi 2.4 GHz on its own VLAN, Zigbee, Matter | WiFi through the APs; Sonoff Zigbee dongle; IKEA Dirigera for Matter | WiFi only                                                                               |
+
+**SSIDs:** main, guest, IoT, cameras
+
+**Don't:**
+- Rely on an L2 or quasi-L3 switch alone as the router
+- Use router-on-a-stick unless you can't afford better (a Raspberry Pi is acceptable there _but sadly no longer affordable_)
+
+**Matter/Thread:** seen maturing enough in 2026H2 to take seriously.
+
+_Pepa is infrastructure. If the network is flaky, everything else is noise._
 
 > _Pepa is infrastructure. If the network is flaky, everything else is noise._
 >
