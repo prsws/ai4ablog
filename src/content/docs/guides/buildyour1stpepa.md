@@ -41,8 +41,6 @@ You need a stable home network.
 
 **Matter/Thread:** seen maturing enough in 2026H2 to take seriously.
 
-_Pepa is infrastructure. If the network is flaky, everything else is noise._
-
 > _Pepa is infrastructure. If the network is flaky, everything else is noise._
 >
 
