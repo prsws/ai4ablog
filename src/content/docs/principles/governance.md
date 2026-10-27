@@ -21,7 +21,7 @@ notes; prior text is not silently rewritten.
 
 | Version | Date | What changed |
 |---|---|---|
-| 0.2 | 2026-10-27 | Adds a dated entry on the Sensory Arm boundary and a fourth tier, *Identified, not yet designed*. See [the entry](#entry-02--2026-10-27-the-sensory-boundary) at the end of this page. |
+| 0.2 | 2026-10-27 | Adds a dated entry on the Sensory Arm boundary and a fourth tier, *Identified, not yet designed*, and records wording changes made to v0.1 text. See [the entry](#entry-02--2026-10-27-the-sensory-boundary) at the end of this page. |
 | 0.1 | 2026-09-08 | First publication: what is enforced, what is only declared, what is designed, and three problems not yet solved. |
 
 ## Why this page exists
@@ -244,3 +244,18 @@ have a design; some things only have a name and a reason. Those now say so.
 - **An audit record for physical-world actions:** what started it, which component, which
   rule and mandate, whether it was a reflex or authorized higher up, the result, and any
   failure. Related to the accountability artifact above.
+
+### Wording changes to v0.1 text (2026-10-27)
+
+Some v0.1 text was edited in place on this date, before this rule was applied to it. They
+are recorded here so the change is not silent. No claim moved up a tier.
+
+- **Weakened:** the system "is required to answer *why now?* on demand, and it does" now
+  reads "and it should". The claim is no longer stated as a fact.
+- **Reworded:** the continuity paragraph under *Pepa's inversion* now reads "Continuity
+  to the cloud is a break-glass", and names MCP, A2A and API as the routes.
+- **Added:** under *Enforced in code today*, a sentence on safety-critical entries
+  calling them a pillar of the 20-year memory scheme.
+- **Renamed:** the four tiers are numbered, and "the third column" now reads "the third
+  category".
+- **Softened:** "is not a governance page" now reads "is incomplete".
