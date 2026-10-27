@@ -8,7 +8,7 @@ sidebar:
   badge:
     text: Upd
     variant: caution
-draft: true
+draft: false
 ---
 <span class="a4a-badge ai-assisted">AI Assisted</span>&nbsp;
 
