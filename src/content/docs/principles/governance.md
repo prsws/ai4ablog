@@ -8,7 +8,7 @@ sidebar:
   badge:
     text: Upd
     variant: caution
-draft: true
+draft: false
 ---
 
 <p>
@@ -78,17 +78,17 @@ interpretations, and predictions are separate classes with separate rules. An
 interpretation — including any inference about cognitive change — routes to a human. It
 never reaches an actuator, and no accumulation of confidence changes that.
 
-**Continuity is a break-glass, not a capability dial.** The reach to an outside model
-exists so that caregivers are not left holding a dead box if the operator becomes unable
+**Continuity to the cloud is a break-glass, not a capability dial.** The reach from an outside model
+via MCP/A2A/API exists so that caregivers are not left holding a dead box if the operator becomes unable
 to run or communicate with the system. It is shut in steady state. It is not a way to
 make Pepa smarter as the person gets frailer.
 
 ## What is enforced, what is only declared
 
-Stating principles is cheap. The distinction below is the point of this page, and the
-third column is not an apology — it is the roadmap.
+Stating principles is cheap. The distinct categories below are the point of this page, and the
+third category is not an apology — it is the roadmap.
 
-### Enforced in code today
+### 1. Enforced in code today
 
 - **The operations plane and the cognition plane never cross.** Home Assistant handles
   clock- and probe-triggered deterministic orchestration and never calls a language
@@ -105,13 +105,13 @@ third column is not an apology — it is the roadmap.
   the verbatim utterance travels with it — never a model-composed paraphrase.
   Paraphrase silently drops negation, dosage qualifiers, urgency, and code-switching.
 - **Safety-critical entries never fade.** Medications, allergies, fall history, and
-  emergency protocols are exempt from every decay, salience, and modulation mechanism.
+  emergency protocols are exempt from every decay, salience, and modulation mechanism. **This is a pillar of the 20-year horizon memory scheme**.
 - **Records are append-only.** Corrections are supersession events with dates and
   provenance chains. Nothing is edited in place; nothing is deleted quietly.
 - **Degraded operation announces itself.** Every fallback path raises a visible warning
   or repair notice rather than quietly doing less.
 
-### Declared and binding, but enforced by discipline rather than by code
+### 2. Declared and binding, but enforced by discipline rather than by code
 
 - The five standing directives: no silent action; no inferred intent; no external
   escalation without internal exhaustion; no commerce without explicit approval; and the
@@ -125,9 +125,9 @@ third column is not an apology — it is the roadmap.
   home can be labelled as requiring confirmation before action. The label is published
   and displayed — and at present no code path reads it. Nothing enforces it. It is listed
   here rather than omitted, because a governance page that only lists working controls is
-  not a governance page.
+  incomplete.
 
-### Designed, not yet built
+### 3. Designed, not yet built
 
 - Placement of the policy guardrail layer across the whole sensory path.
 - A single deterministic contract validator, called by both the orchestrator and the
@@ -155,7 +155,7 @@ fairness control, and we should not let it stand in for one. This row is current
 Saying so is the only honest option available.
 
 **Has anyone checked that the explanations are understandable?** The system is required to
-answer *why now?* on demand, and it does. What has never been tested is whether the answer
+answer *why now?* on demand, and it should. What has never been tested is whether the answer
 lands with someone who is not an engineer, is tired, or is frightened. The one person who
 has read those explanations in daily use is the person who wrote them, which is the weakest
 possible test of comprehensibility. An explanation that satisfies its author and confuses
@@ -177,7 +177,7 @@ position to offer.
 
 [The Sensory Arm](/arms/sensory/the-sensory-arm/) now defines itself as the boundary
 between Pepa and the physical world, with two scopes: the house, which perceives, acts
-and speaks, and the human, which only collects. Its decisions are numbered in the
+and speaks, and the human, which only collects telemetry. Its decisions are numbered in the
 [Sensory Arm Decision Register](/arms/sensory/decisions/), cited below by ID. This
 entry places each of them in a tier. Nothing listed in v0.1 moves up a tier by this
 entry.
@@ -218,7 +218,7 @@ have a design; some things only have a name and a reason. Those now say so.
   authority by being kept. Interpretations and predictions keep their link to the
   observations they rest on, never modify them, and gain no authority from repetition or
   confidence.
-- **Health information spoken to Pepa is punted** by the house scope, which only voices
+- **Health information spoken to the Sensory Arm is punted** by the house scope, which only voices
   the reply (D-11).
 - **No cameras.** Pepa does not use cameras until a compelling use case appears. Cameras
   in the house belong to a security plane outside Pepa (D-13).
@@ -232,7 +232,7 @@ have a design; some things only have a name and a reason. Those now say so.
   authorization required for the operation it performs. The guardrail is defined by the
   operation, not by the component that happens to perform it.
 
-### Identified, not yet designed (new tier)
+### 4. Identified, not yet designed (new category)
 
 - **The mandate behind reflexes:** its scope, its expiry, and which house actions always
   require escalation or fresh authorization.
