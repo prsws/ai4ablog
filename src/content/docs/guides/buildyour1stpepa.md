@@ -3,10 +3,13 @@ title: "TL;DR - Build your First Pepa"
 description: Build a minimal working Pepa — the hardware, the software, and the shortest path to something that answers you.
 template: doc
 topic: guides
-lastUpdated: 2026-09-10
+lastUpdated: 2026-10-27
 sidebar:
   label: Privacy Policy
-draft: false
+  badge:
+    text: Upd
+    variant: caution
+draft: true
 ---
 <span class="a4a-badge ai-assisted">AI Assisted</span>&nbsp;
 
@@ -73,7 +76,7 @@ To make the sensory arm semi autonomous, install the Home Agent app (formerly ca
 
 _**What we run now:**_ Our development version of Home Agent is called "Pepa Sensory Arm" and points at a small local model (Gemma-class, ~4B) served by Ollama on the same Mac mini as Home Assistant. No cloud, no per-token bills, and everything keeps working when the internet doesn't. Getting a small model to behave is taking real harness work (that's a story for the detailed docs), but the hardware ask is modest: it fits in the same box you already bought. Bigger inference jobs are handled by our Mac Studio.
 
-> _This completes the sensory arm where raw signals start becoming meaning._
+> _This completes the house side of the sensory arm: it perceives, acts and speaks. The meaning of what it senses gets made further up._
 _You can stop here and enjoy an excellent, smart home automation system without further development work, just maintenance, but without Pepa._
 >
 
@@ -149,11 +152,12 @@ _**What we run now:**_ A used 2022 Mac Studio M1 Ultra with 64GB of unified memo
 Keep your system stable:
 
 - One HA instance for the house — production, stable, boring on purpose
+- If you collect personal health telemetry, give it its own production HA instance that only collects — so a misbehaving house integration can never touch a health record, and health readings never land beside the light switches
 - Experiments live on **separate hardware**. A second HA instance, a spare mini PC, a Proxmox container — whatever you can afford, as long as breaking it can't break the house
 - Disaster recovery is part of the job: automated backups of every VM/container, and a UPS so brownouts don't corrupt anything (hurricane country here; your threat may be winter storms — same discipline)
 - Other hardware/software deployments as needed.
 
-_**What we run now:**_ The production sensory arm lives alone on its Mac mini and nobody experiments on it. Everything speculative — new agents, new memory designs, new harnesses — runs quarantined on the Proxmox nodes, including the NUC that used to be our main HA box, now demoted to lab rat. Proxmox Backup Server snapshots every container nightly to the NAS, and a UPS rides through the power blinks that Puerto Rico's grid generously provides for testing purposes.
+_**What we run now:**_ The production sensory arm's house instance lives alone on its Mac mini and nobody experiments on it. Since October 2026 a second production instance, a VM on one of the Proxmox nodes, collects human telemetry — watch, blood pressure cuff and the like — and does nothing else; see [The Sensory Arm](/arms/sensory/the-sensory-arm/). Everything speculative — new agents, new memory designs, new harnesses — runs quarantined on the Proxmox nodes, including the NUC that used to be our main HA box, now demoted to lab rat. Proxmox Backup Server snapshots every container nightly to the NAS, and a UPS rides through the power blinks that Puerto Rico's grid generously provides for testing purposes.
 
 > _If you break Pepa, your house should still work._
 >

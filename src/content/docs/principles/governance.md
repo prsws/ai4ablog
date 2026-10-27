@@ -5,7 +5,10 @@ template: doc
 sidebar:
   label: Governance
   order: 0
-draft: false
+  badge:
+    text: Upd
+    variant: caution
+draft: true
 ---
 
 <p>
@@ -15,6 +18,9 @@ draft: false
 
 **Version 0.1 — 2026-09-08.** This page is append-only. Corrections arrive as new,
 dated entries with supersession notes; prior text is not silently rewritten.
+
+**Version 0.2 — 2026-10-27.** Adds a dated entry on the Sensory Arm boundary and a fourth
+tier, *Identified, not yet designed*. See [the entry](#entry-02--2026-10-27-the-sensory-boundary) at the end of this page.
 
 ## Why this page exists
 
@@ -164,3 +170,75 @@ stated, and that a claim will not migrate upward without a dated entry saying so
 Pepa is MIT-licensed and self-hosted. The mechanisms described here are inspectable by
 anyone willing to read the code, which is the only form of assurance this project is in a
 position to offer.
+
+## Entry 0.2 — 2026-10-27: the Sensory boundary
+
+[The Sensory Arm](/arms/sensory/the-sensory-arm/) now defines itself as the boundary
+between Pepa and the physical world, with two scopes: the house, which perceives, acts
+and speaks, and the human, which only collects. Its decisions are numbered in the
+[Sensory Arm Decision Register](/arms/sensory/decisions/), cited below by ID. This
+entry places each of them in a tier. Nothing listed in v0.1 moves up a tier by this
+entry.
+
+It also adds a fourth tier. *Designed, not yet built* was being used for things that
+have a design; some things only have a name and a reason. Those now say so.
+
+### Enforced in code today (added)
+
+- **Pepa's conversation sees only what is exposed to it.** The Sensory Arm's house scope
+  builds Pepa's context — the device catalog, live states, retrieved context and its
+  tools — only from entities exposed to the assistant. Verified in the repository code on
+  2026-10-25; the deployed copy is assumed to match.
+  The exposure settings themselves are switches an administrator can change; that half
+  is enforced by discipline, below.
+
+### Declared and binding, enforced by discipline (added)
+
+- **Exposure stays off for health and new entities.** Health entities are unexposed and
+  automatic exposure of new entities is off. Nothing yet alarms if either changes.
+- **Reflexes.** The house scope acts on its own only through reflexes: direct, requested
+  house actions under explicit, declared and guardrailed rules, never beyond them
+  (D-05). A reflex operates under the standing policy of its rule; how that maps to the
+  current-mandate requirement in v0.1 is listed under *Identified, not yet designed*.
+- **No alarm is a reflex.** Shower safety, a watch's fall report and similar signals are
+  observations. The Sensory Arm delivers alarms; it does not decide them (D-12). An alarm
+  that leaves the house is an external escalation and falls under the standing
+  directive on escalation.
+- **The human scope is collection only.** It actuates nothing, speaks to no one and is
+  not exposed to conversation. It runs on its own Home Assistant instance to limit blast
+  radius and for privacy (D-04). That separation is enforced by deployment and
+  discipline, not by a validator.
+- **What the Sensory Arm owes its readers.** Values kept as received and declared, with
+  nothing entering undeclared (D-06); two timestamps per reading (D-07); a subject or
+  none (D-08); provenance on the Input and Origin axes (D-09); a verified true copy as
+  ground truth (D-10). Declared here; not yet implemented.
+- **Preserving an observation does not make it true.** A kept observation carries no
+  authority by being kept. Interpretations and predictions keep their link to the
+  observations they rest on, never modify them, and gain no authority from repetition or
+  confidence.
+- **Health information spoken to Pepa is punted** by the house scope, which only voices
+  the reply (D-11).
+- **No cameras.** Pepa does not use cameras until a compelling use case appears. Cameras
+  in the house belong to a security plane outside Pepa (D-13).
+
+### Designed, not yet built (clarified)
+
+- The v0.1 item *placement of the policy guardrail layer across the whole sensory path*
+  stays in this tier. The separate human-scope instance limits one blast radius; it does
+  not guard the house path. The item's objective is now stated: no path through which
+  Pepa receives an observation, speaks to a person or acts on the house may bypass the
+  authorization required for the operation it performs. The guardrail is defined by the
+  operation, not by the component that happens to perform it.
+
+### Identified, not yet designed (new tier)
+
+- **The mandate behind reflexes:** its scope, its expiry, and which house actions always
+  require escalation or fresh authorization.
+- **Who owns alarm decisions** (O-01).
+- **The source of identity** for attributing readings (O-02).
+- **Where declarations live** — the record of what each feed is, required by D-06 (O-06).
+- **Capability exclusions per scope and arm,** written down: what each must not be able to
+  access or do, so a violation is visible rather than a setting nobody reads.
+- **An audit record for physical-world actions:** what started it, which component, which
+  rule and mandate, whether it was a reflex or authorized higher up, the result, and any
+  failure. Related to the accountability artifact above.

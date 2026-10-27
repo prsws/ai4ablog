@@ -5,8 +5,13 @@ template: doc
 sidebar:
   label: Logical Network Diagram
   order: 1
-draft: false
+  badge:
+    text: Upd
+    variant: caution
+draft: true
 ---
 
 ![Logical Network Diagram](../../../assets/Pepa_Logical_Network_Diagram_20260619.png)
 _Diagram is still valid as of 5-Sep-2026._ Legend pending.
+
+_27-Oct-2026: not yet shown — the second Home Assistant instance for human telemetry (Oct 2026), a VM on a Proxmox node. See [The Sensory Arm](/arms/sensory/the-sensory-arm/)._

@@ -2,7 +2,12 @@
 title: Pepa's Manifesto
 description: Why Pepa exists — a self-hosted cognitive infrastructure that helps an older adult remember, organize, and stay independent, without sending anything to the cloud.
 template: doc
-lastUpdated: 2026-07-07
+lastUpdated: 2026-10-27
+sidebar:
+  badge:
+    text: Upd
+    variant: caution
+draft: true
 ---
 import { Badge } from '@astrojs/starlight/components';
 
@@ -52,7 +57,7 @@ The long-term vision is a **personal cognitive infrastructure** that:
 5. **Calm Technology** — Everything must work together without causing a "system overload" for the elderly user.
 6. **Open Knowledge** — Architecture and lessons are documented openly for reproducibility and improvement.
 7. **Discipline over Horsepower** — A modest AI, well-governed, outperforms a giant one running loose. Pepa bets on guardrails, verification, and restraint — not on ever-bigger models. ([The research agrees.](https://arxiv.org/abs/2605.12129))
-8. **Memory Is Not Authority** — Remembering something is not the same as being right. Every memory Pepa holds carries its origin, and nothing that touches a person's safety is acted on from memory alone.
+8. **Memory Is Not Authority** — Remembering something is not the same as being right. Every memory Pepa holds carries its origin, and nothing that touches a person's safety is acted on from memory alone. For the same reason, what Pepa observed is kept apart from what it concluded, so any conclusion can be checked against the evidence it rests on.
 9. **Bilingual by Default** — Pepa speaks English y español como se habla en Puerto Rico. Aging with dignity includes aging in your own language.
 
 ---
@@ -62,15 +67,15 @@ The long-term vision is a **personal cognitive infrastructure** that:
 Pepa mimics nature, specifically the **Octopus Model** where:
 
 - the **Head** (central core) performs deterministic orchestration: coordinates subsystems, managing memory, and routing requests;
-- the **Arms** (*we don't call them tentacles*) are specialized agentic subsystems that perform specific functions independently but are supervised by the head;
+- the **Arms** (*we don't call them tentacles*) are specialized agentic subsystems that perform specific functions independently but are supervised by the head. That is what *semi-autonomous* means here: an arm may carry out bounded, deterministic operations within its mandate without consulting the head, while interpretation, authority, and anything outside that mandate go up;
 - the **Beak** is the hardware/software infrastructure that runs (feeds) the entire system: sensors, interfaces, compute, storage, networking, UPS, monitoring; it connects the parts like a nervous system.
 
 | Arm          | Function                                                                                           |
 |--------------|----------------------------------------------------------------------------------------------------|
-| Sensory      | Pepa's eyes, ears, voice and muscle — hears requests, senses the home, and acts in and upon it                     |
+| Sensory      | Pepa's boundary with the physical world — the senses, muscles and voice of the house, and the internal organs that report on the person. It perceives, acts and delivers; it keeps raw records and does not interpret them. See [The Sensory Arm](/arms/sensory/the-sensory-arm/) |
 | Memory       | What Pepa *believes* — experiences and facts about your life, each one tagged with where it came from and how much trust it has earned |
 | Knowledge    | What Pepa can *cite* — your documents, records, and references. Kept deliberately separate from beliefs, so memory can never contaminate the record |
-| Doctor       | Watches health signals and daily rhythms for changes worth noticing                                |
+| Human Sentinel | Watches over the person — reads the health signals and daily rhythms the Sensory Arm collects, for changes worth noticing. It does not diagnose or prescribe. Sensory collects; the Sentinel interprets. (Formerly the Doctor Arm.) |
 | Reasoning    | The heavier thinking, done at home, on hardware you own                                            |
 | Self-Monitor | Pepa watching Pepa — a system meant to outlast its builder must check its own health               |
 | Others       | Added when real needs appear, not before                                                          |

@@ -6,9 +6,9 @@ sidebar:
   label: The Sensory Arm
   order: 0
   badge:
-    text: New
-    variant: tip
-draft: false
+    text: Upd
+    variant: caution
+draft: true
 ---
 <span class="a4a-badge ai-generated">AI Generated</span>
 <span class="a4a-badge human-curated">Human Curated</span>
@@ -22,8 +22,13 @@ That last part is the whole design.
 A sensor that interprets is a sensor you can no longer audit. The moment collection
 starts cleaning, filtering or judging, the record stops being a record of what
 happened and becomes a record of what some piece of code thought happened. So the
-Sensory Arm observes, keeps what it observed, and hands it on. Meaning beyond simple home automation tasks is made
-somewhere else, by an arm that can be held to account for it.
+Sensory Arm observes, keeps what it observed, and hands it on. Its only exception is
+the reflex — a direct, requested house action carried out through explicit, declared
+and guardrailed rules, never beyond them. Every other kind of meaning is made somewhere
+else, by an arm that can be held to account for it.
+
+The decisions on this page are numbered in the
+[Sensory Arm Decision Register](/arms/sensory/decisions/), which is what specs cite.
 
 ## What is actually built
 
@@ -86,18 +91,36 @@ Arm gathered. It does not gather.
 
 In Pepa, the boundary is shared. Meaning is not.
 
+Two things sit outside this arm on purpose. A sensing device that moves on its own,
+such as a robot, is not part of the Sensory Arm; mobility makes it an arm of its own,
+and how such arms are classified is still open. And Pepa does not use cameras. That
+holds until a compelling use case appears; any cameras in the house belong to a
+security plane outside Pepa.
+
 ## Two scopes: the house and the human
 
-The arm now has two scopes, each detailed in its own article:
+Two scopes are identified so far, and others may come. The body is the easiest way to
+see the difference between them: one is the senses, the muscles and the voice; the
+other is the internal organs.
 
-- **[House sensing](/arms/sensory/house-sensing/)** — perception, actuation and voice
-  for the house: presence, doors, motion, climate, devices, and the satellites that
-  talk. It is real time, it handles simple home automation itself, and parts of it are
-  deliberately exposed to Pepa's conversation. It can drive alarms; shower safety
-  starts here. This is its autonomous operation.
-- **[Human telemetry](/arms/sensory/human-telemetry/)** — a specific person's
-  physiology and activity. Collection only, never exposed to conversation through its own arm, and read
-  once a day by the Human Sentinel Arm or on demand by a future Conversation Arm. It is a trend channel, not an alarm path.
+- **[House sensing](/arms/sensory/house-sensing/)** — the senses, muscles and voice.
+  Perception, actuation and speech for the house: presence, doors, motion, climate,
+  devices, and the satellites that talk. It is real time, it carries out direct house
+  requests itself as reflexes, and parts of it are deliberately exposed to Pepa's
+  conversation. Shower safety starts here as an observation — the shower has been
+  running for twenty minutes — and if an alarm is warranted, this scope is how it is
+  delivered. Deciding that an alarm is warranted is not its job.
+- **[Human telemetry](/arms/sensory/human-telemetry/)** — the internal organs. A
+  specific person's physiology and activity. Collection only, never exposed to
+  conversation through its own arm, and read once a day by the Human Sentinel Arm or on
+  demand by a future Conversation Arm. It is a trend channel, not an alarm path.
+
+The analogy has one deliberate limit. A body's organs drive reflexes of their own —
+heart rate, blood pressure — without asking the brain. Pepa's human scope has none.
+
+A watch reporting a fall is the same kind of thing as the bathroom presence sensor: an observation.
+The fall detection is the watch's own classification, recorded as what the watch said,
+not as a conclusion Pepa has reached.
 
 The rest of this article is about what both scopes share.
 
@@ -106,7 +129,11 @@ The rest of this article is about what both scopes share.
 If the Sensory Arm does not interpret what it collects, its whole value is in how
 faithfully it records. That turns into a short list of obligations.
 
-**Keep it raw.** Values are kept as they arrived. A glucose meter's exported history
+**Keep it raw.** Values are kept as they arrived at the boundary, whatever they are —
+and whatever they are must be declared. Nothing enters undeclared. Raw does not mean
+straight off a sensor: much of what a watch delivers has already been computed by its
+vendor, and the Origin axis below records that. It means nothing is changed after it
+crosses. A glucose meter's exported history
 turned out to contain dozens of placeholder records reading 1 mg/dL — artifacts of
 early syncs, not measurements — and the vendor's own summary counted them as
 hypoglycemic events. Cleaning them at collection would have been easy and correct.
@@ -137,8 +164,9 @@ None of these are clever. They are the difference between a record and a dashboa
 
 ## Reflexes, not reasoning
 
-"Meaning beyond simple home automation tasks" looks like an exception to the rule. It
-is not. It is a reflex.
+The reflex looks like an exception to the rule. It is not. It is the one kind of action
+the arm takes on its own, and it is narrow by construction: a reflex runs only through
+explicit, declared and guardrailed rules, never beyond them.
 
 You pull your hand out of the fire before you know it is hot. The spinal cord handles
 it, and the brain hears about it afterward. Nothing was interpreted in the sense this
@@ -160,8 +188,13 @@ A reflex has a recognizable shape, and that shape is the limit:
   judgment about how someone is doing is meaning about a human, and it belongs to the
   Human Sentinel Arm. The house scope may report that the bathroom has been occupied
   for forty minutes; it does not decide what that says about the person inside.
+- **No alarms.** A reflex never decides that something is wrong. The house scope
+  observes and delivers; the decision to raise an alarm belongs to another arm, under
+  governance. Which arm is still open.
 - **Out of reach means up.** Anything that is not the house leaves through the punt
-  to the Head rather than being improvised.
+  to the Head rather than being improvised. Today the punt lands on the
+  [Reasoning Arm](/arms/reasoning/the-reasoning-arm/)'s endpoint, because the Head is
+  not built yet.
 
 Reflexes can misfire. A question asking for the *status* of one fan once switched off
 a different one: a reflex arc wired wrong. The fix is to rewire the arc, not to give
@@ -175,6 +208,11 @@ anything Pepa says to a human, but it does not author what other arms want said.
 words come from whichever arm owns them; the Sensory Arm makes sure they arrive, in the
 right room, to the right person — and nowhere else.
 
+That is also how health information reaches Pepa when someone says it out loud. It
+arrives through the house scope, because that is where the microphones are, but it is
+not housework. The house scope punts it, and voices whatever reply comes back from the
+arm that took it. How that arm handles what it was told is still open.
+
 ## The elephant in the room: the name
 
 The code named after this arm is the house scope's front end — voice, the ReAct loop,
@@ -184,3 +222,13 @@ will never run that code.
 That is a naming problem, not an architecture problem, and it is being treated as
 one: repositories will be named for what they contain, with the arm they serve
 recorded separately.
+
+## Revisions
+
+- **27 Oct 2026** — Reflexes defined as explicit, declared and guardrailed rules.
+  Alarms moved out of the house scope's autonomous operation: shower safety and fall
+  reports are observations, and the house scope delivers alarms without deciding them.
+  "Raw" defined as as-received and declared. Health information spoken to Pepa is
+  punted. Scopes described as senses and organs; mobile sensing devices and cameras
+  placed outside the arm. Decisions numbered in the
+  [Decision Register](/arms/sensory/decisions/).

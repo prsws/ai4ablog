@@ -4,7 +4,10 @@ description: How Pepa's Sensory Arm evolved — the voice and Home Assistant int
 template: doc
 sidebar:
   label: PSA Version History
-draft: false
+  badge:
+    text: Upd
+    variant: caution
+draft: true
 ---
 <p>
   <span class="a4a-badge ai-generated">AI Generated</span> &nbsp;
@@ -12,6 +15,14 @@ draft: false
 </p>
 
 This is a record of Pepa deployments. Currently under construction, more structure and details will follow.
+
+## Oct 2026 — a second instance for human telemetry (no PepaV change)
+
+*The Sensory Arm gained a second scope on its own Home Assistant instance. The house deployment is unchanged; PepaV6 remains current.*
+
+**Host:** a VM on a Proxmox node, separate from mmm4
+
+**What Changed:** A second Home Assistant instance, first up on 26 Oct 2026, now collects human telemetry — watch, blood pressure cuff and similar personal instruments, arriving from the phone. It only collects: it actuates nothing, speaks to no one, is not exposed to Pepa's conversation, and does not run the house scope's code. Until then that telemetry had lived on the house instance, unexposed to Pepa and unconnected to its operation. The split is a deployment decision for blast radius and privacy, not a new arm; see [The Sensory Arm](/arms/sensory/the-sensory-arm/) and the [Decision Register](/arms/sensory/decisions/) (D-02, D-04). *(Source: José direct, Oct 27 2026.)*
 
 ## PepaV6 (current - Sep 2026)
 
