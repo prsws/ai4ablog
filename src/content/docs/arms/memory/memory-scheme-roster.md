@@ -17,7 +17,13 @@ draft: false
 
 > Companion to *Pepa Memory Architecture* (pending). _Recon-grade_ evaluation of external memory schemes and adjacent mechanisms. **No architectural commitment implied by any entry yet.** 
 
-**Compilation started:** 2026-07-28 · **Items:** 21 numbered candidates (15 memory models, 6 mechanism/non-memory) + an unattributed-harvest section · **Last added:** 2026-09-28
+**Compilation started:** 2026-07-28
+
+**Items:** 21 numbered candidates (15 memory models, 6 mechanism/non-memory) + an unattributed-harvest section
+
+**Last added:** 2026-09-28
+
+---
 
 ## Purpose
 
