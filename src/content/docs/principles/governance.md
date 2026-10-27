@@ -16,11 +16,13 @@ draft: true
   <span class="a4a-badge human-curated">Human Curated</span>
 </p>
 
-**Version 0.1 — 2026-09-08.** This page is append-only. Corrections arrive as new,
-dated entries with supersession notes; prior text is not silently rewritten.
+This page is append-only. Corrections arrive as new, dated entries with supersession
+notes; prior text is not silently rewritten.
 
-**Version 0.2 — 2026-10-27.** Adds a dated entry on the Sensory Arm boundary and a fourth
-tier, *Identified, not yet designed*. See [the entry](#entry-02--2026-10-27-the-sensory-boundary) at the end of this page.
+| Version | Date | What changed |
+|---|---|---|
+| 0.2 | 2026-10-27 | Adds a dated entry on the Sensory Arm boundary and a fourth tier, *Identified, not yet designed*. See [the entry](#entry-02--2026-10-27-the-sensory-boundary) at the end of this page. |
+| 0.1 | 2026-09-08 | First publication: what is enforced, what is only declared, what is designed, and three problems not yet solved. |
 
 ## Why this page exists
 
