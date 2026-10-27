@@ -253,7 +253,10 @@ are recorded here so the change is not silent. No claim moved up a tier.
 - **Weakened:** the system "is required to answer *why now?* on demand, and it does" now
   reads "and it should". The claim is no longer stated as a fact.
 - **Reworded:** the continuity paragraph under *Pepa's inversion* now reads "Continuity
-  to the cloud is a break-glass", and names MCP, A2A and API as the routes.
+  to the cloud is a break-glass" and names MCP, A2A and API as the routes. The reach runs
+  both ways: outward, under a directive a human approved beforehand (for example,
+  coding-agent jobs), and inward, so that a caregiver who does not know what to do with
+  Pepa can consult an outside model. The v0.1 wording described only the outward half.
 - **Added:** under *Enforced in code today*, a sentence on safety-critical entries
   calling them a pillar of the 20-year memory scheme.
 - **Renamed:** the four tiers are numbered, and "the third column" now reads "the third
