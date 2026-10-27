@@ -78,10 +78,13 @@ interpretations, and predictions are separate classes with separate rules. An
 interpretation — including any inference about cognitive change — routes to a human. It
 never reaches an actuator, and no accumulation of confidence changes that.
 
-**Continuity to the cloud is a break-glass, not a capability dial.** The reach from an outside model
-via MCP/A2A/API exists so that caregivers are not left holding a dead box if the operator becomes unable
-to run or communicate with the system. It is shut in steady state. It is not a way to
-make Pepa smarter as the person gets frailer.
+**Continuity to the cloud is a break-glass, not a capability dial.** Reach between Pepa
+and an outside model, via MCP, A2A or API, runs both ways and is closed unless a human
+has approved it. Outward, it opens only under a directive approved beforehand, such as a
+coding-agent job. Inward, it exists so that a caregiver is not left holding a dead box if
+the operator becomes unable to run or communicate with the system, and can consult an
+outside model to learn what to do. It is not a way to make Pepa smarter as the person
+gets frailer.
 
 ## What is enforced, what is only declared
 
@@ -256,7 +259,8 @@ are recorded here so the change is not silent. No claim moved up a tier.
   to the cloud is a break-glass" and names MCP, A2A and API as the routes. The reach runs
   both ways: outward, under a directive a human approved beforehand (for example,
   coding-agent jobs), and inward, so that a caregiver who does not know what to do with
-  Pepa can consult an outside model. The v0.1 wording described only the outward half.
+  Pepa can consult an outside model. The v0.1 wording described only the outward half. The sentence "It is shut in steady
+  state" is replaced by "closed unless a human has approved it".
 - **Added:** under *Enforced in code today*, a sentence on safety-critical entries
   calling them a pillar of the 20-year memory scheme.
 - **Renamed:** the four tiers are numbered, and "the third column" now reads "the third
