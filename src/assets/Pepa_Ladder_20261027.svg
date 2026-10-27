@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 600 760" width="600" height="760" role="img" aria-labelledby="pl-title pl-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="pl-title">The Pepa ladder: what you have at the end of this guide</title>
+<desc id="pl-desc">A ladder. The bottom third is built: resilient infrastructure, a sensory system, a perception layer, a voice interface, a memory backend, a reasoning muscle and a safe playground. A marker reads You are here, the first third. Above it, dashed rungs still to climb: the Head, memory that earns trust, the Human Sentinel and the Self-Monitor.</desc>
+<style>
+.pl-bg{fill:#142530}
+.pl-panel{fill:#0b3247}
+.pl-rail,.pl-rung{stroke:#238bad;stroke-width:6;stroke-linecap:round}
+.pl-rail-todo,.pl-rung-todo{stroke:#4a6270;stroke-width:4;stroke-linecap:round;stroke-dasharray:2 9}
+text{font-family:Figtree,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+.pl-t{font-size:15px;font-weight:700;fill:#ffffff}
+.pl-d{font-size:12.5px;fill:#93a5b0}
+.pl-t-todo{font-size:14px;font-weight:600;fill:#bdcad1}
+.pl-cap{font-size:11.5px;font-weight:700;letter-spacing:.12em;fill:#93a5b0}
+.pl-pill{fill:#e59a2a}
+.pl-pill-t{font-size:12px;font-weight:700;letter-spacing:.06em;fill:#0a222f}
+</style>
+<rect class="pl-bg" x="0" y="0" width="600" height="760" rx="16"/>
+<g transform="translate(20 20)">
+<text class="pl-cap" x="150" y="34">STILL TO CLIMB</text>
+<line class="pl-rail-todo" x1="40" y1="50" x2="40" y2="350"/>
+<line class="pl-rail-todo" x1="120" y1="50" x2="120" y2="350"/>
+<line class="pl-rung-todo" x1="40" y1="100" x2="120" y2="100"/>
+<text class="pl-t-todo" x="150" y="98">The Head</text>
+<text class="pl-d" x="150" y="115">deterministic orchestration over every arm</text>
+<line class="pl-rung-todo" x1="40" y1="170" x2="120" y2="170"/>
+<text class="pl-t-todo" x="150" y="168">Memory that earns trust</text>
+<text class="pl-d" x="150" y="185">the graph design, provenance on every belief</text>
+<line class="pl-rung-todo" x1="40" y1="240" x2="120" y2="240"/>
+<text class="pl-t-todo" x="150" y="238">The Human Sentinel</text>
+<text class="pl-d" x="150" y="255">reading the health record for trends</text>
+<line class="pl-rung-todo" x1="40" y1="310" x2="120" y2="310"/>
+<text class="pl-t-todo" x="150" y="308">The Self-Monitor</text>
+<text class="pl-d" x="150" y="325">Pepa watching Pepa</text>
+<rect class="pl-pill" x="20" y="360" width="268" height="28" rx="14"/>
+<text class="pl-pill-t" x="38" y="379">YOU ARE HERE · THE FIRST THIRD</text>
+<rect class="pl-panel" x="20" y="398" width="520" height="306" rx="12"/>
+<line class="pl-rail" x1="40" y1="408" x2="40" y2="694"/>
+<line class="pl-rail" x1="120" y1="408" x2="120" y2="694"/>
+<line class="pl-rung" x1="40" y1="420" x2="120" y2="420"/>
+<text class="pl-t" x="150" y="418">A safe playground</text>
+<text class="pl-d" x="150" y="435">the house never pays for your experiments</text>
+<line class="pl-rung" x1="40" y1="460" x2="120" y2="460"/>
+<text class="pl-t" x="150" y="458">A reasoning muscle</text>
+<text class="pl-d" x="150" y="475">local or cloud AI, your privacy call</text>
+<line class="pl-rung" x1="40" y1="500" x2="120" y2="500"/>
+<text class="pl-t" x="150" y="498">A memory backend</text>
+<text class="pl-d" x="150" y="515">databases + vectors today; the graph is in the works</text>
+<line class="pl-rung" x1="40" y1="540" x2="120" y2="540"/>
+<text class="pl-t" x="150" y="538">A voice interface</text>
+<text class="pl-d" x="150" y="555">portable and fixed</text>
+<line class="pl-rung" x1="40" y1="580" x2="120" y2="580"/>
+<text class="pl-t" x="150" y="578">A perception layer</text>
+<text class="pl-d" x="150" y="595">Home Agent + a local LLM</text>
+<line class="pl-rung" x1="40" y1="620" x2="120" y2="620"/>
+<text class="pl-t" x="150" y="618">A sensory system</text>
+<text class="pl-d" x="150" y="635">Home Assistant + devices</text>
+<line class="pl-rung" x1="40" y1="660" x2="120" y2="660"/>
+<text class="pl-t" x="150" y="658">A resilient infrastructure</text>
+<text class="pl-d" x="150" y="675">easy to maintain and upgrade</text>
+</g>
+</svg>
