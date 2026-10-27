@@ -5,7 +5,6 @@ template: doc
 topic: guides
 lastUpdated: 2026-10-27
 sidebar:
-  label: Privacy Policy
   badge:
     text: Upd
     variant: caution
@@ -21,7 +20,7 @@ _All the specific brands/models mentioned below are our current operational choi
 
 _This is real and working. See pictures at the bottom._
 
-### **0. Foundation (Network)**&nbsp;&nbsp;<span class="a4a-badge ai-assisted">Mandatory</span>
+### **0. Foundation (Network)**&nbsp;&nbsp;<span class="a4a-step mandatory">Mandatory</span>
 
 You need a stable home network.
 
@@ -49,7 +48,7 @@ You need a stable home network.
 
 ---
 
-### **1. Sensory Base (Home Assistant)**&nbsp;&nbsp;<span class="a4a-badge ai-assisted">Mandatory</span>
+### **1. Sensory Base (Home Assistant)**&nbsp;&nbsp;<span class="a4a-step mandatory">Mandatory</span>
 
  Home Assistant provides the human-facing interface to Pepa; install it on dedicated hardware.
 
@@ -69,7 +68,7 @@ You need a stable home network.
 
 ---
 
-### **2. Sensory Intelligence Layer (Home Agent app)**&nbsp;&nbsp;<span class="a4a-badge ai-assisted">Mandatory</span>
+### **2. Sensory Intelligence Layer (Home Agent app)**&nbsp;&nbsp;<span class="a4a-step mandatory">Mandatory</span>
 
 > _We recommend that for fastest results you start where we did -- [Anton Radlein's Home Agent app](https://github.com/aradlein/hass-agent-llm)._<br/>
 > The Pepa Sensory Arm code builds upon it but it's experimental and may not always work. Stay tuned.
@@ -101,7 +100,7 @@ _You can stop here and enjoy an excellent, smart home automation system without 
 
 ---
 
-### **3. Voice Interface**&nbsp;&nbsp;<span class="a4a-badge human-curated">Interface Expansion</span>
+### **3. Voice Interface**&nbsp;&nbsp;<span class="a4a-step expansion">Interface Expansion</span>
 
 The voice interface is Pepa's main connection with its elderly user during normal daily operation. As such, it's mission-critical and in many ways:
 - microphone and speaker electronics design and placement
@@ -130,7 +129,7 @@ Our roster:
 | Acceleration | No GPU tower needed | Apple Silicon | Your CPU, with smaller models |
 | Remote reach | Optional | iPhone over VPN; CarPlay in the car | None |
 
-**History:** we first ran speech on a gaming laptop with an nVIDIA card under Windows. It worked, but the power bill and the fan noise repurposed it for occasional odd jobs as soon as we got the mini. Whisper (large-v3-turbo) then ran on the Mac mini until July 2026, when speech-to-text moved fully on-device with the Apple Foundation Siri model.
+**History:** we first ran speech on a gaming laptop with an nVIDIA card under Windows. It worked, but the power bill and the fan noise repurposed it for occasional odd jobs as soon as we got the mini. Whisper (large-v3-turbo) then ran on the Mac mini until July 2026, when speech-to-text moved fully on-device to Apple's SpeechAnalyzer framework.
 
 **Bonus we didn't plan for:** the same voice pipeline reaches the car. The iPhone connects home over VPN, and Pepa talks through the car speakers via CarPlay. [Watch the video](https://youtu.be/d8FX92hwtlM?si=HsbyfAhzNSibPuZ4)
 
@@ -139,11 +138,11 @@ Our roster:
 
 ---
 
-### **4. Storage Node (Persistence)**&nbsp;&nbsp;<span class="a4a-badge collaborative-mess">Capability Expansion</span>
+### **4. Storage Node (Persistence)**&nbsp;&nbsp;<span class="a4a-step expansion">Capability Expansion</span>
 
 Set up a NAS or some other network storage solution.
 
-- SMB and S3-style storage for all your data; skip the fancy distributed filesystems (ZFS, Ceph, etc.) — that's costly complexity you don't need and won't want to maintain
+- SMB and S3-style storage for all your data; skip the fancy filesystems and distributed storage (ZFS, Ceph, etc.) — that's costly complexity you don't need and won't want to maintain
 - Run auxiliary processes on it, but lightly
 - Don't overload the NAS with non-Pepa data and apps, get a 2nd one for that
 
@@ -162,7 +161,7 @@ Set up a NAS or some other network storage solution.
 
 ---
 
-### **5. Cognitive Backend (Local Compute)**&nbsp;&nbsp;<span class="a4a-badge collaborative-mess">Capability Expansion</span>
+### **5. Cognitive Backend (Local Compute)**&nbsp;&nbsp;<span class="a4a-step expansion">Capability Expansion</span>
 
 Set up a small server with Proxmox VE — any used mini PC with 16GB+ RAM will do. A Proxmox alternative we're testing along is WolfStack. _Do not go crazy setting up clusters that you don't know if you'll need; minimize complexity._
 
@@ -180,7 +179,7 @@ Set up a small server with Proxmox VE — any used mini PC with 16GB+ RAM will d
 | Knowledge | Your documents, searchable and citable | paperless-ngx and Open Notebook | paperless-ngx |
 | Human telemetry | Its own instance, collection only (step 7) | A Home Assistant VM | Skip until you need it |
 | Radio bridge | The Zigbee radio can live anywhere | A serial-over-network bridge | Radio plugged straight into the HA box |
-| Extras | Lightly | A few quality-of-life apps | — |
+| Extras | Lightly | A few quality-of-life apps | None to start |
 
 **Moved out:** ChromaDB (the sensory arm's working memory) now runs on the Mac mini with Home Assistant. NUT, which watches the UPS, moved to the Orange Pi that is also becoming Pepa's Self-Monitor Arm's experimental body.
 
@@ -191,7 +190,7 @@ Set up a small server with Proxmox VE — any used mini PC with 16GB+ RAM will d
 
 ---
 
-### **6. Heavy Compute (LLMs)**&nbsp;&nbsp;<span class="a4a-badge collaborative-mess">Capability Expansion</span>
+### **6. Heavy Compute (LLMs)**&nbsp;&nbsp;<span class="a4a-step expansion">Capability Expansion</span>
 
 Choose your path:
 
@@ -221,13 +220,13 @@ Choose your path:
 
 ---
 
-### **7. Separation of Concerns (Highly Recommended)**&nbsp;&nbsp;<span class="a4a-badge ai-assisted">Operational Maturity</span>
+### **7. Separation of Concerns (Highly Recommended)**&nbsp;&nbsp;<span class="a4a-step maturity">Operational Maturity</span>
 
 Keep your system stable:
 
 | Layer | Requirement | Our choice                                                                                                                                                                             | Budget start |
 |---|---|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-| House instance | Production, stable, boring on purpose | Home Assistant alone on its Mac mini; only upstrem updates and approved experimental results are installed                                         | One Home Assistant box |
+| House instance | Production, stable, boring on purpose | Home Assistant alone on its Mac mini; only upstream updates and approved experimental results are installed                                         | One Home Assistant box |
 | Human-telemetry instance | Its own production instance, collection only | A Home Assistant VM on a Proxmox node, collecting from the watch, blood pressure cuff and the like, and doing nothing else                                                             | Skip until you collect health data |
 | Experiments | Separate hardware; breaking it can't break the house | Quarantined on the Proxmox nodes: new agents, memory designs and harnesses, a development Home Assistant instance, and the NUC that used to be our main HA box, now demoted to lab rat | A spare mini PC or a Proxmox container |
 | Backups | Automated, for every VM and container | Proxmox Backup Server snapshots, nightly to the NAS                                                                                                                                    | Proxmox's built-in backups to a NAS share |
@@ -235,7 +234,7 @@ Keep your system stable:
 
 **Why the second production instance:** a misbehaving house integration should never be able to touch a health record. See [The Sensory Arm](/arms/sensory/the-sensory-arm/).
 
-**Electrical testing, courtesy of the grid:** the UPSes ride through the power blinks that Puerto Rico's grid generously provides for testing purposes. Will eventually be included in Pepa's Self Monitor Arm.
+**Electrical testing, courtesy of the grid:** the UPSes ride through the power blinks that Puerto Rico's grid generously provides for testing purposes. Will eventually be included in Pepa's Self-Monitor Arm.
 
 > _If you break Pepa, your house should still work._
 >
@@ -280,5 +279,4 @@ _Our current voice satellite roster (Oct-26) in various stages of development._
 ![Pepa's voice satellites October 2026](../../../assets/Voice_Satellites_20261021.JPG)
 
 _The original voice satellites c. Mar-2026, plus an Amazon Echo Show 5 with Alexa+ as benchmark and goal — when we dump (maybe reflash?) it, that means Pepa is ready for its mission._
-<Image src={pepaFoto2} alt="" width={1200} height={1200} />
 ![Pepa's voice satellites](../../../assets/Pepa_Foto_2.jpg)
