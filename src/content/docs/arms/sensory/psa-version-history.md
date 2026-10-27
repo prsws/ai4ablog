@@ -16,6 +16,21 @@ draft: true
 
 This is a record of Pepa deployments. Currently under construction, more structure and details will follow.
 
+| Version | Date | Host | Summary |
+|---|---|---|---|
+| [Oct 2026 — a second instance for human telemetry (no PepaV change)](#oct-2026--a-second-instance-for-human-telemetry-no-pepav-change) | Oct 2026 | A VM on a Proxmox node, separate from mmm4 | The Sensory Arm gained a second scope on its own Home Assistant instance. The house deployment is unchanged; PepaV6 remains current. |
+| [PepaV6 (current - Sep 2026)](#pepav6-current---sep-2026) | Jul 2026 | mmm4 + Mac Studio | ChromaDB moved off pve2 onto mmm4, making PSA standalone-deployable (i.e. an appliance) for the first time. |
+| [PepaV5](#pepav5) | Jul 2026 | mmm4 + Mac Studio | STT went fully on-device on mmm4 via Apple SpeechAnalyzer, Whisper was disabled, and the local model was downsized again to e2b. |
+| [PepaV4.5](#pepav45) | Not recorded | mmm4 + Mac Studio | First trial of Apple's STT — installed on the Mac Studio to test whether it could replace Whisper's RAM footprint. |
+| [PepaV4](#pepav4) | Not recorded | mmm4 | Both model tiers changed at once — local downsized to 4-bit, escalation swapped to qwen3.6. |
+| [PepaV3 rapid-mlx](#pepav3-rapid-mlx) | Not recorded | mmm4 + Mac Studio | Inference and speech backends switched from Ollama to rapid-mlx across both hosts. |
+| [PepaV3](#pepav3) | Not recorded | mmm4 | The first PAHA→PSA refactor, and the point where entity context began being injected into the system prompt. |
+| [PepaV2](#pepav2) | Not recorded | mmm4, under UTM | Moved off the experimental NUC onto mmm4 under UTM; the NUC became pve3/Hermes. |
+| [PepaV1](#pepav1) | Mar 2026 | Same experimental box, became live config | The experimental configuration became the live production pipeline, and remains the documented rollback baseline. |
+| [PepaV0](#pepav0) | Feb 2026 | NUC7i5 (experimental) | The original sandbox box — feature experiments deliberately kept off Casa Delta's production HA. |
+
+Dates come from each entry's own sources; *not recorded* means the entry carries none.
+
 ## Oct 2026 — a second instance for human telemetry (no PepaV change)
 
 *The Sensory Arm gained a second scope on its own Home Assistant instance. The house deployment is unchanged; PepaV6 remains current.*

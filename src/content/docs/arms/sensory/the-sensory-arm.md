@@ -225,10 +225,7 @@ recorded separately.
 
 ## Revisions
 
-- **27 Oct 2026** — Reflexes defined as explicit, declared and guardrailed rules.
-  Alarms moved out of the house scope's autonomous operation: shower safety and fall
-  reports are observations, and the house scope delivers alarms without deciding them.
-  "Raw" defined as as-received and declared. Health information spoken to Pepa is
-  punted. Scopes described as senses and organs; mobile sensing devices and cameras
-  placed outside the arm. Decisions numbered in the
-  [Decision Register](/arms/sensory/decisions/).
+| Date | What changed |
+|---|---|
+| 27 Oct 2026 | Reflexes defined as explicit, declared and guardrailed rules. Alarms moved out of the house scope's autonomous operation: shower safety and fall reports are observations, and the house scope delivers alarms without deciding them. "Raw" defined as as-received and declared. Health information spoken to Pepa is punted. Scopes described as senses and organs; mobile sensing devices and cameras placed outside the arm. Decisions numbered in the [Decision Register](/arms/sensory/decisions/). |
+| 26 Oct 2026 | First publication. |

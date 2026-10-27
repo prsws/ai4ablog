@@ -4,7 +4,10 @@ description: How Pepa's Reasoning Arm evolved — the escalation tier on the Mac
 template: doc
 sidebar:
   label: PRA Version History
-draft: false
+  badge:
+    text: Upd
+    variant: caution
+draft: true
 ---
 <p>
   <span class="a4a-badge ai-generated">AI Generated</span> &nbsp;
@@ -25,6 +28,16 @@ Sensory Arm's escalation tier, most of what is known about this box currently
 lives in *that* history. The entries below are reconstructed from it. Where an
 entry is thin, it is thin because the record is, not because nothing happened.
 From RV3 on, entries come from this arm's own records.
+
+| Version | Date | Host | Summary |
+|---|---|---|---|
+| [RV4 (current)](#rv4-current) | Oct 2026 | Mac Studio M1 Ultra, 64 GB | One door in front of the slots: llama-swap, under evaluation. |
+| [RV3](#rv3) | Oct 2026 | Mac Studio M1 Ultra, 64 GB | Extended tier moved to Qwen 3.8, the Studio's models arranged in slots, and a text-to-speech endpoint added. |
+| [RV2](#rv2) | Not recorded | Mac Studio M1 Ultra, 64 GB | Extended tier serving `qwen3.6-27b-8bit` under rapid-mlx. |
+| [RV1](#rv1) | Not recorded | Mac Studio M1 Ultra, 64 GB | Inference backend switched from Ollama to rapid-mlx. |
+| [RV0](#rv0) | Not recorded | Mac Studio M1 Ultra, 64 GB | Ollama on the Mac Studio, serving the escalation tier. |
+
+Dates come from each entry's own sources; *not recorded* means the entry carries none.
 
 ### RV4 (current)
 
