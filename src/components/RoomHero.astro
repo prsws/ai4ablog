@@ -29,7 +29,7 @@ const imgAttrs = {
     sizes: '(min-width: 70rem) 36rem, (min-width: 44rem) 50vw, 100vw',
     format: 'webp' as const,
     quality: 72,
-    loading: 'lazy' as const,
+    loading: 'eager' as const,
     decoding: 'async' as const,
 };
 ---
@@ -101,37 +101,49 @@ const imgAttrs = {
         --sl-content-width: 64rem;
     }
 
-    /* Theme switch — see the note at the top of the file. Dusk is the default
-       (Starlight's own default is dark); light mode swaps in the day picture. */
-    .room-hero .room-day {
+    /* Theme switch — see the note at the top of the file. Every rule is spelled
+       out for BOTH themes, so neither picture depends on the other's rules, and
+       the page with no data-theme at all (before Starlight's script runs) shows
+       the dusk picture, Starlight's own default. */
+    .room-hero .room-day,
+    .room-hero .for-day {
         display: none;
+    }
+    .room-hero .room-dusk {
+        display: block;
+    }
+    .room-hero .for-dusk {
+        display: inline;
+    }
+    :root[data-theme='dark'] .room-hero .room-day,
+    :root[data-theme='dark'] .room-hero .for-day {
+        display: none;
+    }
+    :root[data-theme='dark'] .room-hero .room-dusk {
+        display: block;
+    }
+    :root[data-theme='dark'] .room-hero .for-dusk {
+        display: inline;
     }
     :root[data-theme='light'] .room-hero .room-day {
         display: block;
     }
-    :root[data-theme='light'] .room-hero .room-dusk {
-        display: none;
-    }
-
-    /* Same swap for the words that belong to one picture: at dusk she asks for
-       the fan to come on ("enciende"), by day to go off ("apaga"). */
-    .room-hero .for-day {
-        display: none;
-    }
     :root[data-theme='light'] .room-hero .for-day {
         display: inline;
     }
+    :root[data-theme='light'] .room-hero .room-dusk,
     :root[data-theme='light'] .room-hero .for-dusk {
         display: none;
     }
 
-    /* Light picture only: nudge each balloon sideways by a share of its OWN
-       width (percent in translateX is relative to the element itself), so the
-       move is exact whatever the language or size of the text. */
-    :root[data-theme='light'] .room-hero .bubble-user {
+    /* Balloon positions, the same in both pictures (the two images are the same
+       room, same framing). Each balloon is nudged sideways by a share of its OWN
+       width — a percent in translateX is relative to the element itself — so
+       the move is exact whatever the language or size of the text. */
+    .room-hero .bubble-user {
         transform: translateX(33%); /* toward her head */
     }
-    :root[data-theme='light'] .room-hero .bubble-pepa {
+    .room-hero .bubble-pepa {
         transform: translateX(-50%); /* toward the speaker */
     }
 </style>
