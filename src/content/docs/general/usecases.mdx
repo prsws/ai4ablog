@@ -13,6 +13,7 @@ import { Badge } from '@astrojs/starlight/components';
 import RhythmFigure from '../../../components/RhythmFigure.astro';
 import PhotoFrame from '../../../components/PhotoFrame.astro';
 import hallwayNight from '../../../assets/usecases/hallway-night.jpg';
+import homelabRack from '../../../assets/usecases/homelab-rack.jpg';
 
 <table>
     <tr>
@@ -166,7 +167,13 @@ Over the years this grows into a **personal knowledge archive**: documents, note
 
 #### Scenario: troubleshooting your own infrastructure.
 
-<PhotoFrame hint="Photo: the homelab rack" caption="The lab Pepa keeps notes on." badge="photo" />
+<PhotoFrame
+    image={homelabRack}
+    alt="Two small desktop-height server racks side by side in front of a green wall. Mini computers sit on black shelves, wired with blue and yellow network cables and a few labelled cords, with status lights glowing blue."
+    caption="The author's own homelab. Messy, real, and what Pepa keeps notes on."
+    badge="photo"
+    ratio="4 / 3"
+/>
 
 You ask:
 
