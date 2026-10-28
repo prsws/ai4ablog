@@ -11,6 +11,7 @@ draft: false
 ---
 import { Badge } from '@astrojs/starlight/components';
 import RhythmFigure from '../../../components/RhythmFigure.astro';
+import hallwayNight from '../../../assets/usecases/hallway-night.jpg';
 
 <table>
     <tr>
@@ -201,7 +202,10 @@ This moves Pepa from **passive memory → active assistant**, without pretending
 
 #### Scenario: the shower has been running for twenty minutes.
 
-<RhythmFigure />
+<RhythmFigure
+    image={hallwayNight}
+    alt="A dark hallway at night in a Puerto Rican home. Wooden louvered windows look out on banana leaves and red heliconia. A small smart speaker with a faint blue ring glows on a console table, and the bathroom door at the end of the hall stands open with warm light spilling out. No one is in the picture."
+/>
 
 Pepa doesn’t watch you — **Pepa uses no cameras**, and won’t until there is a compelling reason to. Any security cameras a house has belong to a separate system, outside Pepa. Pepa listens to the rhythms of the house.
 
