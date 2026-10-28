@@ -35,7 +35,7 @@ export default defineConfig({
 		        starlightUiTweaks({
 		          footer: {
 		            showSocialIcons: true,
-		            copyright: "José F. Reyes-Santana. All rights reserved.",
+		            copyright: "José F. Reyes-Santana. Text and images CC BY 4.0, code MIT.",
 		            firstColumn: {
 		              title: "Legal",
 		              links: [
@@ -142,6 +142,8 @@ export default defineConfig({
         components: {
             // Home-page hero: words from index.mdx frontmatter, layout + photo here.
             Hero: "./src/components/RoomHero.astro",
+            // Site-wide footer: the ui-tweaks footer plus the disclaimer, on every page.
+            Footer: "./src/components/SiteFooter.astro",
         },
 		}), mdx()],
     markdown: {
