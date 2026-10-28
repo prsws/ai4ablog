@@ -11,6 +11,7 @@ draft: false
 ---
 import { Badge } from '@astrojs/starlight/components';
 import RhythmFigure from '../../../components/RhythmFigure.astro';
+import PhotoFrame from '../../../components/PhotoFrame.astro';
 import hallwayNight from '../../../assets/usecases/hallway-night.jpg';
 
 <table>
@@ -23,6 +24,8 @@ import hallwayNight from '../../../assets/usecases/hallway-night.jpg';
 ### 1. Memory Recall (The Core Function)
 
 #### Scenario: “Where did I put that?”
+
+<PhotoFrame hint="Screenshot: asking for the water heater warranty and Paperless finding it" caption="Example question and answer." badge="screenshot" />
 
 You vaguely remember storing an important document but can’t recall where.
 
@@ -88,6 +91,8 @@ The goal is **contextual recall**, not just document search.
 
 #### Scenario: “What should I be doing today?”
 
+<PhotoFrame hint="Screenshot or photo: today's plan, in plain large type" caption="Example day." badge="screenshot" />
+
 You ask:
 
 > “Pepa, what’s on my radar today?”
@@ -114,6 +119,8 @@ This is **life context aggregation**.
 
 #### Scenario: “Apaga el abanico, por favor.”
 
+<PhotoFrame hint="Photo: the voice satellite on a shelf at home" caption="A voice satellite. The voice stays in the house." badge="photo" />
+
 You speak to Pepa the way you speak at home — English, español, or the Spanglish in between:
 
 > “Pepa, apaga el abanico de la oficina.”
@@ -133,6 +140,8 @@ Aging with dignity includes being understood **in your own language, on your own
 ### 5. Knowledge Management
 
 #### Scenario: remembering useful information from months — or years — ago.
+
+<PhotoFrame hint="Screenshot: an answer that cites its source document" caption="Example answer with its source." badge="screenshot" />
 
 You ask:
 
@@ -156,6 +165,8 @@ Over the years this grows into a **personal knowledge archive**: documents, note
 ### 6. Technical Homelab Assistance
 
 #### Scenario: troubleshooting your own infrastructure.
+
+<PhotoFrame hint="Photo: the homelab rack" caption="The lab Pepa keeps notes on." badge="photo" />
 
 You ask:
 
@@ -181,6 +192,8 @@ This turns Pepa into a **system memory for the lab itself**.
 ### 7. Pattern Detection Over Time
 
 #### Scenario: noticing something you might miss.
+
+<PhotoFrame hint="Screenshot: UPS battery capacity over three months" caption="Example trend." badge="screenshot" />
 
 Pepa periodically analyzes stored data and alerts you:
 
