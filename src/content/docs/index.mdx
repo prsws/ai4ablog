@@ -4,19 +4,19 @@ description: Pepa is a self-hosted, no-cloud system that helps an older adult st
 #template: splash
 tableOfContents: false
 hero:
-  title: AI4Aging.org
-  tagline: Home of Pepa — a self-hosted, octopus-inspired, cognitive infrastructure *blueprint* to help the elderly preserve memory, organize knowledge, and maintain agency through deterministic AI-assisted systems. <br/> <br/>  <small><em>Field notes from building an aging-in-place system in my own house, before I need it. <a href="/general/ai-in-medicine-and-pepa/">You'll need one too.</a><em></small>
+  title: Aging at home, on your own terms.
+  tagline: Pepa is a self-hosted, no-cloud assistant that helps an older adult remember, stay organized, and stay independent in their own home — in English y español. Free and open source. <br/> <br/> <small><em>Field notes from building an aging-in-place system in my own house, before I need it. <a href="/general/ai-in-medicine-and-pepa/">You'll need one too.</a></em></small>
   image:
     file: ../../assets/Pepa_Logo_V0_NoBG.png
     alt: Pepa Logo
   actions:
+    - text: See what Pepa does
+      link: ./general/usecases/
+      icon: right-arrow
+      variant: primary
     - text: Why? Read the Manifesto
       link: ./general/manifesto/
       icon: document
-      variant: minimal
-    - text: What for? Use Cases
-      link: ./general/usecases/
-      icon: information
       variant: minimal
     - text: What's up? Read the News
       link: ./blog/
@@ -54,6 +54,47 @@ head:
 ---
 
 import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## What it feels like
+
+<CardGrid stagger>
+    <LinkCard
+        title="“Apaga el abanico, por favor.”"
+        href="/general/usecases/#4-voice--home-control--in-your-own-language"
+        description="Talk to your house in English, español, or the Spanglish in between. Your voice never leaves home. Works today."
+    />
+    <LinkCard
+        title="“Where did I put that?”"
+        href="/general/usecases/#1-memory-recall-the-core-function"
+        description="Ask for the water heater warranty or what the doctor said last time. When Pepa is wrong, your word wins. In development."
+    />
+    <LinkCard
+        title="Watched over, not watched"
+        href="/general/usecases/#8-quiet-watchfulness"
+        description="No cameras. Pepa listens to the rhythms of the house and asks gently before it ever calls anyone. In development."
+    />
+</CardGrid>
+
+## Pick your door
+
+<CardGrid>
+    <LinkCard
+        title="For families and caregivers"
+        href="/general/usecases/"
+        description="What Pepa does, what it will never do, and why it keeps everything at home."
+    />
+    <LinkCard
+        title="For builders"
+        href="/guides/buildyour1stpepa/"
+        description="The blueprint, the architecture, and the field notes. Build your first Pepa."
+    />
+</CardGrid>
+
+## The blueprint
+
+*Pepa is a self-hosted, octopus-inspired, cognitive infrastructure blueprint to help the elderly preserve memory, organize knowledge, and maintain agency through deterministic AI-assisted systems.*
+
+## Latest
 
 <CardGrid stagger>
     <Card title="News" icon="comment-alt">
