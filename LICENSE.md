@@ -27,4 +27,4 @@ All text, articles, prose, markdown content files, images, and media assets in t
 ### Under the following terms:
 * **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
 
-To view a full copy of this license, visit: http://creativecommons.org
+To view a full copy of this license, visit: https://creativecommons.org/licenses/by/4.0/

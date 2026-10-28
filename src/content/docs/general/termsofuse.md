@@ -2,7 +2,7 @@
 title: Terms of Use
 description: Terms of use for ai4aging.org.
 template: doc
-lastUpdated: 2026-09-10
+lastUpdated: 2026-10-28
 sidebar:
   label: Terms of Use
 draft: false
@@ -48,11 +48,17 @@ AI generated content may contain errors. Human curation can mitigate them but is
 
 AI4Aging.org documents a personal project that builds extensively on open source software, publicly available research, and the work of many contributors across the communities it draws from. The author makes no broad intellectual property claims over the architecture, tools, or concepts described here.
 
-Original contributions — such as the overall system design, the Octopus architecture model, and the specific integration decisions documented here — are the work of José F. Reyes-Santana and may be referenced or quoted with attribution. Everything else belongs to its respective creators.
+Original contributions — such as the overall system design, the Octopus architecture model, and the specific integration decisions documented here — are the work of José F. Reyes-Santana and may be reused under the [Content License](#content-license) below, with attribution. Everything else belongs to its respective creators.
 
 ### Code License
 
 Pepa code published by this project is released under the **MIT License** — free to use, copy, modify, and redistribute, for any purpose, with no strings attached beyond keeping the license notice. Each repository carries its own LICENSE file, which governs. Find the code on [GitHub](https://github.com/prsws).
+
+### Content License
+
+Text, articles, and images on this site are licensed under the [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) license. You may share and adapt them for any purpose, even commercially, as long as you give appropriate credit, link to the license, and say if you made changes.
+
+This applies to the extent the author holds rights in the material. AI-generated material (see the labels above) may not be protected by copyright at all, and third-party material, such as embedded videos or quoted sources, stays under its owners' terms.
 
 ### No Warranties
 

@@ -1,0 +1,89 @@
+---
+/**
+ * SiteFooter — the site-wide footer: the starlight-ui-tweaks footer plus a
+ * short disclaimer and copyright, on every page.
+ *
+ * Why a wrapper: starlight-ui-tweaks draws its four-column footer only on pages
+ * whose template is not "doc" (the home page), and falls back to Starlight's
+ * plain footer on all the doc pages. Wrapping it means the disclaimer appears
+ * on both kinds of page without touching the plugin.
+ *
+ * The wording is a short echo of the Terms of Use and must not say more than
+ * they do. If the Terms change, change this text with them. Spanish line first
+ * in lang="es" so screen readers switch voice.
+ *
+ * The copyright line is drawn here only on doc pages; on the home page the
+ * plugin already prints it (its text comes from `footer.copyright` in
+ * astro.config.mjs). Keep the two texts identical.
+ */
+import UiTweaksFooter from 'starlight-ui-tweaks/overrides/Footer.astro';
+
+const { template } = Astro.locals.starlightRoute.entry.data;
+const showCopyright = template === 'doc';
+const year = new Date().getFullYear();
+---
+
+<UiTweaksFooter />
+
+<aside class="site-disclaimer" aria-label="Disclaimer / Aviso">
+    <p>
+        Pepa is experimental software and a personal research project. It is not a medical device,
+        an alarm, or an emergency system, and nothing here is medical, legal, or technical advice.
+        In an emergency, call 911.
+    </p>
+    <p>
+        Some content and images are AI-generated and labelled as such; they may contain errors.
+        Provided as-is, use at your own risk. See the <a href="/general/termsofuse/">Terms of Use</a>{' '}
+        and <a href="/general/privacypolicy/">Privacy Policy</a>.
+    </p>
+
+    <p lang="es">
+        Pepa es software experimental y un proyecto personal de investigación. No es un dispositivo
+        médico, ni una alarma, ni un sistema de emergencia, y nada aquí constituye consejo médico,
+        legal ni técnico. En una emergencia, llama al 911.
+    </p>
+    <p lang="es">
+        Parte del contenido y de las imágenes se genera con IA y se identifica como tal; puede
+        contener errores. Se ofrece tal cual, bajo tu propio riesgo. Consulta los{' '}
+        <a href="/general/termsofuse/">Términos de Uso</a> y la{' '}
+        <a href="/general/privacypolicy/">Política de Privacidad</a> (en inglés).
+    </p>
+
+    {
+        showCopyright && (
+            <p class="site-copyright">
+                &copy; {year} José F. Reyes-Santana. Text and images CC BY 4.0, code MIT.
+            </p>
+        )
+    }
+</aside>
+
+<style>
+    .site-disclaimer {
+        margin: 2rem auto 0;
+        /* Bottom padding keeps the last line clear of the scroll-to-top button. */
+        padding: 1rem 0 4rem;
+        max-width: 60rem;
+        border-top: 1px solid var(--sl-color-gray-6);
+        font-size: 0.8125rem;
+        line-height: 1.55;
+        color: var(--sl-color-gray-3);
+    }
+
+    .site-disclaimer p {
+        margin: 0 0 0.6rem;
+    }
+
+    /* A little air between the English pair and the Spanish pair. */
+    .site-disclaimer p[lang='es']:first-of-type {
+        margin-top: 1rem;
+    }
+
+    .site-disclaimer a {
+        color: var(--sl-color-text-accent);
+    }
+
+    .site-copyright {
+        margin-top: 1rem;
+    }
+</style>
