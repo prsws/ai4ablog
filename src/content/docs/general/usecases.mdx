@@ -14,6 +14,7 @@ import RhythmFigure from '../../../components/RhythmFigure.astro';
 import PhotoFrame from '../../../components/PhotoFrame.astro';
 import hallwayNight from '../../../assets/usecases/hallway-night.jpg';
 import homelabRack from '../../../assets/usecases/homelab-rack.jpg';
+import breakfastRadar from '../../../assets/usecases/breakfast-radar.jpg';
 
 <table>
     <tr>
@@ -92,7 +93,12 @@ The goal is **contextual recall**, not just document search.
 
 #### Scenario: “What should I be doing today?”
 
-<PhotoFrame hint="Screenshot or photo: today's plan, in plain large type" caption="Example day." badge="screenshot" />
+<PhotoFrame
+    image={breakfastRadar}
+    alt="An older man with white hair, in a light blue guayabera, sits at a wooden table in a sunroom with coffee and toast, talking toward a small smart speaker on a side table next to a bowl of mangoes. Louvered windows look out on banana leaves and palms."
+    caption="Illustration, not a photo of a real person. Over breakfast, he asks what is on his radar today."
+    badge="ai"
+/>
 
 You ask:
 
