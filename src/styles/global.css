@@ -366,3 +366,19 @@ h1#_top,
     }
 }
 
+
+/* Day/dusk wording in page text, same switch as the home hero and the day/dusk
+   pictures: light theme says "apaga" (off), dark theme "enciende" (on). Dusk is
+   the default, as in Starlight itself. */
+.sl-markdown-content .for-day {
+    display: none;
+}
+.sl-markdown-content .for-dusk {
+    display: inline;
+}
+:root[data-theme='light'] .sl-markdown-content .for-day {
+    display: inline;
+}
+:root[data-theme='light'] .sl-markdown-content .for-dusk {
+    display: none;
+}
