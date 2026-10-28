@@ -139,6 +139,10 @@ export default defineConfig({
             },
         ],
         customCss: ["./src/styles/global.css"],
+        components: {
+            // Home-page hero: words from index.mdx frontmatter, layout + photo here.
+            Hero: "./src/components/RoomHero.astro",
+        },
 		}), mdx()],
     markdown: {
         rehypePlugins: [

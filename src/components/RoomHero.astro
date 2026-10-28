@@ -1,0 +1,341 @@
+---
+/**
+ * RoomHero — the home-page hero ("The room answers").
+ *
+ * Replaces Starlight's built-in Hero (wired in astro.config.mjs). The words come
+ * from the page's `hero:` frontmatter — title, tagline, actions — so editing the
+ * home page text still happens in index.mdx. This file owns layout and the photo.
+ *
+ * The photo is an AI-generated illustration, in two versions of the same room:
+ * day for the light theme, dusk for the dark theme. Starlight switches themes by
+ * setting data-theme on <html>, so the swap is done in CSS below. A <picture>
+ * media query would follow the operating system and ignore the site's own
+ * light/dark toggle.
+ *
+ * Nothing on the picture is a real conversation. The two speech bubbles are
+ * labelled as illustration in the caption, and the status chip says only what
+ * is true today: voice control works, and it stays in the house.
+ */
+import { Image } from 'astro:assets';
+import { LinkButton } from '@astrojs/starlight/components';
+import day from '../assets/hero/room-day.jpg';
+import dusk from '../assets/hero/room-dusk.jpg';
+
+const { data } = Astro.locals.starlightRoute.entry;
+const { title = data.title, tagline, actions = [] } = data.hero || {};
+
+const imgAttrs = {
+    widths: [480, 720, 1028],
+    sizes: '(min-width: 70rem) 36rem, (min-width: 44rem) 50vw, 100vw',
+    format: 'webp' as const,
+    quality: 72,
+    loading: 'eager' as const,
+    decoding: 'async' as const,
+};
+---
+
+<div class="room-hero">
+  <div class="room-grid">
+    <div class="room-copy">
+        <h1 id="_top" data-page-title set:html={title} />
+        {tagline && <div class="room-tagline" set:html={tagline} />}
+
+        {
+            actions.length > 0 && (
+                <div class="room-actions">
+                    {actions.map(({ attrs: { class: className, ...attrs } = {}, icon, link: href, text, variant }) => (
+                        <LinkButton {href} {variant} icon={icon?.name} class:list={[className]} {...attrs}>
+                            {text}
+                            {icon?.html && <Fragment set:html={icon.html} />}
+                        </LinkButton>
+                    ))}
+                </div>
+            )
+        }
+
+        <ul class="room-chips" aria-label="What is true today">
+            <li><strong>Works today:</strong> voice control in English and español</li>
+            <li><strong>Always:</strong> nothing leaves the house</li>
+        </ul>
+    </div>
+
+    <figure class="room-figure">
+        <div class="room-stage">
+            <Image
+                src={day}
+                alt="An older woman in a rattan chair in a sunlit Puerto Rican sunroom, smiling toward a small smart speaker on a side table beside a bowl of mangoes."
+                class="room-day"
+                {...imgAttrs}
+            />
+            <Image
+                src={dusk}
+                alt="The same sunroom at dusk. The ceiling fan light is on and the woman smiles toward the small smart speaker on the side table."
+                class="room-dusk"
+                {...imgAttrs}
+            />
+
+            <!-- Decorative: the figcaption below says the same thing in words. -->
+            <p class="bubble bubble-user" aria-hidden="true">
+                <span class="for-day">“Oye Pepa, apaga el abanico.”</span>
+                <span class="for-dusk">“Oye Pepa, enciende el abanico.”</span>
+            </p>
+            <p class="bubble bubble-pepa" aria-hidden="true">
+                Listo.
+                <span class="bubble-note">Heard here. Stays here.</span>
+            </p>
+        </div>
+        <figcaption>
+            <span class="a4a-badge ai-generated">AI Generated</span>
+            Illustration, not a photo of a real person. She asks her house to switch{' '}
+            <span class="for-day">off</span><span class="for-dusk">on</span> the fan; the house
+            does it, and the voice never leaves it.
+        </figcaption>
+    </figure>
+  </div>
+</div>
+
+<style is:global>
+    /* The home page is the one page with a wide, two-column hero. Widen the
+       content column only when this hero is present. */
+    :root:has(.room-hero) {
+        --sl-content-width: 64rem;
+    }
+
+    /* Theme switch — see the note at the top of the file. Every rule is spelled
+       out for BOTH themes, so neither picture depends on the other's rules, and
+       the page with no data-theme at all (before Starlight's script runs) shows
+       the dusk picture, Starlight's own default. */
+    .room-hero .room-day,
+    .room-hero .for-day {
+        display: none;
+    }
+    .room-hero .room-dusk {
+        display: block;
+    }
+    .room-hero .for-dusk {
+        display: inline;
+    }
+    :root[data-theme='dark'] .room-hero .room-day,
+    :root[data-theme='dark'] .room-hero .for-day {
+        display: none;
+    }
+    :root[data-theme='dark'] .room-hero .room-dusk {
+        display: block;
+    }
+    :root[data-theme='dark'] .room-hero .for-dusk {
+        display: inline;
+    }
+    :root[data-theme='light'] .room-hero .room-day {
+        display: block;
+    }
+    :root[data-theme='light'] .room-hero .for-day {
+        display: inline;
+    }
+    :root[data-theme='light'] .room-hero .room-dusk,
+    :root[data-theme='light'] .room-hero .for-dusk {
+        display: none;
+    }
+
+    /* Balloon positions, the same in both pictures (the two images are the same
+       room, same framing). Each balloon is nudged sideways by a share of its OWN
+       width — a percent in translateX is relative to the element itself — so
+       the move is exact whatever the language or size of the text. */
+    .room-hero .bubble-user {
+        transform: translateX(33%); /* toward her head */
+    }
+    .room-hero .bubble-pepa {
+        transform: translateX(-50%); /* toward the speaker */
+    }
+</style>
+
+<style>
+    .room-hero {
+        container-type: inline-size;
+    }
+
+    .room-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: clamp(1.5rem, 4vw, 2.5rem);
+        align-items: center;
+        padding-block: clamp(1rem, 3vw, 2.5rem) 1.5rem;
+    }
+
+    /* ---- Words ---------------------------------------------------------- */
+
+    .room-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        align-items: flex-start;
+    }
+
+    .room-copy h1 {
+        font-size: clamp(2.1rem, 7cqi, 3.4rem);
+        line-height: 1.08;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--sl-color-white);
+        margin: 0;
+    }
+
+    /* The tagline sits outside Starlight's markdown styles, so its links need
+       the accent color spelled out or they fall back to browser blue. */
+    .room-tagline :global(a) {
+        color: var(--sl-color-text-accent);
+    }
+
+    .room-tagline {
+        font-size: var(--sl-text-lg);
+        line-height: 1.55;
+        color: var(--sl-color-gray-2);
+        max-width: 38rem;
+    }
+
+    .room-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem 1.25rem;
+        align-items: center;
+    }
+
+    /* Status chips. Plain text with a bold lead-in: the status is the word, not
+       a color. */
+    .room-chips {
+        list-style: none;
+        margin: 0.25rem 0 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .room-chips li {
+        margin: 0;
+        padding: 0.3rem 0.8rem;
+        border: 1px solid var(--sl-color-gray-4);
+        border-radius: var(--pepa-radius-pill);
+        font-size: var(--sl-text-sm);
+        line-height: 1.4;
+        color: var(--sl-color-gray-1);
+        background: color-mix(in srgb, var(--sl-color-accent) 8%, transparent);
+    }
+
+    /* ---- Picture -------------------------------------------------------- */
+
+    .room-figure {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .room-stage {
+        position: relative;
+        container-type: inline-size;
+        border-radius: var(--pepa-radius-card);
+        overflow: hidden;
+        box-shadow: var(--pepa-shadow-up);
+        aspect-ratio: 1028 / 768;
+        background: var(--sl-color-gray-6);
+    }
+
+    .room-stage :global(img) {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        object-fit: cover;
+        margin: 0;
+    }
+
+    /* Speech bubbles. Positions are percentages of the picture, so they stay on
+       the speaker and the chair at every size; type scales with the picture. */
+    .bubble {
+        position: absolute;
+        margin: 0;
+        padding: 0.45em 0.8em;
+        font-size: clamp(0.6rem, 2.7cqi, 0.79rem); /* 25% smaller than the first draft */
+        line-height: 1.3;
+        font-weight: 600;
+        border-radius: 1.1em;
+        box-shadow: 0 2px 10px rgba(11, 34, 47, 0.35);
+        max-width: 48%;
+    }
+
+    .bubble::after {
+        content: '';
+        position: absolute;
+        width: 0.9em;
+        height: 0.9em;
+        background: inherit;
+        transform: rotate(45deg);
+        border-radius: 0.15em;
+    }
+
+    /* Her words: pale card, tail down toward her. */
+    .bubble-user {
+        left: 6%;
+        top: 9%;
+        background: #fdfaf3;
+        color: #142530;
+    }
+    .bubble-user::after {
+        right: 14%;
+        bottom: -0.35em;
+    }
+
+    /* The reply: Ocean card, tail down-left toward the speaker. */
+    .bubble-pepa {
+        left: 19%;
+        top: 49%;
+        background: #0f425c;
+        color: #ffffff;
+        border: 1px solid #b3e0ea;
+    }
+    .bubble-pepa::after {
+        left: 10%;
+        bottom: -0.38em;
+        border: 0;
+    }
+
+    .bubble-note {
+        display: block;
+        font-size: 0.78em;
+        font-weight: 500;
+        color: #b3e0ea;
+    }
+
+    .room-figure figcaption .a4a-badge {
+        margin-inline-end: 0.4em;
+    }
+
+    .room-figure figcaption {
+        font-size: var(--sl-text-sm);
+        line-height: 1.5;
+        color: var(--sl-color-gray-3);
+    }
+
+    /* Stacked (phones): the picture comes first, because it is the point. */
+    .room-figure {
+        order: -1;
+    }
+
+    /* ---- Wide: words left, picture right -------------------------------- */
+
+    @container (min-width: 36rem) {
+        .room-figure {
+            order: 0;
+        }
+        .room-grid {
+            grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+        }
+        .room-copy h1 {
+            font-size: clamp(2.1rem, 4.4cqi, 3.2rem);
+        }
+        .room-tagline {
+            font-size: var(--sl-text-base);
+        }
+    }
+</style>
