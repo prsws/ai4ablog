@@ -124,6 +124,16 @@ const imgAttrs = {
     :root[data-theme='light'] .room-hero .for-dusk {
         display: none;
     }
+
+    /* Light picture only: nudge each balloon sideways by a share of its OWN
+       width (percent in translateX is relative to the element itself), so the
+       move is exact whatever the language or size of the text. */
+    :root[data-theme='light'] .room-hero .bubble-user {
+        transform: translateX(33%); /* toward her head */
+    }
+    :root[data-theme='light'] .room-hero .bubble-pepa {
+        transform: translateX(-50%); /* toward the speaker */
+    }
 </style>
 
 <style>
