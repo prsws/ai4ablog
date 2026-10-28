@@ -15,6 +15,8 @@ import PhotoFrame from '../../../components/PhotoFrame.astro';
 import hallwayNight from '../../../assets/usecases/hallway-night.jpg';
 import homelabRack from '../../../assets/usecases/homelab-rack.jpg';
 import breakfastRadar from '../../../assets/usecases/breakfast-radar.jpg';
+import roomDay from '../../../assets/hero/room-day.jpg';
+import roomDusk from '../../../assets/hero/room-dusk.jpg';
 
 <table>
     <tr>
@@ -126,7 +128,15 @@ This is **life context aggregation**.
 
 #### Scenario: “Apaga el abanico, por favor.”
 
-<PhotoFrame hint="Photo: the voice satellite on a shelf at home" caption="A voice satellite. The voice stays in the house." badge="photo" />
+<PhotoFrame
+    image={roomDay}
+    dusk={roomDusk}
+    alt="An older woman in a rattan chair in a sunlit Puerto Rican sunroom, smiling toward a small smart speaker on a side table beside a bowl of mangoes."
+    altDusk="The same sunroom at dusk. The ceiling fan light is on and the woman smiles toward the small smart speaker on the side table."
+    caption="Illustration, not a photo of a real person. She speaks; the house answers, and the voice never leaves it."
+    badge="ai"
+    ratio="1028 / 768"
+/>
 
 You speak to Pepa the way you speak at home — English, español, or the Spanglish in between:
 

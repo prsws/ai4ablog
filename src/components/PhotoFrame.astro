@@ -8,6 +8,9 @@
  *
  * Props:
  *   image    the picture (ImageMetadata). Omit for the stand-in.
+ *   dusk     optional second version of the same picture for the dark theme; then
+ *            `image` is the light-theme (day) version. Same switch as the home hero.
+ *   altDusk  alt text for the dusk version.
  *   alt      what the picture shows. Required when `image` is given.
  *   hint     stand-in only: what picture belongs here.
  *   caption  one short line under the picture.
@@ -19,17 +22,27 @@ import { Image } from 'astro:assets';
 interface Props {
     image?: ImageMetadata;
     alt?: string;
+    dusk?: ImageMetadata;
+    altDusk?: string;
     hint?: string;
     caption?: string;
     badge?: 'photo' | 'screenshot' | 'ai';
     ratio?: string;
 }
-const { image, alt = '', hint = 'Picture goes here', caption, badge, ratio = '16 / 9' } = Astro.props;
+const { image, alt = '', dusk, altDusk = '', hint = 'Picture goes here', caption, badge, ratio = '16 / 9' } = Astro.props;
 
 const badges = {
     photo: { cls: 'human-curated', text: 'Real photo' },
     screenshot: { cls: 'human-curated', text: 'Real screenshot' },
     ai: { cls: 'ai-generated', text: 'AI Generated' },
+};
+const imgAttrs = {
+    widths: [480, 720, 1028],
+    sizes: '(min-width: 70rem) 56rem, 100vw',
+    format: 'webp' as const,
+    quality: 74,
+    loading: 'lazy' as const,
+    decoding: 'async' as const,
 };
 const b = badge ? badges[badge] : undefined;
 ---
@@ -37,17 +50,13 @@ const b = badge ? badges[badge] : undefined;
 <figure class="photo-frame">
     <div class="photo-stage" style={`aspect-ratio:${ratio}`}>
         {
-            image ? (
-                <Image
-                    src={image}
-                    alt={alt}
-                    widths={[480, 720, 1028]}
-                    sizes="(min-width: 70rem) 56rem, 100vw"
-                    format="webp"
-                    quality={74}
-                    loading="lazy"
-                    decoding="async"
-                />
+            image && dusk ? (
+                <>
+                    <Image src={image} alt={alt} class="pf-day" {...imgAttrs} />
+                    <Image src={dusk} alt={altDusk} class="pf-dusk" {...imgAttrs} />
+                </>
+            ) : image ? (
+                <Image src={image} alt={alt} {...imgAttrs} />
             ) : (
                 <div class="photo-standin" role="img" aria-label={`Placeholder: ${hint}`}>
                     <span>{hint}</span>
@@ -118,5 +127,22 @@ const b = badge ? badges[badge] : undefined;
     }
     .photo-frame figcaption .a4a-badge {
         margin-inline-end: 0.4em;
+    }
+</style>
+
+<style is:global>
+    /* Day/dusk pair: same switch as the home hero. Dusk is the default (Starlight's
+       own default theme); the day picture shows only when the theme is light. */
+    .photo-frame .pf-day {
+        display: none;
+    }
+    .photo-frame .pf-dusk {
+        display: block;
+    }
+    :root[data-theme='light'] .photo-frame .pf-day {
+        display: block;
+    }
+    :root[data-theme='light'] .photo-frame .pf-dusk {
+        display: none;
     }
 </style>
