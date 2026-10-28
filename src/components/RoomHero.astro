@@ -75,7 +75,10 @@ const imgAttrs = {
             />
 
             <!-- Decorative: the figcaption below says the same thing in words. -->
-            <p class="bubble bubble-user" aria-hidden="true">“Oye Pepa, apaga el abanico.”</p>
+            <p class="bubble bubble-user" aria-hidden="true">
+                <span class="for-day">“Oye Pepa, apaga el abanico.”</span>
+                <span class="for-dusk">“Oye Pepa, enciende el abanico.”</span>
+            </p>
             <p class="bubble bubble-pepa" aria-hidden="true">
                 Listo.
                 <span class="bubble-note">Heard here. Stays here.</span>
@@ -83,8 +86,9 @@ const imgAttrs = {
         </div>
         <figcaption>
             <span class="a4a-badge ai-generated">AI Generated</span>
-            Illustration, not a photo of a real person. She asks her house to switch off the
-            fan; the house does it, and the voice never leaves it.
+            Illustration, not a photo of a real person. She asks her house to switch{' '}
+            <span class="for-day">off</span><span class="for-dusk">on</span> the fan; the house
+            does it, and the voice never leaves it.
         </figcaption>
     </figure>
   </div>
@@ -106,6 +110,18 @@ const imgAttrs = {
         display: block;
     }
     :root[data-theme='light'] .room-hero .room-dusk {
+        display: none;
+    }
+
+    /* Same swap for the words that belong to one picture: at dusk she asks for
+       the fan to come on ("enciende"), by day to go off ("apaga"). */
+    .room-hero .for-day {
+        display: none;
+    }
+    :root[data-theme='light'] .room-hero .for-day {
+        display: inline;
+    }
+    :root[data-theme='light'] .room-hero .for-dusk {
         display: none;
     }
 </style>
