@@ -16,6 +16,7 @@ import homelabRack from '../../../assets/usecases/homelab-rack.jpg';
 import breakfastRadar from '../../../assets/usecases/breakfast-radar.jpg';
 import paperlessWarranty from '../../../assets/usecases/paperless-warranty.png';
 import openNotebookAsk from '../../../assets/usecases/open-notebook-ask.png';
+import restingHeartRate from '../../../assets/usecases/hamd-resting-heart-rate.png';
 import roomDay from '../../../assets/hero/room-day.jpg';
 import roomDusk from '../../../assets/hero/room-dusk.jpg';
 
@@ -231,9 +232,24 @@ This turns Pepa into a **system memory for the lab itself**.
 
 #### Scenario: noticing something you might miss.
 
-<PhotoFrame hint="Screenshot: UPS battery capacity over three months" caption="Example trend." badge="screenshot" />
+<PhotoFrame
+    image={restingHeartRate}
+    alt="The History screen of Home Assistant showing one week of the author's resting heart rate, in beats per minute, as a step line. It sits near 69, climbs to a peak of 78 midweek, then settles near 72. A speech bubble over the empty part of the chart reads: Your resting heart rate has been higher than usual this week. Everything ok?"
+    caption="The author's own resting heart rate from an Apple Watch, stored in Home Assistant. Pepa's message is an example of what it would say. An observation, not a diagnosis. In development."
+    badge="screenshot"
+    ratio="1964 / 591"
+    keepRatio
+    bubbles={[
+        { who: 'pepa', text: 'Your resting heart rate has been higher than usual this week. Everything ok?', left: '34%', top: '22%', maxWidth: '36%', tailRight: '12%' },
+    ]}
+/>
 
-Pepa periodically analyzes stored data and alerts you:
+Pepa periodically analyzes stored data and checks in with you. Say your Apple Watch passes your resting heart rate to the house every day. When a few days run higher than your own usual, Pepa asks:
+
+> “Your resting heart rate has been higher than usual this week. Everything ok?”
+>
+
+Or, about the house itself:
 
 > “Your UPS battery capacity has dropped 15% over the last three months.”
 >
@@ -243,7 +259,7 @@ Or:
 > “Your sleep log shows increasing irregularity over the past two weeks.”
 >
 
-One important restraint: Pepa reports **what it observed, never a diagnosis**. “Your resting heart rate has been higher this week” is an observation you can bring to your doctor — it is not, and will never be presented as, a medical conclusion.
+One important restraint: Pepa reports **what it observed, never a diagnosis**. “Your resting heart rate has been higher than usual this week” is an observation you can bring to your doctor, and “Everything ok?” is a check-in, not an alarm. Neither is, or will ever be presented as, a medical conclusion.
 
 This moves Pepa from **passive memory → active assistant**, without pretending to be a physician.
 
