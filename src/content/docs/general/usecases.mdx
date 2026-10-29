@@ -106,7 +106,7 @@ The goal is **contextual recall**, not just document search.
     caption="Illustration, not a photo of a real person. Over breakfast, he asks what is on his radar today, and Pepa tells him."
     badge="ai"
     bubbles={[
-        { who: 'user', text: '“Pepa, what’s on my radar today?”', left: '33%', top: '7%', tailRight: '14%' },
+        { who: 'user', text: '“Oye Pepa, what’s on my radar today?”', left: '33%', top: '7%', tailRight: '14%', light: { shift: '20%' } },
         { who: 'pepa', text: 'Today: the UPS battery, the NAS logs, and a call to the pharmacy.', left: '16%', top: '40%', maxWidth: '30%', tailLeft: '55%' },
     ]}
 />
@@ -148,7 +148,7 @@ This is **life context aggregation**.
     badge="ai"
     ratio="1028 / 768"
     bubbles={[
-        { who: 'user', day: '“Oye Pepa, apaga el abanico.”', dusk: '“Oye Pepa, enciende el abanico.”', left: '6%', top: '9%', shift: '33%', tailRight: '14%' },
+        { who: 'user', day: '“Oye Pepa, apaga el abanico.”', dusk: '“Oye Pepa, enciende el abanico.”', left: '6%', top: '9%', shift: '33%', light: { shift: '83%' /* 33% + 50% */ }, tailRight: '14%' },
         { who: 'pepa', text: 'Listo.', note: 'Heard here. Stays here.', left: '19%', top: '49%', shift: '-50%', tailLeft: '10%' },
     ]}
 />
@@ -235,12 +235,12 @@ This turns Pepa into a **system memory for the lab itself**.
 <PhotoFrame
     image={restingHeartRate}
     alt="The History screen of Home Assistant showing one week of the author's resting heart rate, in beats per minute, as a step line. It sits near 69, climbs to a peak of 78 midweek, then settles near 72. A speech bubble over the empty part of the chart reads: Your resting heart rate has been higher than usual this week. Everything ok?"
-    caption="The author's own resting heart rate from an Apple Watch, stored in Home Assistant. Pepa's message is an example of what it would say. An observation, not a diagnosis. In development."
+    caption="The author's own resting heart rate from an Apple Watch, stored in the Home Assistant MD instance, separate from the house. Pepa's message is an example of what it would say. An observation, not a diagnosis. In development."
     badge="screenshot"
     ratio="1964 / 591"
     keepRatio
     bubbles={[
-        { who: 'pepa', text: 'Your resting heart rate has been higher than usual this week. Everything ok?', left: '34%', top: '22%', maxWidth: '36%', tailRight: '12%' },
+        { who: 'pepa', text: 'Your resting heart rate has been higher than usual this week. Everything ok?', left: '34%', top: '22%', maxWidth: '36%', tailRight: '12%', light: { shift: '75%', shiftY: '-50%' }, tailRightDark: true },
     ]}
 />
 

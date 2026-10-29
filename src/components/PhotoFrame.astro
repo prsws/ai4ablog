@@ -26,6 +26,10 @@
  *              left, top  position, % of the picture
  *              shift      translateX as a share of the bubble's OWN width (e.g. '33%'),
  *                         so a nudge is exact whatever the text length
+ *              shiftY     the same, vertically, as a share of its own height ('-50%' = up)
+ *              light      {shift, shiftY} used instead when the light theme is on
+ *              tailRightDark  dark theme only: the tail leaves the right side and points
+ *                         right, as long as the bubble is tall (for a crowded picture)
  *              maxWidth   wrap width, % of the picture (default 48%)
  *              tailLeft / tailRight   where the little tail sits along the bubble
  *            Same look as the home hero.
@@ -53,6 +57,9 @@ interface Bubble {
     left: string;
     top: string;
     shift?: string;
+    shiftY?: string;
+    light?: { shift?: string; shiftY?: string };
+    tailRightDark?: boolean;
     maxWidth?: string;
     tailLeft?: string;
     tailRight?: string;
@@ -63,13 +70,20 @@ const bubbleStyle = (x: Bubble) =>
     [
         `left:${x.left}`,
         `top:${x.top}`,
-        x.shift ? `transform:translateX(${x.shift})` : '',
+        x.shift ? `--tx:${x.shift}` : '',
+        x.shiftY ? `--ty:${x.shiftY}` : '',
+        x.light?.shift ? `--tx-l:${x.light.shift}` : '',
+        x.light?.shiftY ? `--ty-l:${x.light.shiftY}` : '',
         x.maxWidth ? `max-width:${x.maxWidth}` : '',
         x.tailLeft ? `--tail-left:${x.tailLeft}` : '',
         x.tailRight ? `--tail-right:${x.tailRight}` : '',
     ]
         .filter(Boolean)
         .join(';');
+
+// Captions are plain strings; "In development." is set in bold wherever it appears.
+const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const captionHtml = caption ? esc(caption).split('In development.').join('<strong>In development.</strong>') : '';
 
 const badges = {
     photo: { cls: 'human-curated', text: 'Real photo' },
@@ -105,7 +119,7 @@ const b = badge ? badges[badge] : undefined;
         }
         {
             bubbles.map((x) => (
-                <p class={`pf-bubble pf-bubble-${x.who}`} style={bubbleStyle(x)} aria-hidden="true">
+                <p class={`pf-bubble pf-bubble-${x.who}${x.tailRightDark ? ' pf-tail-right-dark' : ''}`} style={bubbleStyle(x)} aria-hidden="true">
                     {x.day && x.dusk ? (
                         <>
                             <span class="for-day">{x.day}</span>
@@ -123,7 +137,7 @@ const b = badge ? badges[badge] : undefined;
         (caption || b) && (
             <figcaption>
                 {b && <span class={`a4a-badge ${b.cls}`}>{b.text}</span>}
-                {caption}
+                {caption && <Fragment set:html={captionHtml} />}
             </figcaption>
         )
     }
@@ -184,6 +198,11 @@ const b = badge ? badges[badge] : undefined;
         box-shadow: 0 2px 10px rgba(11, 34, 47, 0.35);
         max-width: 48%;
         width: max-content;
+        transform: translate(var(--tx, 0%), var(--ty, 0%));
+    }
+    /* Light theme can carry its own nudge. Percentages are of the bubble itself. */
+    :global(:root[data-theme='light']) .pf-bubble {
+        transform: translate(var(--tx-l, var(--tx, 0%)), var(--ty-l, var(--ty, 0%)));
     }
     .pf-bubble::after {
         content: '';
@@ -209,6 +228,22 @@ const b = badge ? badges[badge] : undefined;
     .pf-bubble-pepa::after {
         border: 0;
     }
+    /* Dark theme, crowded picture: the tail leaves the right side and points right.
+       The tail box is square, as wide as the bubble is tall, so its length is the
+       bubble's height; the clip makes it a slim pointer. */
+    :global(:root:not([data-theme='light'])) .pf-bubble.pf-tail-right-dark::after {
+        left: calc(100% - 1px);
+        right: auto;
+        top: -1px;
+        bottom: auto;
+        width: auto;
+        height: calc(100% + 2px); /* the bubble's full height, border included */
+        aspect-ratio: 1;
+        transform: none;
+        border-radius: 0;
+        clip-path: polygon(0 32%, 100% 50%, 0 68%);
+    }
+
     .pf-bubble-note {
         display: block;
         font-size: 0.78em;
