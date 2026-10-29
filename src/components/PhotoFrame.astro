@@ -18,7 +18,6 @@
  *   ratio    CSS aspect-ratio, default 16 / 9.
  *   keepRatio  true: do not switch to the taller 4 / 3 frame on phones. For wide
  *            screenshots, which would otherwise be cropped to a thin slice.
- *   zoom     true: the picture links to the full-size file (tap to read the small print).
  *   bubbles  optional speech bubbles drawn over the picture (decorative: the caption
  *            and alt text carry the same words). Each bubble:
  *              who        'user' (pale card) or 'pepa' (ocean card)
@@ -43,7 +42,6 @@ interface Props {
     badge?: 'photo' | 'screenshot' | 'ai';
     ratio?: string;
     keepRatio?: boolean;
-    zoom?: boolean;
     bubbles?: Bubble[];
 }
 interface Bubble {
@@ -59,7 +57,7 @@ interface Bubble {
     tailLeft?: string;
     tailRight?: string;
 }
-const { image, alt = '', dusk, altDusk = '', hint = 'Picture goes here', caption, badge, ratio = '16 / 9', keepRatio = false, zoom = false, bubbles = [] } = Astro.props;
+const { image, alt = '', dusk, altDusk = '', hint = 'Picture goes here', caption, badge, ratio = '16 / 9', keepRatio = false, bubbles = [] } = Astro.props;
 
 const bubbleStyle = (x: Bubble) =>
     [
@@ -97,10 +95,6 @@ const b = badge ? badges[badge] : undefined;
                     <Image src={image} alt={alt} class="pf-day" {...imgAttrs} />
                     <Image src={dusk} alt={altDusk} class="pf-dusk" {...imgAttrs} />
                 </>
-            ) : image && zoom ? (
-                <a class="pf-zoom" href={image.src} target="_blank" rel="noopener" aria-label="Open the full-size picture in a new tab">
-                    <Image src={image} alt={alt} {...imgAttrs} />
-                </a>
             ) : image ? (
                 <Image src={image} alt={alt} {...imgAttrs} />
             ) : (
@@ -150,11 +144,6 @@ const b = badge ? badges[badge] : undefined;
         box-shadow: var(--pepa-shadow-up);
         border: 1px solid var(--sl-color-gray-5);
         background: var(--sl-color-gray-6);
-    }
-    .pf-zoom {
-        position: absolute;
-        inset: 0;
-        display: block;
     }
     .photo-stage :global(img),
     .photo-standin {
