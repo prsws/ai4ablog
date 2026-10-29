@@ -15,6 +15,7 @@ import PhotoFrame from '../../../components/PhotoFrame.astro';
 import hallwayNight from '../../../assets/usecases/hallway-night.jpg';
 import homelabRack from '../../../assets/usecases/homelab-rack.jpg';
 import breakfastRadar from '../../../assets/usecases/breakfast-radar.jpg';
+import paperlessWarranty from '../../../assets/usecases/paperless-warranty.png';
 import roomDay from '../../../assets/hero/room-day.jpg';
 import roomDusk from '../../../assets/hero/room-dusk.jpg';
 
@@ -29,7 +30,13 @@ import roomDusk from '../../../assets/hero/room-dusk.jpg';
 
 #### Scenario: “Where did I put that?”
 
-<PhotoFrame hint="Screenshot: asking for the water heater warranty and Paperless finding it" caption="Example question and answer." badge="screenshot" />
+<PhotoFrame
+    image={paperlessWarranty}
+    alt="The Paperless-ngx document list with the search words “water heater warranty” typed in. One document is found: the Bradford White water heater warranty, two pages."
+    caption="Paperless-ngx finding the warranty, from the author's own setup. Pepa's part is asking it for you, in plain words. In development."
+    badge="screenshot"
+    ratio="704 / 528"
+/>
 
 You vaguely remember storing an important document but can’t recall where.
 
