@@ -3,24 +3,43 @@ title: Practical Examples of Using Pepa
 description: Although Pepa is currently in development, these are some of its use cases.
 template: doc
 lastUpdated: 2026-10-27
+tableOfContents:
+  minHeadingLevel: 1
+  maxHeadingLevel: 3
 sidebar:
   badge:
     text: Upd
     variant: caution
 draft: false
 ---
-import { Badge } from '@astrojs/starlight/components';
+import RhythmFigure from '../../../components/RhythmFigure.astro';
+import PhotoFrame from '../../../components/PhotoFrame.astro';
+import hallwayNight from '../../../assets/usecases/hallway-night.jpg';
+import homelabRack from '../../../assets/usecases/homelab-rack.jpg';
+import breakfastRadar from '../../../assets/usecases/breakfast-radar.jpg';
+import paperlessWarranty from '../../../assets/usecases/paperless-warranty.png';
+import openNotebookAsk from '../../../assets/usecases/open-notebook-ask.png';
+import restingHeartRate from '../../../assets/usecases/hamd-resting-heart-rate.png';
+import roomDay from '../../../assets/hero/room-day.jpg';
+import roomDusk from '../../../assets/hero/room-dusk.jpg';
+import lastThoughtDay from '../../../assets/usecases/last-thought-day.jpg';
+import lastThoughtDusk from '../../../assets/usecases/last-thought-dusk.jpg';
 
-<table>
-    <tr>
-        <td><Badge text="AI Generated" variant="caution"/></td>
-        <td><Badge text="Human Curated" variant="success"/></td>
-    </tr>
-</table>
+<span class="a4a-badge ai-generated">AI Generated</span>
+<span class="a4a-badge human-curated">Human Curated</span>
 
 ### 1. Memory Recall (The Core Function)
 
 #### Scenario: “Where did I put that?”
+
+<PhotoFrame
+    image={paperlessWarranty}
+    alt="The Paperless-ngx Documents screen with the search words “water heater warranty” typed in. One document is found: the Bradford White water heater warranty, scanned March 3, two pages. Around the search box are the filters: tags, correspondent, document type, storage path, dates and permissions. The left menu lists dashboard, documents, correspondents, tags, document types, storage paths, custom fields, saved views, workflows, mail and trash."
+    caption="Paperless-ngx finding the warranty, from the author's own setup. Asking for it in plain words is part of the Knowledge Arm. In development. The filters (tags, correspondent, document type, dates) are other ways to ask."
+    badge="screenshot"
+    ratio="1944 / 652"
+    keepRatio
+/>
 
 You vaguely remember storing an important document but can’t recall where.
 
@@ -86,6 +105,17 @@ The goal is **contextual recall**, not just document search.
 
 #### Scenario: “What should I be doing today?”
 
+<PhotoFrame
+    image={breakfastRadar}
+    alt="An older man with white hair, in a light blue guayabera, sits at a wooden table in a sunroom with coffee and toast, talking toward a small smart speaker on a side table next to a bowl of mangoes. Louvered windows look out on banana leaves and palms."
+    caption="Illustration, not a photo of a real person. Over breakfast, he asks what is on his radar today, and Pepa tells him."
+    badge="ai"
+    bubbles={[
+        { who: 'user', text: '“Oye Pepa, what’s on my radar today?”', left: '33%', top: '7%', tailRight: '14%', light: { shift: '20%' } },
+        { who: 'pepa', text: 'Today: the UPS battery, the NAS logs, and a call to the pharmacy.', left: '16%', top: '40%', maxWidth: '30%', tailLeft: '55%' },
+    ]}
+/>
+
 You ask:
 
 > “Pepa, what’s on my radar today?”
@@ -110,7 +140,23 @@ This is **life context aggregation**.
 
 ### 4. Voice & Home Control — In Your Own Language
 
-#### Scenario: “Apaga el abanico, por favor.”
+<h4 id="scenario-apaga-el-abanico-por-favor" style={{ marginTop: "15px" }}>
+    Scenario: “<span class="for-day">Apaga</span><span class="for-dusk">Enciende</span> el abanico, por favor.”
+</h4>
+
+<PhotoFrame
+    image={roomDay}
+    dusk={roomDusk}
+    alt="An older woman in a rattan chair in a sunlit Puerto Rican sunroom, smiling toward a small smart speaker on a side table beside a bowl of mangoes."
+    altDusk="The same sunroom at dusk. The ceiling fan light is on and the woman smiles toward the small smart speaker on the side table."
+    caption="Illustration, not a photo of a real person. She speaks; the house answers, and the voice never leaves it."
+    badge="ai"
+    ratio="1028 / 768"
+    bubbles={[
+        { who: 'user', day: '“Oye Pepa, apaga el abanico.”', dusk: '“Oye Pepa, enciende el abanico.”', left: '6%', top: '9%', shift: '33%', light: { shift: '83%' /* 33% + 50% */ }, tailRight: '14%' },
+        { who: 'pepa', text: 'Listo.', note: 'Heard here. Stays here.', left: '19%', top: '49%', shift: '-50%', tailLeft: '10%' },
+    ]}
+/>
 
 You speak to Pepa the way you speak at home — English, español, or the Spanglish in between:
 
@@ -132,20 +178,23 @@ Aging with dignity includes being understood **in your own language, on your own
 
 #### Scenario: remembering useful information from months — or years — ago.
 
+<PhotoFrame
+    image={openNotebookAsk}
+    alt="The Ask screen of Open Notebook. The question “how did I fix the ups issue the last time?” is typed in. The final answer says it needs more context and lists three places it looked: the monitoring strategy notes, the hardware and power wiring notes, and the storage drive health notes, each with a clickable source. It asks what the “ups issue” concerns, such as network connectivity, power, or a specific service failing."
+    caption="Open Notebook, the knowledge store behind Pepa, answering a vague question with its sources and a clarifying question. Part of the Knowledge Arm. In development."
+    badge="screenshot"
+    ratio="1933 / 1072"
+    keepRatio
+/>
+
 You ask:
 
-> “Pepa, what was that article about AI memory systems I saved?”
+> “Pepa, how did I fix the UPS issue last time?”
 >
 
-Or:
+Pepa searches your saved articles, troubleshooting notes, and past solutions. When the question is vague, it does not guess. It shows where it looked, with sources you can open, and asks what you meant: the monitoring notes, the power wiring notes, or the drive health tests?
 
-> “Pepa, how did I fix the UPS monitoring issue last time?”
->
-
-Pepa searches your article queue, saved links, troubleshooting notes, and past solutions, then replies:
-
-> “You saved an article on memory architectures for GenAI systems — it discussed separating episodic from semantic memory. And you solved the UPS issue by proxying SNMP through the Raspberry Pi NUT server.”
->
+Tell it which one, and it narrows the search.
 
 Over the years this grows into a **personal knowledge archive**: documents, notes, decisions, mistakes, and lessons — retrievable long after you would otherwise have forgotten they existed. It prevents **re-solving the same problem repeatedly**, and it preserves what you’ve learned for as long as you need it.
 
@@ -154,6 +203,14 @@ Over the years this grows into a **personal knowledge archive**: documents, note
 ### 6. Technical Homelab Assistance
 
 #### Scenario: troubleshooting your own infrastructure.
+
+<PhotoFrame
+    image={homelabRack}
+    alt="Two small desktop-height server racks side by side in front of a green wall. Mini computers sit on black shelves, wired with blue and yellow network cables and a few labelled cords, with status lights glowing blue."
+    caption="The author's own homelab. Messy, real, and what Pepa keeps notes on."
+    badge="photo"
+    ratio="4 / 3"
+/>
 
 You ask:
 
@@ -180,7 +237,24 @@ This turns Pepa into a **system memory for the lab itself**.
 
 #### Scenario: noticing something you might miss.
 
-Pepa periodically analyzes stored data and alerts you:
+<PhotoFrame
+    image={restingHeartRate}
+    alt="The History screen of Home Assistant showing one week of the author's resting heart rate, in beats per minute, as a step line. It sits near 69, climbs to a peak of 78 midweek, then settles near 72. A speech bubble over the empty part of the chart reads: Your resting heart rate has been higher than usual this week. Everything ok?"
+    caption="The author's own resting heart rate from an Apple Watch, stored in the Home Assistant MD instance, separate from the house. Pepa's message is an example of what it would say. An observation, not a diagnosis. In development."
+    badge="screenshot"
+    ratio="1964 / 591"
+    keepRatio
+    bubbles={[
+        { who: 'pepa', text: 'Your resting heart rate has been higher than usual this week. Everything ok?', left: '34%', top: '22%', maxWidth: '36%', tailRight: '12%', light: { shift: '75%', shiftY: '-50%' }, tailRightDark: true },
+    ]}
+/>
+
+Pepa periodically analyzes stored data and checks in with you. Say your Apple Watch passes your resting heart rate to the house every day. When a few days run higher than your own usual, Pepa asks:
+
+> “Your resting heart rate has been higher than usual this week. Everything ok?”
+>
+
+Or, about the house itself:
 
 > “Your UPS battery capacity has dropped 15% over the last three months.”
 >
@@ -190,7 +264,7 @@ Or:
 > “Your sleep log shows increasing irregularity over the past two weeks.”
 >
 
-One important restraint: Pepa reports **what it observed, never a diagnosis**. “Your resting heart rate has been higher this week” is an observation you can bring to your doctor — it is not, and will never be presented as, a medical conclusion.
+One important restraint: Pepa reports **what it observed, never a diagnosis**. “Your resting heart rate has been higher than usual this week” is an observation you can bring to your doctor, and “Everything ok?” is a check-in, not an alarm. Neither is, or will ever be presented as, a medical conclusion.
 
 This moves Pepa from **passive memory → active assistant**, without pretending to be a physician.
 
@@ -199,6 +273,11 @@ This moves Pepa from **passive memory → active assistant**, without pretending
 ### 8. Quiet Watchfulness
 
 #### Scenario: the shower has been running for twenty minutes.
+
+<RhythmFigure
+    image={hallwayNight}
+    alt="A dark hallway at night in a Puerto Rican home. Wooden louvered windows look out on banana leaves and red heliconia. A small smart speaker with a faint blue ring glows on a console table, and the bathroom door at the end of the hall stands open with warm light spilling out. No one is in the picture."
+/>
 
 Pepa doesn’t watch you — **Pepa uses no cameras**, and won’t until there is a compelling reason to. Any security cameras a house has belong to a separate system, outside Pepa. Pepa listens to the rhythms of the house.
 
@@ -226,6 +305,19 @@ The real value is:
 ---
 
 # One Last Thought
+
+<PhotoFrame
+    image={lastThoughtDay}
+    dusk={lastThoughtDusk}
+    alt="An older man in a light blue guayabera works at a laptop on a wooden table in a sunlit sunroom, with papers and a phone beside him. On a side table behind a bowl of mangoes, a small smart speaker sits, with a speech bubble pointing to it: You saved this article 2 months ago about changes in your benefits. It might be relevant to your budgeting work today."
+    altDusk="The same sunroom at night. The ceiling fan light is on, the man works at the laptop, and the smart speaker glows softly blue, with a speech bubble pointing to it: You saved this article 2 months ago about changes in your benefits. It might be relevant to your budgeting work today."
+    caption="Illustration, not a photo of a real person. Pepa speaks first, about something he forgot he saved. In development."
+    badge="ai"
+    ratio="1408 / 768"
+    bubbles={[
+        { who: 'pepa', text: '“You saved this article 2 months ago about changes in your benefits. It might be relevant to your budgeting work today.”', left: '12%', top: '24%', maxWidth: '38%', tailLeft: '60%' },
+    ]}
+/>
 
 The most powerful use of Pepa may not be **questions you ask**, but **things Pepa reminds you about** that you forgot existed.
 

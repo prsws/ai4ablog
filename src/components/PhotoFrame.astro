@@ -1,0 +1,284 @@
+---
+/**
+ * PhotoFrame — one picture for a use case, with a caption and a provenance badge.
+ * Shares its look with RhythmFigure (case 8): rounded corners, soft shadow.
+ *
+ * Until the real picture arrives it shows a clearly labelled stand-in, so the
+ * page layout can be judged. Do not merge a branch that still shows stand-ins.
+ *
+ * Props:
+ *   image    the picture (ImageMetadata). Omit for the stand-in.
+ *   dusk     optional second version of the same picture for the dark theme; then
+ *            `image` is the light-theme (day) version. Same switch as the home hero.
+ *   altDusk  alt text for the dusk version.
+ *   alt      what the picture shows. Required when `image` is given.
+ *   hint     stand-in only: what picture belongs here.
+ *   caption  one short line under the picture.
+ *   badge    provenance badge: 'photo' (real photo), 'screenshot', or 'ai'.
+ *   ratio    CSS aspect-ratio, default 16 / 9.
+ *   keepRatio  true: do not switch to the taller 4 / 3 frame on phones. For wide
+ *            screenshots, which would otherwise be cropped to a thin slice.
+ *   bubbles  optional speech bubbles drawn over the picture (decorative: the caption
+ *            and alt text carry the same words). Each bubble:
+ *              who        'user' (pale card) or 'pepa' (ocean card)
+ *              text       its words; or day + dusk for a pair that follows the theme
+ *              note       small second line (Pepa only)
+ *              left, top  position, % of the picture
+ *              shift      translateX as a share of the bubble's OWN width (e.g. '33%'),
+ *                         so a nudge is exact whatever the text length
+ *              shiftY     the same, vertically, as a share of its own height ('-50%' = up)
+ *              light      {shift, shiftY} used instead when the light theme is on
+ *              tailRightDark  dark theme only: the tail leaves the right side and points
+ *                         right, as long as the bubble is tall (for a crowded picture)
+ *              maxWidth   wrap width, % of the picture (default 48%)
+ *              tailLeft / tailRight   where the little tail sits along the bubble
+ *            Same look as the home hero.
+ */
+import { Image } from 'astro:assets';
+
+interface Props {
+    image?: ImageMetadata;
+    alt?: string;
+    dusk?: ImageMetadata;
+    altDusk?: string;
+    hint?: string;
+    caption?: string;
+    badge?: 'photo' | 'screenshot' | 'ai';
+    ratio?: string;
+    keepRatio?: boolean;
+    bubbles?: Bubble[];
+}
+interface Bubble {
+    who: 'user' | 'pepa';
+    text?: string;
+    day?: string;
+    dusk?: string;
+    note?: string;
+    left: string;
+    top: string;
+    shift?: string;
+    shiftY?: string;
+    light?: { shift?: string; shiftY?: string };
+    tailRightDark?: boolean;
+    maxWidth?: string;
+    tailLeft?: string;
+    tailRight?: string;
+}
+const { image, alt = '', dusk, altDusk = '', hint = 'Picture goes here', caption, badge, ratio = '16 / 9', keepRatio = false, bubbles = [] } = Astro.props;
+
+const bubbleStyle = (x: Bubble) =>
+    [
+        `left:${x.left}`,
+        `top:${x.top}`,
+        x.shift ? `--tx:${x.shift}` : '',
+        x.shiftY ? `--ty:${x.shiftY}` : '',
+        x.light?.shift ? `--tx-l:${x.light.shift}` : '',
+        x.light?.shiftY ? `--ty-l:${x.light.shiftY}` : '',
+        x.maxWidth ? `max-width:${x.maxWidth}` : '',
+        x.tailLeft ? `--tail-left:${x.tailLeft}` : '',
+        x.tailRight ? `--tail-right:${x.tailRight}` : '',
+    ]
+        .filter(Boolean)
+        .join(';');
+
+// Captions are plain strings; "In development." is set in bold wherever it appears.
+const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const captionHtml = caption ? esc(caption).split('In development.').join('<strong>In development.</strong>') : '';
+
+const badges = {
+    photo: { cls: 'human-curated', text: 'Real photo' },
+    screenshot: { cls: 'human-curated', text: 'Real screenshot' },
+    ai: { cls: 'ai-generated', text: 'AI Generated' },
+};
+const imgAttrs = {
+    widths: image && image.width > 1600 ? [480, 720, 1028, 1600] : [480, 720, 1028],
+    sizes: '(min-width: 70rem) 56rem, 100vw',
+    format: 'webp' as const,
+    quality: 74,
+    loading: 'lazy' as const,
+    decoding: 'async' as const,
+};
+const b = badge ? badges[badge] : undefined;
+---
+
+<figure class="photo-frame">
+    <div class="photo-stage" data-keep={keepRatio ? "" : undefined} style={`aspect-ratio:${ratio}`}>
+        {
+            image && dusk ? (
+                <>
+                    <Image src={image} alt={alt} class="pf-day" {...imgAttrs} />
+                    <Image src={dusk} alt={altDusk} class="pf-dusk" {...imgAttrs} />
+                </>
+            ) : image ? (
+                <Image src={image} alt={alt} {...imgAttrs} />
+            ) : (
+                <div class="photo-standin" role="img" aria-label={`Placeholder: ${hint}`}>
+                    <span>{hint}</span>
+                </div>
+            )
+        }
+        {
+            bubbles.map((x) => (
+                <p class={`pf-bubble pf-bubble-${x.who}${x.tailRightDark ? ' pf-tail-right-dark' : ''}`} style={bubbleStyle(x)} aria-hidden="true">
+                    {x.day && x.dusk ? (
+                        <>
+                            <span class="for-day">{x.day}</span>
+                            <span class="for-dusk">{x.dusk}</span>
+                        </>
+                    ) : (
+                        x.text
+                    )}
+                    {x.note && <span class="pf-bubble-note">{x.note}</span>}
+                </p>
+            ))
+        }
+    </div>
+    {
+        (caption || b) && (
+            <figcaption>
+                {b && <span class={`a4a-badge ${b.cls}`}>{b.text}</span>}
+                {caption && <Fragment set:html={captionHtml} />}
+            </figcaption>
+        )
+    }
+</figure>
+
+<style>
+    .photo-frame {
+        margin: 1.5rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+    .photo-stage {
+        position: relative;
+        container-type: inline-size;
+        border-radius: var(--pepa-radius-card);
+        overflow: hidden;
+        box-shadow: var(--pepa-shadow-up);
+        border: 1px solid var(--sl-color-gray-5);
+        background: var(--sl-color-gray-6);
+    }
+    .photo-stage :global(img),
+    .photo-standin {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        object-fit: cover;
+        margin: 0;
+    }
+    .photo-standin {
+        display: grid;
+        place-items: center;
+        padding: 1rem;
+        text-align: center;
+        color: var(--sl-color-gray-3);
+        font-size: 0.9rem;
+        background: repeating-linear-gradient(
+            135deg,
+            var(--sl-color-gray-6) 0 14px,
+            color-mix(in srgb, var(--sl-color-gray-6) 85%, var(--sl-color-gray-5)) 14px 28px
+        );
+        outline: 2px dashed var(--sl-color-gray-4);
+        outline-offset: -10px;
+        border-radius: var(--pepa-radius-card);
+    }
+    /* Speech bubbles: same look as the home hero. Type scales with the picture
+       (2.2% of its width is the hero's size), with a floor so it stays legible. */
+    .pf-bubble {
+        position: absolute;
+        margin: 0;
+        padding: 0.45em 0.8em;
+        font-size: clamp(0.6rem, 2.2cqi, 1rem);
+        line-height: 1.3;
+        font-weight: 600;
+        border-radius: 1.1em;
+        box-shadow: 0 2px 10px rgba(11, 34, 47, 0.35);
+        max-width: 48%;
+        width: max-content;
+        transform: translate(var(--tx, 0%), var(--ty, 0%));
+    }
+    /* Light theme can carry its own nudge. Percentages are of the bubble itself. */
+    :global(:root[data-theme='light']) .pf-bubble {
+        transform: translate(var(--tx-l, var(--tx, 0%)), var(--ty-l, var(--ty, 0%)));
+    }
+    .pf-bubble::after {
+        content: '';
+        position: absolute;
+        left: var(--tail-left, auto);
+        right: var(--tail-right, auto);
+        bottom: -0.36em;
+        width: 0.9em;
+        height: 0.9em;
+        background: inherit;
+        transform: rotate(45deg);
+        border-radius: 0.15em;
+    }
+    .pf-bubble-user {
+        background: #fdfaf3;
+        color: #142530;
+    }
+    .pf-bubble-pepa {
+        background: #0f425c;
+        color: #ffffff;
+        border: 1px solid #b3e0ea;
+    }
+    .pf-bubble-pepa::after {
+        border: 0;
+    }
+    /* Dark theme, crowded picture: the tail leaves the right side and points right.
+       The tail box is square, as wide as the bubble is tall, so its length is the
+       bubble's height; the clip makes it a slim pointer. */
+    :global(:root:not([data-theme='light'])) .pf-bubble.pf-tail-right-dark::after {
+        left: calc(100% - 1px);
+        right: auto;
+        top: -1px;
+        bottom: auto;
+        width: auto;
+        height: calc(100% + 2px); /* the bubble's full height, border included */
+        aspect-ratio: 1;
+        transform: none;
+        border-radius: 0;
+        clip-path: polygon(0 32%, 100% 50%, 0 68%);
+    }
+
+    .pf-bubble-note {
+        display: block;
+        font-size: 0.78em;
+        font-weight: 500;
+        color: #b3e0ea;
+    }
+
+    @media (max-width: 36rem) {
+        .photo-stage:not([data-keep]) {
+            aspect-ratio: 4 / 3 !important;
+        }
+    }
+    .photo-frame figcaption {
+        font-size: var(--sl-text-sm);
+        line-height: 1.5;
+        color: var(--sl-color-gray-3);
+    }
+    .photo-frame figcaption .a4a-badge {
+        margin-inline-end: 0.4em;
+    }
+</style>
+
+<style is:global>
+    /* Day/dusk pair: same switch as the home hero. Dusk is the default (Starlight's
+       own default theme); the day picture shows only when the theme is light. */
+    .photo-frame .pf-day {
+        display: none;
+    }
+    .photo-frame .pf-dusk {
+        display: block;
+    }
+    :root[data-theme='light'] .photo-frame .pf-day {
+        display: block;
+    }
+    :root[data-theme='light'] .photo-frame .pf-dusk {
+        display: none;
+    }
+</style>
