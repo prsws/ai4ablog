@@ -16,6 +16,7 @@ import hallwayNight from '../../../assets/usecases/hallway-night.jpg';
 import homelabRack from '../../../assets/usecases/homelab-rack.jpg';
 import breakfastRadar from '../../../assets/usecases/breakfast-radar.jpg';
 import paperlessWarranty from '../../../assets/usecases/paperless-warranty.png';
+import openNotebookAsk from '../../../assets/usecases/open-notebook-ask.png';
 import roomDay from '../../../assets/hero/room-day.jpg';
 import roomDusk from '../../../assets/hero/room-dusk.jpg';
 
@@ -176,22 +177,23 @@ Aging with dignity includes being understood **in your own language, on your own
 
 #### Scenario: remembering useful information from months — or years — ago.
 
-<PhotoFrame hint="Screenshot: an answer that cites its source document" caption="Example answer with its source." badge="screenshot" />
+<PhotoFrame
+    image={openNotebookAsk}
+    alt="The Ask screen of Open Notebook. The question “how did I fix the ups issue the last time?” is typed in. The final answer says it needs more context and lists three places it looked: the monitoring strategy notes, the hardware and power wiring notes, and the storage drive health notes, each with a clickable source. It asks what the “ups issue” concerns, such as network connectivity, power, or a specific service failing."
+    caption="Open Notebook, the knowledge store behind Pepa, answering a vague question with its sources and a clarifying question. Part of the Knowledge Arm. In development."
+    badge="screenshot"
+    ratio="1933 / 1072"
+    keepRatio
+/>
 
 You ask:
 
-> “Pepa, what was that article about AI memory systems I saved?”
+> “Pepa, how did I fix the UPS issue last time?”
 >
 
-Or:
+Pepa searches your saved articles, troubleshooting notes, and past solutions. When the question is vague, it does not guess. It shows where it looked, with sources you can open, and asks what you meant: the monitoring notes, the power wiring notes, or the drive health tests?
 
-> “Pepa, how did I fix the UPS monitoring issue last time?”
->
-
-Pepa searches your article queue, saved links, troubleshooting notes, and past solutions, then replies:
-
-> “You saved an article on memory architectures for GenAI systems — it discussed separating episodic from semantic memory. And you solved the UPS issue by proxying SNMP through the Raspberry Pi NUT server.”
->
+Tell it which one, and it narrows the search.
 
 Over the years this grows into a **personal knowledge archive**: documents, notes, decisions, mistakes, and lessons — retrievable long after you would otherwise have forgotten they existed. It prevents **re-solving the same problem repeatedly**, and it preserves what you’ve learned for as long as you need it.
 
