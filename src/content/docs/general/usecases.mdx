@@ -3,6 +3,9 @@ title: Practical Examples of Using Pepa
 description: Although Pepa is currently in development, these are some of its use cases.
 template: doc
 lastUpdated: 2026-10-27
+tableOfContents:
+  minHeadingLevel: 1
+  maxHeadingLevel: 3
 sidebar:
   badge:
     text: Upd
@@ -19,6 +22,8 @@ import openNotebookAsk from '../../../assets/usecases/open-notebook-ask.png';
 import restingHeartRate from '../../../assets/usecases/hamd-resting-heart-rate.png';
 import roomDay from '../../../assets/hero/room-day.jpg';
 import roomDusk from '../../../assets/hero/room-dusk.jpg';
+import lastThoughtDay from '../../../assets/usecases/last-thought-day.jpg';
+import lastThoughtDusk from '../../../assets/usecases/last-thought-dusk.jpg';
 
 <span class="a4a-badge ai-generated">AI Generated</span>
 <span class="a4a-badge human-curated">Human Curated</span>
@@ -300,6 +305,19 @@ The real value is:
 ---
 
 # One Last Thought
+
+<PhotoFrame
+    image={lastThoughtDay}
+    dusk={lastThoughtDusk}
+    alt="An older man in a light blue guayabera works at a laptop on a wooden table in a sunlit sunroom, with papers and a phone beside him. On a side table behind a bowl of mangoes, a small smart speaker sits, with a speech bubble pointing to it: You saved this article 2 months ago about changes in your benefits. It might be relevant to your budgeting work today."
+    altDusk="The same sunroom at night. The ceiling fan light is on, the man works at the laptop, and the smart speaker glows softly blue, with a speech bubble pointing to it: You saved this article 2 months ago about changes in your benefits. It might be relevant to your budgeting work today."
+    caption="Illustration, not a photo of a real person. Pepa speaks first, about something he forgot he saved. In development."
+    badge="ai"
+    ratio="1408 / 768"
+    bubbles={[
+        { who: 'pepa', text: '“You saved this article 2 months ago about changes in your benefits. It might be relevant to your budgeting work today.”', left: '12%', top: '24%', maxWidth: '38%', tailLeft: '60%' },
+    ]}
+/>
 
 The most powerful use of Pepa may not be **questions you ask**, but **things Pepa reminds you about** that you forgot existed.
 
