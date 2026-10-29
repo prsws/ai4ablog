@@ -16,6 +16,9 @@
  *   caption  one short line under the picture.
  *   badge    provenance badge: 'photo' (real photo), 'screenshot', or 'ai'.
  *   ratio    CSS aspect-ratio, default 16 / 9.
+ *   keepRatio  true: do not switch to the taller 4 / 3 frame on phones. For wide
+ *            screenshots, which would otherwise be cropped to a thin slice.
+ *   zoom     true: the picture links to the full-size file (tap to read the small print).
  *   bubbles  optional speech bubbles drawn over the picture (decorative: the caption
  *            and alt text carry the same words). Each bubble:
  *              who        'user' (pale card) or 'pepa' (ocean card)
@@ -39,6 +42,8 @@ interface Props {
     caption?: string;
     badge?: 'photo' | 'screenshot' | 'ai';
     ratio?: string;
+    keepRatio?: boolean;
+    zoom?: boolean;
     bubbles?: Bubble[];
 }
 interface Bubble {
@@ -54,7 +59,7 @@ interface Bubble {
     tailLeft?: string;
     tailRight?: string;
 }
-const { image, alt = '', dusk, altDusk = '', hint = 'Picture goes here', caption, badge, ratio = '16 / 9', bubbles = [] } = Astro.props;
+const { image, alt = '', dusk, altDusk = '', hint = 'Picture goes here', caption, badge, ratio = '16 / 9', keepRatio = false, zoom = false, bubbles = [] } = Astro.props;
 
 const bubbleStyle = (x: Bubble) =>
     [
@@ -74,7 +79,7 @@ const badges = {
     ai: { cls: 'ai-generated', text: 'AI Generated' },
 };
 const imgAttrs = {
-    widths: [480, 720, 1028],
+    widths: image && image.width > 1600 ? [480, 720, 1028, 1600] : [480, 720, 1028],
     sizes: '(min-width: 70rem) 56rem, 100vw',
     format: 'webp' as const,
     quality: 74,
@@ -85,13 +90,17 @@ const b = badge ? badges[badge] : undefined;
 ---
 
 <figure class="photo-frame">
-    <div class="photo-stage" style={`aspect-ratio:${ratio}`}>
+    <div class="photo-stage" data-keep={keepRatio ? "" : undefined} style={`aspect-ratio:${ratio}`}>
         {
             image && dusk ? (
                 <>
                     <Image src={image} alt={alt} class="pf-day" {...imgAttrs} />
                     <Image src={dusk} alt={altDusk} class="pf-dusk" {...imgAttrs} />
                 </>
+            ) : image && zoom ? (
+                <a class="pf-zoom" href={image.src} target="_blank" rel="noopener" aria-label="Open the full-size picture in a new tab">
+                    <Image src={image} alt={alt} {...imgAttrs} />
+                </a>
             ) : image ? (
                 <Image src={image} alt={alt} {...imgAttrs} />
             ) : (
@@ -141,6 +150,11 @@ const b = badge ? badges[badge] : undefined;
         box-shadow: var(--pepa-shadow-up);
         border: 1px solid var(--sl-color-gray-5);
         background: var(--sl-color-gray-6);
+    }
+    .pf-zoom {
+        position: absolute;
+        inset: 0;
+        display: block;
     }
     .photo-stage :global(img),
     .photo-standin {
@@ -214,7 +228,7 @@ const b = badge ? badges[badge] : undefined;
     }
 
     @media (max-width: 36rem) {
-        .photo-stage {
+        .photo-stage:not([data-keep]) {
             aspect-ratio: 4 / 3 !important;
         }
     }
