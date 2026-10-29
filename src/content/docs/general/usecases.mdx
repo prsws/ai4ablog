@@ -98,8 +98,12 @@ The goal is **contextual recall**, not just document search.
 <PhotoFrame
     image={breakfastRadar}
     alt="An older man with white hair, in a light blue guayabera, sits at a wooden table in a sunroom with coffee and toast, talking toward a small smart speaker on a side table next to a bowl of mangoes. Louvered windows look out on banana leaves and palms."
-    caption="Illustration, not a photo of a real person. Over breakfast, he asks what is on his radar today."
+    caption="Illustration, not a photo of a real person. Over breakfast, he asks what is on his radar today, and Pepa tells him."
     badge="ai"
+    bubbles={[
+        { who: 'user', text: '“Pepa, what’s on my radar today?”', left: '33%', top: '7%', tailRight: '14%' },
+        { who: 'pepa', text: 'Today: the UPS battery, the NAS logs, and a call to the pharmacy.', left: '16%', top: '40%', maxWidth: '30%', tailLeft: '55%' },
+    ]}
 />
 
 You ask:
@@ -138,6 +142,10 @@ This is **life context aggregation**.
     caption="Illustration, not a photo of a real person. She speaks; the house answers, and the voice never leaves it."
     badge="ai"
     ratio="1028 / 768"
+    bubbles={[
+        { who: 'user', day: '“Oye Pepa, apaga el abanico.”', dusk: '“Oye Pepa, enciende el abanico.”', left: '6%', top: '9%', shift: '33%', tailRight: '14%' },
+        { who: 'pepa', text: 'Listo.', note: 'Heard here. Stays here.', left: '19%', top: '49%', shift: '-50%', tailLeft: '10%' },
+    ]}
 />
 
 You speak to Pepa the way you speak at home — English, español, or the Spanglish in between:
