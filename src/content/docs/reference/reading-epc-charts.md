@@ -9,13 +9,13 @@ draft: false
   <span class="a4a-badge ai-generated">AI Generated</span>
 </p>
 
-Each of the eight [use cases](/general/usecases/) has been drawn as an EPC chart, and those charts are the starting point for Pepa's specs. This page is how to read them. The one-page [EPC Cheat Sheet](/reference/epc-cheat-sheet/) has the same content condensed for printing.
+Each of the eight [use cases](/general/usecases/) has been drawn as an EPC chart, and those charts are the starting point for Pepa's specs. This page is how to read them. The two-page [EPC Cheat Sheet](/reference/epc-cheat-sheet/) has the same content condensed for printing.
 
 ## What an Event-driven Process Chain (EPC) is
 
 An Event-driven Process Chain (EPC) reads as a chain of **states** and **actions**: something becomes true (an event), someone or something does work (a function), and that work makes something else true. Read it top to bottom; every path starts and ends on an event.
 
-It came out of ARIS (Scheer, early 1990s) and was used to document the SAP reference model. It fits the eight ai4aging.org use cases because each scenario is a trigger ("José says *apaga el abanico*"), a short run of Pepa work, and a set of possible outcomes (done, not understood, nothing found).
+It was introduced by Keller, Nüttgens and Scheer in 1992 and became widely used through the ARIS modelling framework, including for the SAP reference model. It fits the eight ai4aging.org use cases because each scenario is a trigger ("José says *apaga el abanico*"), a short run of Pepa work, and a set of possible outcomes (done, not understood, nothing found).
 
 ## The five symbols
 
@@ -26,8 +26,8 @@ Shape tells you the role; read the shape before the words.
 | Event | Hexagon | A passive state: a precondition before work, or the result after it. It takes no decision and does no work. | Noun + past participle: "Wake word detected" |
 | Function | Rounded rectangle | An active task that turns one state into another. | Verb + object: "Transcribe utterance" |
 | Connector | Small circle with ∧, × or ∨ | Splits one flow into several, or joins several into one. | AND, XOR or OR; no words |
-| Control flow | Arrow | The order in which things happen. | No words |
-| Process interface | Rectangle stacked on a hexagon | A jump to another EPC (another chart picks up from here). | The other process's name |
+| Control flow | Arrow | The order in which things happen. Solid in ARIS; some textbooks dash it, and the dash means nothing. | No words |
+| Process interface | Most tools: a function shape in front of an event shape | A hand-off to another EPC at the same level; control does not come back. Older ARIS texts call it a process path. | The other process's name |
 
 Extended EPCs (eEPC, the ARIS flavour) also hang side symbols off a function: an ellipse for the **organizational unit** that does it, a plain rectangle for the **information object** it reads or writes. They tell you *who* and *with what*, not *when*; the flow is still events, functions and connectors. Pepa's charts need them; they get [their own section](#extended-epc-eepc-who-with-what-under-which-rules) below.
 
@@ -41,18 +41,19 @@ A connector with one arrow in and several out is a **split**; several in and one
 | XOR × | Exactly one branch is taken. | Continue as soon as the one active branch arrives. |
 | OR ∨ | One or more branches are taken. | Wait for every branch that was actually started. |
 
-Two rules make connectors easier to read:
+Three rules make connectors easier to read:
 
-- **Events cannot decide.** An XOR or OR split always sits right after a *function* (the function made the choice), never right after an event. An AND split may follow either.
-- **Splits and joins come in matched pairs.** A branch opened by an XOR should close on an XOR. A mismatched pair (XOR split closed by AND join) is a modelling error: the AND waits forever for branches that never ran.
+- **Events cannot decide.** An XOR or OR split always sits right after a *function* (the function made the choice), never right after an event. This is the standard EPC rule, and Pepa enforces it strictly. An AND split may follow either; after an event it means one event starts several functions in parallel, which is allowed but rare.
+- **Match splits and joins.** Closing each split with a join of the same type is a convention, not required syntax, but it keeps a chart sound. A mismatched pair (XOR split closed by AND join) can deadlock: the AND waits forever for branches that never ran.
+- **An XOR join expects one branch.** If more than one branch can arrive at it, the chart has a problem; the literature disagrees on what an XOR join does then.
 
 ## Reading method, step by step
 
-1. **Find the start events.** They are hexagons with no arrow coming in. Several start events joined by a connector mean the process needs several triggers (AND) or any one of them (XOR / OR).
+1. **Find the start events.** They are hexagons with no arrow coming in. When several start events send their arrows into one connector, the process needs all of those triggers (AND) or any one of them (XOR / OR).
 2. **Find the end events.** Hexagons with no arrow going out. Each one is a possible outcome; count them to know how many ways the process can finish.
 3. **Walk the happy path.** Follow arrows from the main start event, taking the most likely branch at each split, and read it aloud as a sentence: *event, so function, so event*.
 4. **Check the alternation.** Along any path, events and functions alternate (connectors sit in between and do not count). Two hexagons or two rounded rectangles in a row means something is missing.
-5. **At each split, name the decision.** Look at the function just before it: that is who decides. Read the events right after it as the possible answers.
+5. **At each split, name the decision.** The function just before it says what is being decided; in an eEPC, its *decides on* line says who has the authority. Read the events right after the split as the possible answers.
 6. **Close every split.** Find the matching join and confirm it has the same symbol.
 7. **Then read the side symbols.** Who decides, who carries each function out, what data and software it uses, and which rule binds it.
 
@@ -66,12 +67,12 @@ This chart is an illustration of the method, drawn for this page; it is not one 
 
 ## Extended EPC (eEPC): who, with what, under which rules
 
-A plain EPC says *what happens, in what order*. An extended EPC (eEPC), the ARIS flavour, hangs **satellites** off each function to say *who does it, with what data and software, and under which rules*. Satellites attach to functions only, never to events or connectors, and they never change the flow: read the chain first, then the satellites.
+A plain EPC says *what happens, in what order*. An extended EPC (eEPC), the ARIS flavour, hangs **satellites** off each function to say *who does it, with what data and software, and under which rules*. In the eEPC convention taught here, satellites attach to functions only, never to events or connectors, and they never change the flow: read the chain first, then the satellites.
 
 | Satellite | Usual look (varies by tool) | Question it answers | Definition, in short |
 | --- | --- | --- | --- |
 | Organizational unit | Ellipse | Which unit does or owns this step? | A unit in the organization's hierarchy. |
-| Role, position, person | Ellipse with a figure or mark | Which kind of actor, or which named one? | Role: a group of people. Position: the smallest unit. Person: one individual. |
+| Role, position, person | Ellipse with a figure or mark | Which kind of actor, or which named one? | Role: a group of people. Position: the smallest organizational unit, not necessarily a person. Person: one individual. |
 | Information carrier, cluster, entity type | Rectangle | What data does the step read or write? | Where knowledge or data is kept; a cluster groups related entity types into one business object. |
 | Application system type, application system | Rectangle with bars at the sides | What software supports the step? | Software that supports a function; the *type* is the kind, the *system* is the installed one. |
 | Software robot, attended software robot | Tool-specific icon | Does software carry the step out on its own? | A robot performs the function autonomously; an attended robot needs a human to step in. |
@@ -99,8 +100,8 @@ Data lines have a direction instead of a verb: an arrow *into* the function mean
 ### Keeping a chart readable
 
 - **Function Allocation Diagram (FAD).** When satellites crowd the chart, move each function's satellites to its own small FAD and keep the EPC to events, functions and connectors.
-- **Lower-level EPC.** A function can be detailed by a whole EPC of its own (a drill-down, one level down).
-- **Process interface.** A hand-off sideways to another EPC at the same level.
+- **Lower-level EPC.** A function can be detailed by a whole EPC of its own (a drill-down, one level down). Control returns to the parent chart when it finishes.
+- **Process interface.** A hand-off sideways to another EPC at the same level. Unlike a drill-down, control does not come back.
 
 ## Applying eEPC to Pepa
 
@@ -122,7 +123,7 @@ In Pepa's charts the satellites are where the architecture shows: which arm carr
 
 ### Pepa's rules, read as eEPC checks
 
-When a use-case chart gets its satellites, these are the lines to look for and the lines that must never appear.
+When a use-case chart gets its satellites, these are the lines to look for and the lines that must never appear. In Pepa, *decides on* means the person has authority over the action, which is stronger than ordinary RACI accountability; that is a Pepa convention, not ARIS's definition.
 
 1. **People decide; arms carry out.** An action on the house or the outside world has a person on its *decides on* line. An arm is at most *carries out*.
 2. **Retrieval is not authority.** The Memory Arm and the Knowledge Arm appear as *contributes to*, or as information carriers, never as *decides on* an action.
@@ -144,7 +145,7 @@ Read the chain first: *command understood, so switch the fan off, so the fan is 
 - **Reading an event as a step.** "Fan turned off" is a fact, not an action. If you catch yourself saying *Pepa does X* at a hexagon, the box is mislabeled.
 - **A decision hanging off an event.** An XOR right after an event hides who decided. Look for the missing function.
 - **The OR join.** It waits for "every branch that was started", which the join cannot see locally. Researchers spent a decade formalizing this; in practice, treat an OR join as a flag to ask *which branches really ran?*
-- **Missing negative outcome.** A function that can fail but has only one event after it is incomplete. The "nothing found" step in [UC5, Knowledge Management](/general/usecases/#5-knowledge-management) is exactly this check.
+- **Missing negative outcome.** In Pepa's use-case specs, a function that can fail but has only one event after it is incomplete. This is a Pepa completeness rule, not EPC syntax. The "nothing found" step in [UC5, Knowledge Management](/general/usecases/#5-knowledge-management) is exactly this check.
 - **Time is not drawn.** EPCs show order, not duration. "Shower running 20 minutes" has to be stated in an event's wording; the arrow says nothing about how long.
 - **A satellite drawn as a step.** An arm, a store or Home Assistant in the flow line, between events, means a satellite was drawn as a function. Move it to the side and connect it with a verb.
 
