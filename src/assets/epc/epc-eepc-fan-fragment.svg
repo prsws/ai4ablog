@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="360" viewBox="0 0 760 360" role="img" aria-label="eEPC fragment from UC4. Event Command understood leads to function Switch the fan off, which leads to event Fan is off. Satellites on the function: The senior (role) decides on it; Sensory Arm (house) carries it out; Home Assistant (application system) supports it; the function reads and writes House state (data).">
+  <rect width="760" height="360" rx="12" fill="#ffffff"/>
+  <defs>
+    <marker id="s" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#3c4a52"/></marker>
+  </defs>
+  <g font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14" fill="#17262d" text-anchor="middle">
+    <text x="380" y="34" font-size="17" font-weight="700">Satellites say who and with what; the flow stays the same</text>
+    <g fill="none" stroke="#3c4a52" stroke-width="1.5">
+      <path d="M380 112V155" marker-end="url(#s)"/>
+      <path d="M380 244V287" marker-end="url(#s)"/>
+      <path d="M200 176H279" marker-end="url(#s)"/>
+      <path d="M200 224H279" marker-end="url(#s)"/>
+      <path d="M570 176H481" marker-end="url(#s)"/>
+      <path d="M481 224H569" marker-start="url(#s)" marker-end="url(#s)"/>
+    </g>
+    <polygon points="270,90 286,68 474,68 490,90 474,112 286,112" fill="#f9e3ef" stroke="#a63d78" stroke-width="1.5"/>
+    <text x="380" y="95">Command understood</text>
+    <rect x="280" y="156" width="200" height="88" rx="12" fill="#e1f2e3" stroke="#2f7d43" stroke-width="2"/>
+    <text x="380" y="205" font-weight="700">Switch the fan off</text>
+    <polygon points="270,310 286,288 474,288 490,310 474,332 286,332" fill="#f9e3ef" stroke="#a63d78" stroke-width="1.5"/>
+    <text x="380" y="315">Fan is off</text>
+    <ellipse cx="110" cy="176" rx="90" ry="20" fill="#fff6d6" stroke="#9a7a12" stroke-width="1.5"/>
+    <text x="110" y="181">The senior (role)</text>
+    <ellipse cx="110" cy="224" rx="90" ry="20" fill="#fff6d6" stroke="#9a7a12" stroke-width="1.5"/>
+    <text x="110" y="229">Sensory Arm (house)</text>
+    <rect x="570" y="156" width="180" height="40" rx="4" fill="#e3edf7" stroke="#3a6a96" stroke-width="1.5"/>
+    <line x1="580" y1="156" x2="580" y2="196" stroke="#3a6a96" stroke-width="1.5"/>
+    <line x1="740" y1="156" x2="740" y2="196" stroke="#3a6a96" stroke-width="1.5"/>
+    <text x="660" y="181">Home Assistant</text>
+    <rect x="570" y="204" width="180" height="40" rx="4" fill="#eef1f4" stroke="#56636c" stroke-width="1.5"/>
+    <text x="660" y="229">House state (data)</text>
+    <g font-size="12" fill="#4f5d66">
+      <text x="240" y="168">decides on</text>
+      <text x="240" y="216">carries out</text>
+      <text x="525" y="168">supports</text>
+      <text x="525" y="216">reads, writes</text>
+    </g>
+  </g>
+</svg>
