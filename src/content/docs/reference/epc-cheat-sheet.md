@@ -2,6 +2,12 @@
 title: EPC Cheat Sheet
 description: A two-page, printable cheat sheet for reading Event-driven Process Chain (EPC) charts and their extended form (eEPC) — symbols, connectors, rules, a worked example, traps, and how eEPC maps onto Pepa.
 template: doc
+lastUpdated: 2026-10-29
+sidebar:
+  label: EPC Cheat Sheet
+  badge:
+    text: New
+    variant: tip
 draft: false
 ---
 

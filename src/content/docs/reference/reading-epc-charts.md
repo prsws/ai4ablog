@@ -2,6 +2,12 @@
 title: Reading EPC Charts
 description: How to read an Event-driven Process Chain (EPC) and its extended form (eEPC) — symbols, connectors, satellites, a seven-step reading method, traps, and how eEPC maps onto Pepa's Head, Arms and people.
 template: doc
+lastUpdated: 2026-10-29
+sidebar:
+  label: Reading EPC Charts
+  badge:
+    text: New
+    variant: tip
 draft: false
 ---
 
