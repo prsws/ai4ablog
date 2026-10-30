@@ -2,7 +2,7 @@
 title: Privacy Policy
 description: What ai4aging.org collects, what it doesn't, and why — no analytics, no CDN fonts. Two pages embed YouTube videos.
 template: doc
-lastUpdated: 2026-10-24
+lastUpdated: 2026-10-30
 sidebar:
   label: Privacy Policy
 draft: false
@@ -18,11 +18,30 @@ To get this site found on the internet we submitted it to Google Search Console 
 
 ### Things You Send Us
 
-If you email us, we receive your email address and whatever you put in the message.
+If you email us, we receive your email address and whatever you put in the message. We use them only to reply. They stay on a mail server we operate and are never shared or sold.
 
-**"Oye Pepa!" voice recordings.** If you choose to email a recording to oyepepa@ai4aging.org, we keep the audio and your email address. The audio is identified by a random ID, not your name. Your email address is stored separately and used only for withdrawals, for credit if you ask for it, and for required notices. You are named publicly only if you ask to be credited. Recordings are not posted publicly and are shared only with recipients who have agreed to the terms. You can withdraw a recording at any time by replying "retirar" or "withdraw" to your original email; it is removed within 30 days.
+**"Oye Pepa!" voice recordings.** If you send a recording to oyepepa@ai4aging.org for the wake-word corpus:
+
+- **What we collect:** the audio file; your email address; the text of your message, including your acceptance line; and its date, time, and message identifier. Your name only if you ask to be credited.
+- **How it's kept:** the audio is identified by a random ID, not your name. Your email address and the record of your acceptance are kept encrypted, apart from the audio, on hardware we control.
+- **What it's used for:** only training and testing wake-word detection. Never to identify anyone, clone or imitate a voice, or sell.
+- **Who receives it:** only researchers or institutions that request access and accept the same corpus terms. Your email address is never shared with them. Recordings are never posted publicly or sold. You are named publicly only if you ask to be credited.
+- **Recordings without the acceptance line** are not processed, and are deleted if the line doesn't arrive within 60 days.
+- **How long it's kept:** until you withdraw it. The record of your acceptance is kept while the recording is in use, plus one year. After a withdrawal, only the ID and the dates of withdrawal and deletion remain.
+- **Your choices:** reply "retirar" or "withdraw" to your original email to withdraw a recording; it is removed within 30 days. Write to [oyepepa@ai4aging.org](mailto:oyepepa@ai4aging.org) to ask what your recording is being used for, to see what we hold about you, or to correct it.
+- **If something goes wrong:** if the corpus or the email table is accessed without authorization, we notify affected contributors within 10 days, or sooner if the law requires.
 
 These recordings are governed by the [Oye Pepa! Voice Corpus Terms](/general/oyepepa-terms-en/) ([en español](/general/oyepepa-terms-es/)). Where this page and the terms differ for a recording, the terms apply.
+
+#### En español: grabaciones de "Oye Pepa!"
+
+Si envías una grabación para el corpus del wake word, recibimos el audio, tu dirección de email, el texto de tu mensaje (incluida tu línea de aceptación) y la fecha, la hora y el identificador del mensaje; tu nombre, solo si pides crédito. El audio se guarda con un ID aleatorio, no con tu nombre. Tu email y el registro de tu aceptación se guardan cifrados, aparte del audio, en equipos bajo nuestro control.
+
+La grabación se usa solo para entrenar y probar la detección del wake word, nunca para identificar a nadie, clonar ni imitar una voz, ni vender. Solo la reciben investigadores o instituciones que pidan acceso y acepten los mismos términos; tu email nunca se comparte con ellos. Las grabaciones sin la línea de aceptación no se procesan y se borran si la línea no llega en 60 días.
+
+Para retirar tu grabación, contesta "retirar" a tu email original; sale en un plazo de 30 días. Para preguntar para qué se usa, ver lo que guardamos sobre ti o corregirlo, escribe a [oyepepa@ai4aging.org](mailto:oyepepa@ai4aging.org). Si hay un acceso no autorizado al corpus o a la tabla de emails, te avisamos en un plazo de 10 días, o antes si la ley lo exige.
+
+Los [Términos del corpus de voz Oye Pepa!](/general/oyepepa-terms-es/) rigen las grabaciones y prevalecen sobre este resumen.
 
 ### Hosting
 
@@ -40,8 +59,9 @@ Except for GitHub Pages hosting, the Google Search Console submission, and the Y
 
 ### Changes
 
-This policy may be updated at any time. Continued use of the site constitutes its acceptance.
+When this policy changes, the date of the change is listed below. A change that reduces protections for information you already sent applies to that information only with your consent.
 
+- **2026-10-30.** Expanded *Things You Send Us* for the Oye Pepa! voice corpus terms v1.1: what is collected, who receives it, how long it is kept, your choices, and the acceptance line. Added a Spanish summary. Replaced "continued use" acceptance with dated change notices.
 - **2026-10-24.** Added *Things You Send Us* (Oye Pepa! voice recordings and email). Disclosed the YouTube embeds under *Third-Party Services*.
 
 ### Contact
