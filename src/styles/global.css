@@ -478,3 +478,39 @@ h1#_top,
     -webkit-mask-image: var(--a4a-icon-scale);
             mask-image: var(--a4a-icon-scale);
 }
+
+/* ── Sidebar status chips (New / Upd / Dep) in the Pepa style ──
+   Starlight paints these with its own purple and brown. Here they join the
+   a4a-step family: small uppercase pills in the Pepa palette. The label text
+   still says what it means, so colour is never the only signal.
+     New (tip)      — solid amber with ink: the strongest signal
+     Upd (caution)  — Ocean outline
+     Dep (caution)  — same as Upd until Dep gets its own variant
+   Only the sidebar is touched; <Badge> inside pages keeps Starlight's look. */
+#starlight__sidebar .sl-badge {
+    padding: 0.1em 0.6em;
+    border-radius: 999px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.5;
+    vertical-align: 0.1em;
+    border: 1px solid transparent;
+}
+#starlight__sidebar .sl-badge.tip {
+    background: var(--pepa-amber);
+    color: var(--pepa-amber-ink);
+    border-color: var(--pepa-amber);
+}
+#starlight__sidebar .sl-badge.caution {
+    background: transparent;
+    color: var(--sl-color-accent-high);
+    border-color: var(--sl-color-accent);
+}
+/* On the current page's highlighted row the Ocean outline would vanish into
+   the highlight, so use the row's own text colour instead. */
+#starlight__sidebar [aria-current='page'] .sl-badge.caution {
+    color: currentColor;
+    border-color: currentColor;
+}
