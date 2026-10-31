@@ -30,6 +30,8 @@ head:
         ]
       }
 ---
+<img src="/jose-reyes-santana.png" alt="José F. Reyes-Santana, smiling, in a blue patterned shirt and dark-framed glasses" width="160" height="160" class="a4a-portrait" />
+
 Mr. José F. Reyes-Santana graduated with a Bachelor of Electrical Engineering degree (with Honors and a minor in Computer Engineering) from Georgia Tech in 1982. He started his career in Silicon Valley working for FMC Corporation in military R&D with voice controlled autonomous armored combat vehicles, funded by the company's own R&D budget in response to a DARPA request for proposals. (Sound familiar? AI was called "Expert Systems" back then.)
 
 After returning to Puerto Rico he founded a software startup (Digital Solutions Corp.), managed IT for a pharma packaging manufacturer for two decades, and has since worked for a local MSP, two software startups and a big IT government contractor. Currently he works as a Sr. System Analyst in big pharma and spends a lot of spare time on Pepa. He provides independent consulting and software development services to clients in diverse industries as PR Software Services LLC.

@@ -514,3 +514,17 @@ h1#_top,
     color: currentColor;
     border-color: currentColor;
 }
+
+/* ── Small round portrait floated beside the first paragraph (About José) ── */
+.a4a-portrait {
+    float: right;
+    margin: 0 0 1rem 1.5rem;
+    border-radius: 50%;
+}
+@media (max-width: 30rem) {
+    .a4a-portrait {
+        width: 96px;
+        height: 96px;
+        margin-inline-start: 1rem;
+    }
+}
