@@ -119,6 +119,11 @@ export default defineConfig({
                 items: [{ autogenerate: { directory: 'reference' } }],
             },
             {
+                label: 'Code on GitHub',
+                link: 'https://github.com/prsws',
+                attrs: { target: '_blank', rel: 'noopener noreferrer' },
+            },
+            {
                 label: 'Field Notes',
                 collapsed: true,
                 items: [{ autogenerate: { directory: 'fieldnotes' } }],
