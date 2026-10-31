@@ -383,7 +383,7 @@ h1#_top,
     display: none;
 }
 
-/* ── Left sidebar hidden by the reader (toggle in src/components/SiteTitle.astro) ──
+/* ── Left sidebar hidden by the reader (toggle in src/components/Search.astro) ──
    Desktop only; on phones Starlight's own menu button handles the sidebar.
    Change only --sl-content-inline-start: --sl-sidebar-width also sizes the
    right-hand "On this page" column, so it must stay as it is. */
@@ -393,5 +393,10 @@ h1#_top,
     }
     :root[data-has-sidebar][data-sidebar-collapsed] .sidebar-pane {
         display: none;
+    }
+    /* Keep the top bar laid out as if the sidebar were shown, so the toggle
+       and the search box stay put under the pointer. */
+    :root[data-has-sidebar][data-sidebar-collapsed] .header {
+        --sl-content-inline-start: var(--sl-sidebar-width);
     }
 }

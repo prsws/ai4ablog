@@ -1,8 +1,8 @@
 ---
-// Site title with a desktop-only toggle that hides or shows the left sidebar.
-// Renders Starlight's own SiteTitle unchanged, with the toggle in front of it.
+// Search box with a desktop-only toggle in front of it that hides or shows the left sidebar.
+// Renders Starlight's own Search unchanged, with the toggle to its left.
 // The early state (no flash) is set by the inline script in astro.config.mjs `head`.
-import Default from '@astrojs/starlight/components/SiteTitle.astro';
+import Default from '@astrojs/starlight/components/Search.astro';
 ---
 
 <button
@@ -19,7 +19,7 @@ import Default from '@astrojs/starlight/components/SiteTitle.astro';
 		<line x1="9" y1="4" x2="9" y2="20" />
 	</svg>
 </button>
-<Default />
+<Default {...Astro.props} />
 
 <script>
 	const KEY = 'a4a-sidebar';

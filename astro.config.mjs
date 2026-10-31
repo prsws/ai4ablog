@@ -146,8 +146,8 @@ export default defineConfig({
             Hero: "./src/components/RoomHero.astro",
             // Site-wide footer: the ui-tweaks footer plus the disclaimer, on every page.
             Footer: "./src/components/SiteFooter.astro",
-            // Site title plus the desktop toggle that hides or shows the left sidebar.
-            SiteTitle: "./src/components/SiteTitle.astro",
+            // Search box plus the desktop toggle (to its left) that hides or shows the left sidebar.
+            Search: "./src/components/Search.astro",
         },
 		}), mdx()],
     markdown: {
