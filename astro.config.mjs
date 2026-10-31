@@ -77,6 +77,8 @@ export default defineConfig({
         description: "Home of Pepa — a self-hosted, octopus-inspired, cognitive infrastructure blueprint to help the elderly preserve memory, organize knowledge, and maintain agency through deterministic AI-assisted systems.",
         favicon: "./src/assets/Pepa_Logo_V0_NoBG.png",
         head: [
+            // Restore the reader's hidden-sidebar choice before the first paint (no flash).
+            { tag: 'script', content: "try{if(localStorage.getItem('a4a-sidebar')==='collapsed')document.documentElement.setAttribute('data-sidebar-collapsed','')}catch(e){}" },
             { tag: 'meta', attrs: { property: 'og:image', content: 'https://ai4aging.org/og.png' } },
             { tag: 'meta', attrs: { property: 'og:image:width', content: '1200' } },
             { tag: 'meta', attrs: { property: 'og:image:height', content: '630' } },
@@ -144,6 +146,8 @@ export default defineConfig({
             Hero: "./src/components/RoomHero.astro",
             // Site-wide footer: the ui-tweaks footer plus the disclaimer, on every page.
             Footer: "./src/components/SiteFooter.astro",
+            // Site title plus the desktop toggle that hides or shows the left sidebar.
+            SiteTitle: "./src/components/SiteTitle.astro",
         },
 		}), mdx()],
     markdown: {

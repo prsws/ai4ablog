@@ -382,3 +382,16 @@ h1#_top,
 :root[data-theme='light'] .sl-markdown-content .for-dusk {
     display: none;
 }
+
+/* ── Left sidebar hidden by the reader (toggle in src/components/SiteTitle.astro) ──
+   Desktop only; on phones Starlight's own menu button handles the sidebar.
+   Change only --sl-content-inline-start: --sl-sidebar-width also sizes the
+   right-hand "On this page" column, so it must stay as it is. */
+@media (min-width: 50rem) {
+    :root[data-has-sidebar][data-sidebar-collapsed] {
+        --sl-content-inline-start: 0rem;
+    }
+    :root[data-has-sidebar][data-sidebar-collapsed] .sidebar-pane {
+        display: none;
+    }
+}
