@@ -17,6 +17,7 @@ draft: false
 
 | Date | What changed |
 |---|---|
+| 1 Nov 2026 | Reflex redefined for every arm: a response an arm completes on its own, through rules declared in advance, without consulting the Head or another arm, recorded afterward in the arm's ledger. Requests from the Head and other arms described as a separate thing, bound by the arm's physical and authority limits. "No memory" refined. Asking before what cannot be undone. Repository names settled. |
 | 27 Oct 2026 | Reflexes defined as explicit, declared and guardrailed rules. Alarms moved out of the house scope's autonomous operation: shower safety and fall reports are observations, and the house scope delivers alarms without deciding them. "Raw" defined as as-received and declared. Health information spoken to Pepa is punted. Scopes described as senses and organs; mobile sensing devices and cameras placed outside the arm. Decisions numbered in the [Decision Register](/arms/sensory/decisions/). |
 | 26 Oct 2026 | First publication. |
 
@@ -30,9 +31,9 @@ A sensor that interprets is a sensor you can no longer audit. The moment collect
 starts cleaning, filtering or judging, the record stops being a record of what
 happened and becomes a record of what some piece of code thought happened. So the
 Sensory Arm observes, keeps what it observed, and hands it on. Its only exception is
-the _reflex_ — a direct, requested house action carried out through explicit, declared
-and guardrailed rules, never beyond them. Every other kind of meaning is made somewhere
-else, by an arm that can be held to account for it.
+the _reflex_ — a response the arm completes on its own, through rules declared in
+advance, without consulting the Head or another arm. Every other kind of meaning is made
+somewhere else, by an arm that can be held to account for it.
 
 The decisions on this page are numbered in the
 [Sensory Arm Decision Register](/arms/sensory/decisions/), which is what specs cite.
@@ -172,8 +173,17 @@ None of these are clever. They are the difference between a record and a dashboa
 ## Reflexes, not reasoning
 
 The **reflex** looks like an exception to the rule of no local interpretation. It is not. It is the one kind of action
-the arm takes on its own, and it is narrow by construction: a reflex runs only through
-explicit, declared and guardrailed rules, never beyond them.
+the arm takes on its own, and it is narrow by construction. The definition is not the
+Sensory Arm's alone; it holds for every arm in Pepa:
+
+> *A Pepa arm reflex is a response that an arm completes on its own, from stimulus to
+> effect, through rules declared in advance, without consulting the Head or another arm.
+> Others may learn of it afterward, through the arm's ledger, never before.* (D-14)
+
+Every arm may narrow that definition; none may widen it. A reflex may still ask the
+person something, and it may use the arm's own tools. What it may not do is wait on
+another arm. The Sensory Arm is the worked example, and its house scope narrows the
+definition further, below.
 
 You pull your hand out of the fire before you know it is hot. The spinal cord handles
 it, and the brain hears about it afterward. Nothing was interpreted in the sense this
@@ -191,10 +201,15 @@ A reflex has a recognizable shape, and that shape is the limit:
 
 - **Local and immediate.** The user's request and its effects, on the house, with a result
   you can observe right away. Query or control, and nothing else.
-- **No memory and no time.** A reflex does not build trends or notice patterns. A
-  judgment about how someone is doing is meaning about a human, and it belongs to the
-  Human Sentinel Arm. The house scope may report that the bathroom has been occupied
+- **No recall and no trends, but always a record.** A reflex keeps nothing beyond the
+  exchange it is part of, and it does not decide from history: it does not build trends
+  or notice patterns. What it does keep is the record of what it heard and did, in the
+  arm's ledger, because Pepa must collect ground truth. A judgment about how someone is
+  doing is meaning about a human, and it belongs to the Human Sentinel Arm. The house scope may report that the bathroom has been occupied
   for forty minutes; it does not decide what that says about the person inside.
+- **Undoable, or asked first.** An action on something not declared reversible does not
+  run on its own. The arm asks, and only a person's yes, from the same place the request
+  came from, lets it through (D-17). Code decides what counts as a yes, not the model.
 - **No alarms.** A reflex never decides that something is wrong. The house scope
   observes and delivers; the decision to raise an alarm belongs to another arm, under
   governance. Which arm is still open.
@@ -208,12 +223,21 @@ a different one: a reflex arc wired wrong. The fix is to "rewire the arc", not t
 it judgment. Rewiring this arc has turned out difficult because it depends heavily on bilingual STT transcription of accented voices by models we don't control.
 
 The human scope has no reflex arc at all. Its nerves only run inward. Nothing it
-collects is ever acted on locally.
+collects is ever acted on locally. How it fits the definition above is still open (O-08).
 
 The delivery side works the same way. The Sensory Arm is the exclusive gateway for
 anything Pepa says to a human, but it does not author what other arms want said. The
 words come from whichever arm owns them; the Sensory Arm makes sure they arrive, in the
 right room, to the right person — and nowhere else.
+
+These requests from the Head and other arms are not reflexes, and that is the point.
+Speaking a reply, delivering an alarm, acting on another arm's behalf: the decision
+belongs to the arm that asked. The Sensory Arm answers only for carrying it out
+faithfully, and records it in its ledger as done at that arm's request (D-15). It also
+holds every such request to its own limits. The physical ones are obvious — no arm can
+ask it to see when no camera is attached. The authority ones matter more: if the
+house scope would ask a person before opening the carport gate, it asks before opening
+it for the Head too. An instruction from higher up is not a way around the question.
 
 That is also how health information reaches Pepa when someone says it out loud. It
 arrives through the house scope, because that is where the microphones are, but it is
@@ -227,5 +251,7 @@ the actuation tools — not the arm itself. The human instance is part of the ar
 will never run that code.
 
 That is a naming problem, not an architecture problem, and it is being treated as
-one: repositories will be named for what they contain, with the arm they serve
-recorded separately.
+one: repositories are named for what they contain, with the arm they serve recorded
+separately. The house scope's code is being rebuilt as `pepa-sensory-arm-house`; it is
+not deployed yet. The human scope's code, when there is some, will live in
+`pepa-sensory-arm-person` (D-16).

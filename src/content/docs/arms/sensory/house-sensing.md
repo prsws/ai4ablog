@@ -36,7 +36,8 @@ fans, the carport gate and the voice satellites. On top of it sits the
 `pepa_sensory_arm` integration, a ReAct loop with three tools: `ha_query`,
 `ha_control` and `call_external_llm`. The first two are reflexes. The third is the
 punt. The [version history](/arms/sensory/psa-version-history/) records how the stack
-got here.
+got here. A rebuild of that integration, `pepa-sensory-arm-house`, is in progress and
+not deployed (D-16).
 
 Pepa's conversation sees only the entities exposed to it. That limit is enforced in
 code; keeping the exposure switches where they should be is, for now, discipline. See
@@ -44,8 +45,18 @@ code; keeping the exposure switches where they should be is, for now, discipline
 
 ## What is settled
 
-- **Reflexes only.** The scope acts on its own through direct, requested house actions
-  under explicit, declared and guardrailed rules, never beyond them (D-05).
+- **Reflexes only.** The scope acts on its own only through reflexes: responses it
+  completes itself, through rules declared in advance, without consulting the Head or
+  another arm, recorded afterward in the arm's ledger (D-14). For this scope that means
+  direct, requested house actions under explicit, declared and guardrailed rules, never
+  beyond them — its narrowing of the definition (D-05).
+- **Ask before what cannot be undone.** An entity is reversible only when declared so.
+  Any other action waits for a person's yes, from the same place the request came from;
+  a request nobody there can confirm is refused (D-17).
+- **Requests from other arms are not reflexes.** Speaking a reply, delivering an alarm,
+  acting for the Head or another arm: the decision is theirs, the faithful execution and
+  the ledger record are this scope's. Such requests are bound by its physical limits and
+  its own authority limits, whoever asked (D-15).
 - **Alarms are delivered, not decided.** Shower safety and similar signals begin here
   as observations. The scope can deliver an alarm; deciding that one is warranted is
   not its job (D-12).
@@ -61,8 +72,10 @@ code; keeping the exposure switches where they should be is, for now, discipline
 ## What is not decided yet
 
 - Who owns alarm decisions (O-01).
-- Whether the repository and these page names follow the rename of the integration's
-  code (O-05).
+- Whether these page names follow the rename of the integration's code (O-05). The
+  repository name is settled (D-16).
+- How every reflex reaches the ledger when Home Assistant handles a command itself,
+  before the scope's code sees it (O-09).
 - Where the declarations required by D-06 live (O-06).
 - The mandate behind reflexes — its scope, its expiry, and which house actions always
   need escalation. Listed as *identified, not yet designed* in

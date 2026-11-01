@@ -42,7 +42,10 @@ reasons are blast radius and privacy.
 
 ## What is settled
 
-- **Collection only.** No reflexes, no local action, no interpretation (D-05).
+- **Collection only.** No reflexes, no local action, no interpretation (D-05). How this
+  scope fits the reflex definition shared by every arm (D-14) is open (O-08).
+- **Its code has a name.** When there is code for this scope, it lives in
+  `pepa-sensory-arm-person` (D-16).
 - **Not a conversation source.** Health information spoken to Pepa is handled by the
   house scope, which punts it (D-11); this scope is never read aloud from.
 - **Observations, not conclusions.** A watch's fall report is what the watch said, not
@@ -65,6 +68,7 @@ future conversation arm. It is a trend channel.
 - Whether a vendor-derived value, such as heart-rate variability, is *computed* or
   *external* on the Origin axis (O-04).
 - Where the declaration of each feed lives (O-06).
+- How this scope fits the reflex definition (O-08).
 
 ## To be written
 
