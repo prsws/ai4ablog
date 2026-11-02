@@ -21,6 +21,7 @@ notes; prior text is not silently rewritten.
 
 | Version | Date | What changed |
 |---|---|---|
+| 0.3 | 2026-11-01 | Adds a dated entry: the reflex defined for every arm, requests from other arms held to the receiving arm's limits, and asking a person before what cannot be undone. See [the entry](#entry-03--2026-11-01-reflexes-and-requests-between-arms) at the end of this page. |
 | 0.2 | 2026-10-27 | Adds a dated entry on the Sensory Arm boundary and a fourth tier, *Identified, not yet designed*, and records wording changes made to v0.1 text. See [the entry](#entry-02--2026-10-27-the-sensory-boundary) at the end of this page. |
 | 0.1 | 2026-09-08 | First publication: what is enforced, what is only declared, what is designed, and three problems not yet solved. |
 
@@ -266,3 +267,43 @@ are recorded here so the change is not silent. No claim moved up a tier.
 - **Renamed:** the four tiers are numbered, and "the third column" now reads "the third
   category".
 - **Softened:** "is not a governance page" now reads "is incomplete".
+
+## Entry 0.3 — 2026-11-01: reflexes and requests between arms
+
+The reflex was defined in v0.2 for the Sensory Arm's house scope. It is now defined for
+every arm, and the Sensory Arm's job of carrying out other arms' requests is described
+as a separate thing with its own rule. Both are numbered in the
+[Sensory Arm Decision Register](/arms/sensory/decisions/), because the Sensory Arm is
+the worked example. Nothing listed in v0.1 or v0.2 moves up a tier by this entry.
+
+### Declared and binding, enforced by discipline (added)
+
+- **The reflex is defined for every arm.** A Pepa arm reflex is a response that an arm
+  completes on its own, from stimulus to effect, through rules declared in advance,
+  without consulting the Head or another arm. Others may learn of it afterward, through
+  the arm's ledger, never before (D-14). Any arm may narrow the definition; none may
+  widen it. The v0.2 bullet on reflexes now reads as the house scope's narrowing of it
+  (D-05).
+- **A request from another arm is held to the receiving arm's limits.** When the Head or
+  another arm asks the Sensory Arm to speak, deliver an alarm or act on its behalf, the
+  decision is the asking arm's, and the Sensory Arm records the action as done at that
+  arm's request. The request is still bound by the Sensory Arm's physical limits and by
+  its own declared authority limits, whoever asked (D-15). Authority granted higher up
+  does not switch off a limit an arm has declared for itself.
+- **Ask before what cannot be undone.** A house entity is reversible only when declared
+  so. Before any action on one that is not, a person must say yes, from the same place
+  the request came from; a request nobody there can confirm is refused (D-17). This is
+  built and tested in the rebuilt house-scope code, `pepa-sensory-arm-house`, which is
+  not deployed. It moves to *Enforced in code today* only by a dated entry once it runs
+  in the house. Until then, the v0.1 illustration of a confirmation label that no code
+  reads still describes what runs.
+
+### 4. Identified, not yet designed (narrowed and added)
+
+- **The mandate behind reflexes** (v0.2) is narrowed, not settled: one class of house
+  action — anything on an entity not declared reversible — always requires a person's
+  fresh yes (D-17). The mandate's scope and expiry are still only identified.
+- **How the human scope fits the reflex definition** (O-08).
+- **How every reflex reaches the arm's ledger** when Home Assistant handles a command
+  itself, before the arm's code sees it (O-09). Until it is solved, the fastest house
+  commands leave no record of their own in the arm's ledger.

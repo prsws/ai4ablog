@@ -32,7 +32,7 @@ How they are enforced, or not yet, lives in [Governance](/principles/governance/
 | D-02 | PSA has two scopes identified so far. **House**: the senses, muscles and voice — perceives the house, acts on it, speaks. **Human**: the internal organs — reports what goes on inside a person, inward only. Others may come. | 27 Oct 2026 |
 | D-03 | A sensing device with mobility, such as a robot, is not PSA. It is its own arm; the taxonomy is to be decided (O-07). | 27 Oct 2026 |
 | D-04 | Running a scope on its own instance — the human scope on a dedicated Home Assistant instance — is a deployment decision, not a new arm. | 27 Oct 2026 |
-| D-05 | PSA never interprets. A reflex is a direct, requested house action, carried out only through explicit, declared and guardrailed reflex rules, never beyond them. | 27 Oct 2026 |
+| D-05 | PSA never interprets. ~~A reflex is a direct, requested house action, carried out only through explicit, declared and guardrailed reflex rules, never beyond them.~~ *The reflex sentence is superseded by D-14 (1 Nov 2026); it survives as the house scope's narrowing of D-14.* | 27 Oct 2026 |
 | D-06 | Raw means as received at the boundary, whatever it is — but whatever it is must be declared. Nothing enters undeclared. | 27 Oct 2026 |
 | D-07 | Every reading carries two timestamps: when it was measured, and when Pepa learned of it. | 25 Oct 2026 |
 | D-08 | Every reading is attributed to a person defined in Home Assistant, or to no one. Another person's readings are held only if that person opts in, which requires onboarding. | 25 Oct 2026 |
@@ -41,6 +41,10 @@ How they are enforced, or not yet, lives in [Governance](/principles/governance/
 | D-11 | Health information spoken to Pepa is not housework: the house scope punts it, and only voices whatever reply comes back from the arm that took it. | 27 Oct 2026 |
 | D-12 | Shower safety, a watch's fall report and similar signals are observations, not conclusions. PSA does not decide alarms; it delivers them. | 27 Oct 2026 |
 | D-13 | Pepa never uses cameras until a compelling use case appears. Any cameras in the house belong to a security plane outside Pepa. | 27 Oct 2026 |
+| D-14 | A Pepa arm reflex is a response that an arm completes on its own, from stimulus to effect, through rules declared in advance, without consulting the Head or another arm. Others may learn of it afterward, through the arm's ledger, never before. It applies to every arm and is the base definition: an arm may narrow it, never widen it. A reflex may consult the person and the arm's own internal tools. Recorded here because the Sensory Arm is the worked example. | 1 Nov 2026 |
+| D-15 | As Pepa's human-facing arm, the Sensory Arm also carries out requests from the Head and other arms — speaking a reply, delivering an alarm, acting on their behalf. These are not reflexes. The decision belongs to the arm that asked; the Sensory Arm answers only for carrying it out faithfully, and records it in its ledger as done at that arm's request. Such a request is bound by the Sensory Arm's physical limits, what its body can do, and by its own declared authority limits, whoever asked. | 1 Nov 2026 |
+| D-16 | Repositories are named for what they contain: the house scope's code is `pepa-sensory-arm-house`, the human scope's is `pepa-sensory-arm-person`. | 1 Nov 2026 |
+| D-17 | A house entity is reversible only when it is declared so. Before any action on an entity that is not, a person must say yes, from the same place the request came from; a request that nobody there can confirm is refused, whoever made it. | 1 Nov 2026 |
 
 D-13 supersedes the 25 Oct 2026 working decision that health instrumentation would not
 draw from cameras "by default," with any crossing deliberate and recorded. That decision
@@ -57,3 +61,8 @@ was never published; it is noted here so the change is not silent.
 | O-05 | Whether repository and page names follow the rename of the house scope's code, and to what. | 27 Oct 2026 |
 | O-06 | Where the declaration required by D-06 lives (for example, a registry of declared feeds). | 27 Oct 2026 |
 | O-07 | The taxonomy for mobile sensing arms (D-03). | 27 Oct 2026 |
+| O-08 | How the human scope fits the reflex definition (D-14). Today it collects only and acts on nothing. | 1 Nov 2026 |
+| O-09 | How every reflex reaches the arm's ledger (D-14) when Home Assistant handles a command itself, before the house scope's code ever sees it. | 1 Nov 2026 |
+
+O-05 is partly answered by D-16: the repository names are settled. Whether page
+names follow, and to what, stays open.
