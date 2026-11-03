@@ -18,7 +18,7 @@ draft: false
 # Proposed design for review - We need your help
 
 We are asking for feedback on the specs for an AI agent that can plan, analyze, imagine and explain for Pepa, but is built so that it can never act on its own: it only thinks, and people or other parts of Pepa decide and execute.
-We ask deep thinkers interested in the subject to asses this proposed design with their preferred tools and report their findings.
+We ask deep thinkers interested in the subject to assess this proposed design with their preferred tools and report their findings.
 If AI tools are used we'd love to hear the specific LLMs used, especially if self-hosted so we can compare vs. cloud. Please email your findings to the [Architect](mailto:arch@ai4aging.org).
 We'll contact you afterward, thank you very much!
 
@@ -28,7 +28,7 @@ We'll contact you afterward, thank you very much!
 
 The **Reasoning Arm** is the arm that thinks. Other parts of Pepa can hand it a question and the material to think about, and it hands back a plan, an analysis, an explanation or a what-if. It is deliberately **not allowed to decide or to do**: it has no keys, no controls, and no route to the parts of the system that act on the home. Its answers are suggestions, labelled as such.
 
-**Why now.** On 2 Noveember 2026 a local model was asked to cross-check a long project record against its own summary. It did badly: it lost track of the middle and filled gaps with plausible text. The fix is not a bigger model but a better harness around it, and this arm is that harness.
+**Why now.** On 2 November 2026 a local model was asked to cross-check a long project record against its own summary. It did badly: it lost track of the middle and filled gaps with plausible text. The fix is not a bigger model but a better harness around it, and this arm is that harness.
 
 ## The design at a glance
 
@@ -112,7 +112,7 @@ Deferred until two services prove their contracts: the operator panel, a tool in
 ## Questions for you
 
 Comment directly on any line, or answer the questions below. Short answers are welcome; respectful disagreement is the most useful kind.
-Please email
+Please email your answers to the [Architect](mailto:arch@ai4aging.org).
 
 1. **Proving identity.** Callers prove who they are with a per-caller token plus a fixed address on a home network. Is that enough, or too much?
 2. **Plain answers.** Plain completions are labelled "unclassified" and can never become a stored fact. Can you see a way an invented answer could still leak into something Pepa treats as true?

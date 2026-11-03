@@ -256,7 +256,7 @@ Deferred until two services have proved their contracts: the panel, MCP, an inte
 | --- | --- | --- | --- |
 | D-1 | What does "human callers" in RA-01 mean? | Callers whose output reaches a person or sits behind the Head; no arm-peers | Keeps the punt working and stops arms chaining unlogged reasoning through a chat endpoint |
 | D-2 | Operator as interim submitter | Yes, recorded as a dated development exception | Honest about the published rule instead of quietly reinterpreting it |
-| D-3 | Queue at run: the Head (published) or a small bounded queue in the arm (your edit) | Keep the Head as queue unless a concrete need appears | Priority and supersession live where authority lives; changing it needs a dated entry on the page |
+| D-3 | Queue at run: the Head (published) or a small bounded queue in the arm (José's edit) | Keep the Head as queue unless a concrete need appears | Priority and supersession live where authority lives; changing it needs a dated entry on the page |
 | D-4 | Where the shell runs | LXC on its own VLAN; host later | The firewall rule is the enforcement |
 | D-5 | Close :7999 to Pepa hosts | Yes, after the punt moves, with both mechanisms | One mechanism leaves a gap on the Studio's own subnet |
 | D-6 | Auditor Arm and analyze | No use of this arm's models by the Auditor for now | Shared models share failures |
@@ -271,23 +271,23 @@ Deferred until two services have proved their contracts: the panel, MCP, an inte
 
 | Source | Item | Change in v0.2 |
 | --- | --- | --- |
-| Your edit 1 | States; "dead"; caller-is-queue struck | State model (three dimensions); dead judged from outside; published "Head is the queue" restored in the text and flagged as Open (D-3) |
-| Your edit 2 | Authority marker struck | Kept: `authority: none`, other values refused in code |
-| Your edit 3 | "Reasoning"; "nothing available" struck; "???" on budget | Adopted "reasoning"; the strike read as a plan result (D-11); budget exhaustion refuses with partial work not promoted |
-| Your edit 4 | "A -help equivalent" | RA-02/RA-04: `help` call returns the capability card |
-| Your edit 5 | "Job queue" at run | Open (D-3), zero pending in walk (RA-18) |
-| Your edit 6 | "What is EVIDENCE-class record?" | Answered in the ground rule, from §1.8 |
-| Your edit 7 | Abstention "/ forbidden" | Abstention kept epistemic; "forbidden" routed to the doctrine refusal |
-| Your edit 8 | "events and/or the requested output" | Kept |
-| Your edit 9 | RA-01 "human callers" | Read as D-1; arm-peer class removed |
-| Your edit 10 | RA-02 "find precedent/best practices" | A2A task lifecycle |
-| Your edit 11 | RA-03 maintenance, dead, fast busy | RA-03 |
-| Your edit 12 | RA-10 "(explain)" | Explained in RA-10 |
-| Your edit 13 | RA-12 "debatable… transactional" | RA-12, RA-17: only validated deliverables are published |
-| Your edit 14 | RA-13 five struck, "as identified" | Closed list of four (RA-13) |
-| Your edit 15 | RA-14 four states, maintenance? | Four outcomes; maintenance is availability |
-| Your edit 16 | RA-15 acknowledgement of missing citations; plain endpoint | `no_source` marker; unclassified marker on completions |
-| Your edit 17 | RA-20 "(explain)" | Explained in RA-20 |
+| José's edit 1 | States; "dead"; caller-is-queue struck | State model (three dimensions); dead judged from outside; published "Head is the queue" restored in the text and flagged as Open (D-3) |
+| José's edit 2 | Authority marker struck | Kept: `authority: none`, other values refused in code |
+| José's edit 3 | "Reasoning"; "nothing available" struck; "???" on budget | Adopted "reasoning"; the strike read as a plan result (D-11); budget exhaustion refuses with partial work not promoted |
+| José's edit 4 | "A -help equivalent" | RA-02/RA-04: `help` call returns the capability card |
+| José's edit 5 | "Job queue" at run | Open (D-3), zero pending in walk (RA-18) |
+| José's edit 6 | "What is EVIDENCE-class record?" | Answered in the ground rule, from §1.8 |
+| José's edit 7 | Abstention "/ forbidden" | Abstention kept epistemic; "forbidden" routed to the doctrine refusal |
+| José's edit 8 | "events and/or the requested output" | Kept |
+| José's edit 9 | RA-01 "human callers" | Read as D-1; arm-peer class removed |
+| José's edit 10 | RA-02 "find precedent/best practices" | A2A task lifecycle |
+| José's edit 11 | RA-03 maintenance, dead, fast busy | RA-03 |
+| José's edit 12 | RA-10 "(explain)" | Explained in RA-10 |
+| José's edit 13 | RA-12 "debatable… transactional" | RA-12, RA-17: only validated deliverables are published |
+| José's edit 14 | RA-13 five struck, "as identified" | Closed list of four (RA-13) |
+| José's edit 15 | RA-14 four states, maintenance? | Four outcomes; maintenance is availability |
+| José's edit 16 | RA-15 acknowledgement of missing citations; plain endpoint | `no_source` marker; unclassified marker on completions |
+| José's edit 17 | RA-20 "(explain)" | Explained in RA-20 |
 | Review | Caller identity vs authentication | RA-06 |
 | Review | Completion as a governance bypass | RA-15, RA-20, RA-44 |
 | Review | Anchor check overclaims | RA-23 validation ladder |

@@ -17,8 +17,10 @@ cognitive engine. Its role is simple: interpret, suggest, and assist. It does no
 decide, orchestrate, or execute. That authority belongs to the Head or is embedded
 within the autonomy of any requesting Arm.
 
-> Update, 3 November 2026: a proposed design exists, and this page is now DEPRECATED.
-
+> **Update, 3 November 2026.** A proposed design exists and this page is now deprecated.
+> It is kept as written. The current account is the
+> [Introduction](/arms/reasoning/introduction/); the design itself is in the
+> [Requirements & Feature List](/arms/reasoning/reasoning-urs/).
 
 This separation is intentional.
 
@@ -235,6 +237,3 @@ act on.
 - **Research against what sources?** Memory and Knowledge is one posture; the internet
   is an entirely different one, and closer to a Plan-Z (escape hatch) decision than a capability decision.
   The read-only-tools question covers the planner's context, not research's reach.
-
-## Proposed Design v0.2
-
