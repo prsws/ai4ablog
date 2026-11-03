@@ -12,15 +12,14 @@ draft: false
 <span class="a4a-badge ai-generated">AI Generated</span>
 <span class="a4a-badge human-curated">Human Curated</span>
 
+:::caution[Deprecated]
+This page was deprecated on 3 November 2026. It is kept as a useful reference.
+:::
+
 In Pepa's architecture, the Reasoning Arm is not the system's ruler — it is its
 cognitive engine. Its role is simple: interpret, suggest, and assist. It does not
 decide, orchestrate, or execute. That authority belongs to the Head or is embedded
 within the autonomy of any requesting Arm.
-
-> **Update, 3 November 2026.** A proposed design exists and this page is now deprecated.
-> It is kept as written. The current account is the
-> [Introduction](/arms/reasoning/introduction/); the design itself is in the
-> [Requirements & Feature List](/arms/reasoning/reasoning-urs/).
 
 This separation is intentional.
 

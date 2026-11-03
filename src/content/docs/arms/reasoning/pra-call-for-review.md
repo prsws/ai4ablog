@@ -88,9 +88,9 @@ Build order, smallest useful step first:
 
 Deferred until two services prove their contracts: the operator panel, a tool interface for local agents, an internal queue, an agent framework, a scoreboard, and research beyond supplied sources.
 
-## Questions for you
+## Questions for you, our good reviewer friend
 
-Comment directly on any line, or answer the questions below. Short answers are welcome; respectful disagreement is the most useful kind.
+Read and analyze with your human and AI tools the [Requirements & Feature List](/arms/reasoning/reasoning-urs/). Then comment directly on any line, or answer the questions below. Short answers are welcome; respectful disagreement is the most useful kind.
 Please email your answers to the [Architect](mailto:arch@ai4aging.org).
 
 1. **Proving identity.** Callers prove who they are with a per-caller token plus a fixed address on a home network. Is that enough, or too much?
@@ -102,3 +102,4 @@ Please email your answers to the [Architect](mailto:arch@ai4aging.org).
 7. **First jobs.** Beyond cross-checking documents, what is the first thing you would ask a thinking-only helper to do for a household or its caregivers?
 8. **Distrust.** What would make you stop trusting an answer from this arm, and what would we need to show you to restore that trust?
 
+Thank you.
