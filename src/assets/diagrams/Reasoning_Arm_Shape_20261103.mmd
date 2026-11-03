@@ -1,0 +1,30 @@
+flowchart TB
+  subgraph Callers
+    op["Operator (José)"]
+    head["Head (later)"]
+    punt["Sensory punt"]
+  end
+  subgraph Arm["Reasoning Arm · LXC on its own VLAN"]
+    cd["Completion door<br/>OpenAI-compatible"]
+    jd["Job door<br/>Pepa-native, async"]
+    pp["Operator tools<br/>flat files · ledger viewer"]
+    shell["Shell: code only<br/>caller token + address check<br/>authority = none<br/>state · budget · deadline<br/>refusals · schema<br/>validations · ledger"]
+    core["Core: models<br/>per-verb pipelines<br/>reviewer in another slot"]
+  end
+  probe["Outside probe<br/>(Self-Monitor later)"]
+  subgraph Studio["Mac Studio"]
+    swap["llama-swap :7999<br/>accepts the arm and Homelab only"]
+    slots["Model slots"]
+  end
+  punt --> cd
+  head --> jd
+  op --> jd
+  op --> cd
+  op --> pp
+  cd --> shell
+  jd --> shell
+  pp --> shell
+  shell --> core
+  core -- "Beak: the only way out" --> swap
+  swap --> slots
+  probe -. "reads state + ledger" .-> shell

@@ -4,11 +4,17 @@ description: Reasoning as a bounded, replaceable capability — the argument for
 template: doc
 sidebar:
   label: The Reasoning Arm
-  order: 0
+  badge:
+    text: Dep
+    variant: caution
 draft: false
 ---
 <span class="a4a-badge ai-generated">AI Generated</span>
 <span class="a4a-badge human-curated">Human Curated</span>
+
+:::caution[Deprecated]
+This page was deprecated on 3 November 2026. It is kept as a useful reference.
+:::
 
 In Pepa's architecture, the Reasoning Arm is not the system's ruler — it is its
 cognitive engine. Its role is simple: interpret, suggest, and assist. It does not
