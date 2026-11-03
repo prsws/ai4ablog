@@ -4,7 +4,9 @@ description: Reasoning as a bounded, replaceable capability — the argument for
 template: doc
 sidebar:
   label: The Reasoning Arm
-  order: 0
+  badge:
+    text: Dep
+    variant: caution
 draft: false
 ---
 <span class="a4a-badge ai-generated">AI Generated</span>
@@ -14,6 +16,9 @@ In Pepa's architecture, the Reasoning Arm is not the system's ruler — it is it
 cognitive engine. Its role is simple: interpret, suggest, and assist. It does not
 decide, orchestrate, or execute. That authority belongs to the Head or is embedded
 within the autonomy of any requesting Arm.
+
+> Update, 3 November 2026: a proposed design exists, and this page is now DEPRECATED.
+
 
 This separation is intentional.
 
@@ -230,3 +235,6 @@ act on.
 - **Research against what sources?** Memory and Knowledge is one posture; the internet
   is an entirely different one, and closer to a Plan-Z (escape hatch) decision than a capability decision.
   The read-only-tools question covers the planner's context, not research's reach.
+
+## Proposed Design v0.2
+
