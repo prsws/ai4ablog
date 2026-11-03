@@ -50,7 +50,7 @@ were doing more, that would be the failure this design exists to avoid.
 The real gap is not in the arm. It is that **the caller doesn't exist yet.**
 "Reasoning as a Service" presumes a Head that requests reasoning, and it's unbuilt. Today the Mac Studio is reached by the Sensory Arm's escalation
 path — a punt from the local model when it _judges_ a query beyond its Home Assistant domain mandate — rather
-than by an orchestrator asking for cognition. The impact is real - an open mic (from a [weak wake-word](/arms/sensory/voice-satellite-considerations/)) in a voice
+than by an orchestrator asking for cognition. The impact is real - at Casa Delta an open mic (from a [weak wake-word](/arms/sensory/voice-satellite-considerations/)) in a voice
 satellite picked up TV news dialog and commented on it because it didn't belong to the house mandate and was punted to the
 existing endpoint with no additional context.
 
