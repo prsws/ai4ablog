@@ -32,28 +32,7 @@ The **Reasoning Arm** is the arm that thinks. Other parts of Pepa can hand it a 
 
 ## The design at a glance
 
-```mermaid
-flowchart LR
-  subgraph callers["Callers"]
-    c1["Operator"]
-    c2["Voice assistant"]
-    c3["Head (later)"]
-  end
-  subgraph doors["Three doors"]
-    d1["Completion door<br/>OpenAI-compatible"]
-    d2["Job door<br/>Pepa-native, async"]
-    d3["Operator tools<br/>settings, record"]
-  end
-  subgraph shell["Shell · code only"]
-    s1["Token + address check<br/>Authority: none only<br/>State and budget<br/>Typed refusals<br/>Quote checks in code<br/>Its own record"]
-  end
-  core["Core · models<br/>Fixed steps per verb<br/>Reviewer, other slot<br/>Checks, not routing"]
-  models["Model server<br/>Existing local host<br/>Large, middle, small"]
-  probe["Outside check<br/>Judges if it is dead<br/>Reads state, record"]
-  callers --> doors --> shell --> core
-  core -- "Firewall: the only way out" --> models
-  probe -. "reads" .-> shell
-```
+![Diagram of the proposed design, top to bottom. Callers (operator, voice assistant, the Head later) use one of three doors: completion, job or operator tools. Every request passes the code-only shell, which checks token and address, requires authority none, handles state, budget and refusals, checks quotations in code and keeps its own record. Behind it sit the models core with fixed steps per verb and a reviewer in another slot, then, through a firewall that is the only way out, the model server on the existing local host. A separate outside check reads the shell's state and record and judges whether the arm is dead.](../../../../assets/Reasoning_Arm_Design_At_A_Glance_20261103.png)
 
 *Every request passes a code-only shell before any model. Other arms have no door of their own.*
 

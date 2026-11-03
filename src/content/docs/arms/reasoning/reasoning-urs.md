@@ -53,38 +53,7 @@ Published or decided; the feature list builds on them. Rows changed by José's e
 
 ## The shape at a glance
 
-```mermaid
-flowchart LR
-  subgraph Callers
-    op["Operator (José)"]
-    head["Head (later)"]
-    punt["Sensory punt"]
-  end
-  subgraph Arm["Reasoning Arm · LXC on its own VLAN"]
-    cd["Completion door<br/>OpenAI-compatible"]
-    jd["Job door<br/>Pepa-native, async"]
-    pp["Operator tools<br/>flat files · ledger viewer"]
-    shell["Shell: code only<br/>caller token + address check<br/>authority = none<br/>state · budget · deadline<br/>refusals · schema<br/>validations · ledger"]
-    core["Core: models<br/>per-verb pipelines<br/>reviewer in another slot"]
-  end
-  probe["Outside probe<br/>(Self-Monitor later)"]
-  subgraph Studio["Mac Studio"]
-    swap["llama-swap :7999<br/>accepts the arm and Homelab only"]
-    slots["Model slots"]
-  end
-  punt --> cd
-  head --> jd
-  op --> jd
-  op --> cd
-  op --> pp
-  cd --> shell
-  jd --> shell
-  pp --> shell
-  shell --> core
-  core -- "Beak: the only way out" --> swap
-  swap --> slots
-  probe -. "reads state + ledger" .-> shell
-```
+![Diagram of the Reasoning Arm's shape, top to bottom. Three callers (the sensory punt, the Head later, and the operator) reach three doors inside the arm: the completion door, the job door and the operator tools. All three doors lead into a code-only shell that checks the caller token and address, requires authority none, and handles state, budget, deadline, refusals, schema, validations and the ledger. The shell passes to the models core with per-verb pipelines and a reviewer in another slot. The only way out is through the Beak firewall to the llama-swap server on the Mac Studio, which accepts only the arm and the homelab and serves the model slots. An outside probe, the Self-Monitor later, reads the shell's state and ledger.](../../../../assets/Reasoning_Arm_Shape_20261103.png)
 
 Arm-peers (Memory, Knowledge, Human Sentinel…) have no door in v0.2. The Head reaches the completion door too, for plain answers.
 

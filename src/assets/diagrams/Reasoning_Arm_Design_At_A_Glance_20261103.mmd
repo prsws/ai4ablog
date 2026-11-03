@@ -1,0 +1,10 @@
+flowchart TB
+  callers["<b>Callers</b><br/>Operator · Voice assistant · Head (later)"]
+  doors["<b>Three doors</b><br/>Completion door (OpenAI-compatible)<br/>Job door (Pepa-native, async)<br/>Operator tools (settings, record)"]
+  shell["<b>Shell · code only</b><br/>Token + address check<br/>Authority: none only<br/>State and budget · Typed refusals<br/>Quote checks in code · Its own record"]
+  core["<b>Core · models</b><br/>Fixed steps per verb<br/>Reviewer in another slot<br/>Checks, not routing"]
+  models["<b>Model server</b><br/>Existing local host<br/>Large, middle, small"]
+  probe["<b>Outside check</b><br/>Judges if it is dead<br/>Reads state, record"]
+  callers --> doors --> shell --> core
+  core -- "Firewall: the only way out" --> models
+  probe -. "reads" .-> shell
