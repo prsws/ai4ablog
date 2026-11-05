@@ -41,12 +41,13 @@ This project is our first experience with crowdsourcing anything so we are learn
 
 ### If you can help the project itself
 
-| Area | What we need                                                                                                                                                                                                                                                            |
-|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Area                         | What we need                                                                                                                                                                                                                                                            |
+|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Legal or nonprofit structure | Advice on what form this should take.                                                                                                                                                                                                                                   |
-| A funding or grant partner | Researching and experimenting are expensive. Pepa has only one designer/builder, which limits the funding we can pursue alone for the federal grants we've identified.                                                                                                  |
-| Advisory voices | A few people we can ask, not a formal board.                                                                                                                                                                                                                            |
-| Pepa in a Box | A concept to explore how Pepa would be deployed in an emergency (e.g. after a fall or diagnosis), which leaves a solo builder helpless because it requires a team. It could be a business opportunity for someone else, not us. We have deliberately left it undefined. |
+| Translations                 | The project should reflect the way people -- not machines -- talk, especially for seniors and caregivers.                                                                                                                                                               |
+| A funding or grant partner   | Researching and experimenting are expensive. Pepa has only one designer/builder, which limits the funding we can pursue alone for the federal grants we've identified.                                                                                                  |
+| Advisory voices              | A few people we can ask, not a formal board.                                                                                                                                                                                                                            |
+| Pepa in a Box                | A concept to explore how Pepa would be deployed in an emergency (e.g. after a fall or diagnosis), which leaves a solo builder helpless because it requires a team. It could be a business opportunity for someone else, not us. We have deliberately left it undefined. |
 
 ### Ground rules
 
