@@ -98,6 +98,7 @@ export default defineConfig({
                     { label: 'AI in Medicine and Pepa', slug: 'general/ai-in-medicine-and-pepa' },
                     { label: '5min PowerPoint', slug: 'general/5minpowerpoint' },
                     { label: 'TL;DR Build your 1st Pepa', slug: 'guides/buildyour1stpepa' },
+                    { label: 'Call for Volunteers', slug: 'general/call-for-volunteers' },
                 ],
             },
             {
