@@ -24,7 +24,7 @@ The dangerous failures are the silent ones. If Pepa stops listening and nothing 
 
 ## What the arm is, and what it is not
 
-The Pepa Self Monitoring Arm (PSMA) is designed as a small supervisor that sits under the Head, Pepa's orchestrator. It does not do every check itself. It is meant to look after a set of small helpers, one for each kind of thing being watched: the power supply, the Home Assistant instances, the machines that run the language models. Only the power helper exists today; the supervisor that keeps the others alive is still on paper.
+The Pepa Self Monitoring Arm (PSMA) is designed as a small supervisor that sits under the Head, Pepa's orchestrator. It does not do every check itself. It is meant to look after a set of small helpers, one for each kind of thing being watched: the power supply, the Home Assistant instances, the machines that run the language models. Only the power helper exists today, plus a live dashboard of the inference machines that records nothing; the supervisor that keeps helpers alive is still on paper.
 
 It has two halves. The always-on half is plain, deterministic code: it keeps an inventory, records what it sees and, once built, will notice when something goes silent. The second half acts only when asked, to report, to characterize or to double-check a reading. Language models can help with that second half, but they are never the only thing standing between a problem and the person.
 
@@ -69,6 +69,25 @@ Three areas are working now. All of them record and none of them act.
 
 The log is append-only. The account that writes it can add rows but cannot change or delete them, so what the arm recorded stays what it recorded.
 
+## How it does it: what is installed on the Mac mini
+
+Nothing here is exotic. Every piece is ordinary, open software that runs on the machine under its own container or service, so any one of them can be replaced without touching the others.
+
+| Layer | What is there                                                                                                                                                                      | What it does for the arm |
+| --- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| --- |
+| Operating system | Debian 13 with its stable kernel                                                                                                                                                   | A slow-moving base that I do not have to babysit. |
+| Start-up setting | A small service that tells the firmware to power the machine on after a power cut ([configuration on GitHub Gist](https://gist.github.com/prsws/f82a47fac34554fd9d7d1eb3b9cb278d)) | Brings the arm back by itself after an outage. |
+| Container engine | Docker, from Debian's own packages                                                                                                                                                 | Runs the database, the Home Assistant instance and the other web tools as separate containers. |
+| Home Assistant | One Home Assistant instance in a container, with its Matter server beside it                                                                                                       | The instance whose history the arm now stores. |
+| Database | PostgreSQL 18 in a container, with its data kept apart from the container itself                                                                                                   | Holds the arm's records: that Home Assistant history and the power log. It accepts connections only from the two programs that need it. |
+| Battery backup service | Network UPS Tools: a driver that reads the battery backup over USB, and a server that offers those readings to the network                                                         | The source of every power reading. It only reports; it is not set to shut anything down. |
+| Battery backup dashboard | PeaNUT, a small web page in a container                                                                                                                                            | A live view of the battery backup for a person to look at. |
+| Power logger | A small Python program that runs as a service under its own account, with most of the system closed off to it, and restarts itself if it stops ([code on GitHub](https://github.com/prsws/pepa-psma-ups-logger)) | Reads the battery backup every 30 seconds, or every 5 once the mains power is out, and writes the readings and events down. It writes to a local file first and then to the database, so a database outage does not lose readings. |
+| Fleet dashboard | LLM Fleet Monitor, an open-source tool of mine that uses only Python's standard library                                                                                            | Shows which machines that run language models are up and what they have loaded. It shows current state only: it records nothing and sends no alerts, and its list of machines needs tidying. |
+| Disk health | smartmontools, with Debian's stock settings                                                                                                                                        | Installed, but not yet wired into the arm. |
+
+Two habits run through the list. The arm's own pieces only read and record. And secrets such as database passwords live in files that only the account that needs them can read, never in the code or in anything published.
+
 ## What is planned
 
 Everything in this table is design or intention, not running software.
@@ -82,7 +101,7 @@ Everything in this table is design or intention, not running software.
 | Clean shutdown on low battery | Let the arm power down cleanly before the battery is empty. | Who holds the authority to shut things down. I have deliberately left that open. |
 | Backups and a firewall | Back up the arm's database and restrict who can reach the machine. | Schedule and destination. |
 | Retention policy | Decide how long each kind of record is kept. | How much history is worth keeping for the person being cared for. |
-| Inference hosts | Watch the machines that run the language models, once the list of them is tidied. | What counts as healthy for a machine that is busy by design. |
+| Inference hosts | Turn the existing fleet dashboard into a helper that records what it sees and notices when a machine goes quiet, once its list of machines is tidied. | What counts as healthy for a machine that is busy by design. |
 | Zigbee coordinator | Decide where the radio that talks to the house sensors should run. | Whether it belongs on the arm at all. |
 | A route from the Head | Let the Head ask the arm a question when something needs a deeper look. | What the arm may answer without a person in the loop. |
 
