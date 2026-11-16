@@ -30,6 +30,8 @@ It has two halves. The always-on half is plain, deterministic code: it keeps an 
 
 The most important rule is the one it leaves out. **The arm has no verb for repair.** It watches, records and reports, and it reports to two kinds of reader: a person, and the operations machinery that person already runs, such as Kubernetes, Ansible or a monitoring stack. It never restarts a service, flips a switch or shuts a machine down on its own. Acting on a problem is the job of those tools and the people behind them, and it is not Pepa's job.
 
+![Self Monitoring Arm Anatomy](../../../../assets/self-monitoring-arm-anatomy.svg)
+
 There are two reasons. A monitor that can also fix things can also break things, and in a home with an older person in it that trade is not mine to make silently. The second reason is about growth. A system that can change the machines it watches can widen its own reach one reasonable-looking repair at a time, because each fix justifies a little more access, and a language model in the loop makes that drift easy to miss. An arm that cannot act keeps its capabilities at what was designed and reviewed, and the tools that do act already bring their own review, audit and rollback.
 
 ## Choosing a body: a 2010 Mac mini
